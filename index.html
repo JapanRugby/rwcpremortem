@@ -1,0 +1,1108 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="format-detection" content="telephone=no">
+<title>RWC Task List - Adaptive</title>
+<style>
+:root {
+  --navy:#082653;
+  --navy2:#0b376f;
+  --line:#d9e1ec;
+  --bg:#f6f8fb;
+  --text:#172033;
+  --muted:#667085;
+  --card:#fff;
+}
+* { box-sizing:border-box; }
+html, body { margin:0; padding:0; }
+body {
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  -webkit-text-size-adjust:100%;
+}
+input[type="radio"] { position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden; }
+
+/* CSS-only language switch */
+.en { display:none; }
+.ja { display:block; }
+span.ja { display:inline; }
+#lang-en:checked ~ header .ja, #lang-en:checked ~ main .ja, #lang-en:checked ~ footer .ja { display:none; }
+#lang-en:checked ~ header .en, #lang-en:checked ~ main .en, #lang-en:checked ~ footer .en { display:block; }
+#lang-en:checked ~ header span.en, #lang-en:checked ~ main span.en, #lang-en:checked ~ footer span.en { display:inline; }
+#lang-en:checked ~ header label[for="lang-en"],
+#lang-ja:checked ~ header label[for="lang-ja"] { background:var(--navy); color:#fff; }
+#lang-en:checked ~ header label[for="lang-ja"],
+#lang-ja:checked ~ header label[for="lang-en"] { background:#fff; color:var(--navy); }
+
+/* CSS-only owner filtering */
+#owner-all:checked ~ header label[for="owner-all"] { background:var(--navy); color:#fff; border-color:var(--navy); }
+#owner-ej:checked ~ main .owner { display:none; }
+#owner-ej:checked ~ main .owner-ej { display:block; }
+#owner-ej:checked ~ header label[for="owner-ej"] { background:var(--navy); color:#fff; border-color:var(--navy); }
+#owner-yoji:checked ~ main .owner { display:none; }
+#owner-yoji:checked ~ main .owner-yoji { display:block; }
+#owner-yoji:checked ~ header label[for="owner-yoji"] { background:var(--navy); color:#fff; border-color:var(--navy); }
+#owner-ota:checked ~ main .owner { display:none; }
+#owner-ota:checked ~ main .owner-ota { display:block; }
+#owner-ota:checked ~ header label[for="owner-ota"] { background:var(--navy); color:#fff; border-color:var(--navy); }
+#owner-yuko:checked ~ main .owner { display:none; }
+#owner-yuko:checked ~ main .owner-yuko { display:block; }
+#owner-yuko:checked ~ header label[for="owner-yuko"] { background:var(--navy); color:#fff; border-color:var(--navy); }
+#owner-jp:checked ~ main .owner { display:none; }
+#owner-jp:checked ~ main .owner-jp { display:block; }
+#owner-jp:checked ~ header label[for="owner-jp"] { background:var(--navy); color:#fff; border-color:var(--navy); }
+#owner-makiko:checked ~ main .owner { display:none; }
+#owner-makiko:checked ~ main .owner-makiko { display:block; }
+#owner-makiko:checked ~ header label[for="owner-makiko"] { background:var(--navy); color:#fff; border-color:var(--navy); }
+#owner-media-manager:checked ~ main .owner { display:none; }
+#owner-media-manager:checked ~ main .owner-media-manager { display:block; }
+#owner-media-manager:checked ~ header label[for="owner-media-manager"] { background:var(--navy); color:#fff; border-color:var(--navy); }
+#owner-nh:checked ~ main .owner { display:none; }
+#owner-nh:checked ~ main .owner-nh { display:block; }
+#owner-nh:checked ~ header label[for="owner-nh"] { background:var(--navy); color:#fff; border-color:var(--navy); }
+#owner-js:checked ~ main .owner { display:none; }
+#owner-js:checked ~ main .owner-js { display:block; }
+#owner-js:checked ~ header label[for="owner-js"] { background:var(--navy); color:#fff; border-color:var(--navy); }
+#owner-shoya:checked ~ main .owner { display:none; }
+#owner-shoya:checked ~ main .owner-shoya { display:block; }
+#owner-shoya:checked ~ header label[for="owner-shoya"] { background:var(--navy); color:#fff; border-color:var(--navy); }
+#owner-kage:checked ~ main .owner { display:none; }
+#owner-kage:checked ~ main .owner-kage { display:block; }
+#owner-kage:checked ~ header label[for="owner-kage"] { background:var(--navy); color:#fff; border-color:var(--navy); }
+#owner-ooka:checked ~ main .owner { display:none; }
+#owner-ooka:checked ~ main .owner-ooka { display:block; }
+#owner-ooka:checked ~ header label[for="owner-ooka"] { background:var(--navy); color:#fff; border-color:var(--navy); }
+#owner-yuji:checked ~ main .owner { display:none; }
+#owner-yuji:checked ~ main .owner-yuji { display:block; }
+#owner-yuji:checked ~ header label[for="owner-yuji"] { background:var(--navy); color:#fff; border-color:var(--navy); }
+#owner-head-of-medical:checked ~ main .owner { display:none; }
+#owner-head-of-medical:checked ~ main .owner-head-of-medical { display:block; }
+#owner-head-of-medical:checked ~ header label[for="owner-head-of-medical"] { background:var(--navy); color:#fff; border-color:var(--navy); }
+#owner-jtb:checked ~ main .owner { display:none; }
+#owner-jtb:checked ~ main .owner-jtb { display:block; }
+#owner-jtb:checked ~ header label[for="owner-jtb"] { background:var(--navy); color:#fff; border-color:var(--navy); }
+#owner-kaori:checked ~ main .owner { display:none; }
+#owner-kaori:checked ~ main .owner-kaori { display:block; }
+#owner-kaori:checked ~ header label[for="owner-kaori"] { background:var(--navy); color:#fff; border-color:var(--navy); }
+#owner-manager-liaison:checked ~ main .owner { display:none; }
+#owner-manager-liaison:checked ~ main .owner-manager-liaison { display:block; }
+#owner-manager-liaison:checked ~ header label[for="owner-manager-liaison"] { background:var(--navy); color:#fff; border-color:var(--navy); }
+#owner-muu:checked ~ main .owner { display:none; }
+#owner-muu:checked ~ main .owner-muu { display:block; }
+#owner-muu:checked ~ header label[for="owner-muu"] { background:var(--navy); color:#fff; border-color:var(--navy); }
+#owner-n-a:checked ~ main .owner { display:none; }
+#owner-n-a:checked ~ main .owner-n-a { display:block; }
+#owner-n-a:checked ~ header label[for="owner-n-a"] { background:var(--navy); color:#fff; border-color:var(--navy); }
+#owner-use-players-interpreter:checked ~ main .owner { display:none; }
+#owner-use-players-interpreter:checked ~ main .owner-use-players-interpreter { display:block; }
+#owner-use-players-interpreter:checked ~ header label[for="owner-use-players-interpreter"] { background:var(--navy); color:#fff; border-color:var(--navy); }
+
+header {
+  position:sticky;
+  top:0;
+  z-index:10;
+  background:rgba(255,255,255,.98);
+  border-bottom:1px solid var(--line);
+  padding:calc(10px + env(safe-area-inset-top)) 12px 10px;
+  box-shadow:0 1px 5px rgba(16,24,40,.06);
+}
+h1 {
+  font-size:clamp(18px, 4.5vw, 30px);
+  margin:0 0 5px;
+  line-height:1.18;
+  color:#0b1d3f;
+  letter-spacing:-.02em;
+}
+.sub { font-size:12px; color:var(--muted); line-height:1.35; margin-bottom:8px; }
+.lang-controls {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin-bottom:8px;
+}
+.lang-controls label {
+  border:1px solid var(--navy);
+  border-radius:12px;
+  padding:10px 8px;
+  font-weight:700;
+  font-size:15px;
+  text-align:center;
+  display:block;
+  -webkit-tap-highlight-color:transparent;
+  user-select:none;
+}
+.pdf-button {
+  width:100%;
+  border:0;
+  border-radius:12px;
+  padding:11px 10px;
+  margin:0 0 8px;
+  background:#0b4a7a;
+  color:#fff;
+  font-weight:800;
+  font-size:15px;
+  font-family:inherit;
+  -webkit-tap-highlight-color:transparent;
+}
+.pdf-button:active { transform:translateY(1px); }
+.owner-controls {
+  display:flex;
+  gap:7px;
+  overflow-x:auto;
+  padding:2px 0 5px;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+}
+.owner-controls::-webkit-scrollbar { display:none; }
+.owner-controls label {
+  flex:0 0 auto;
+  border:1px solid var(--line);
+  background:#fff;
+  color:#1f2a44;
+  border-radius:999px;
+  padding:9px 12px;
+  font-weight:700;
+  font-size:13px;
+  line-height:1;
+  white-space:nowrap;
+  -webkit-tap-highlight-color:transparent;
+  user-select:none;
+}
+main {
+  padding:12px;
+  max-width:1280px;
+  margin:auto;
+}
+.owner {
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:16px;
+  margin:0 0 14px;
+  overflow:hidden;
+  box-shadow:0 1px 7px rgba(16,24,40,.06);
+}
+.owner h2 {
+  margin:0;
+  padding:11px 12px;
+  background:linear-gradient(135deg,var(--navy),var(--navy2));
+  color:#fff;
+  font-size:18px;
+  line-height:1.2;
+}
+.owner h2 small { font-size:12px; opacity:.9; font-weight:600; }
+.task {
+  display:grid;
+  grid-template-columns:88px 1fr;
+  border-top:1px solid var(--line);
+}
+.date {
+  padding:10px 8px;
+  font-size:12px;
+  font-weight:800;
+  color:#27364c;
+  background:#f0f4fa;
+  border-right:1px solid var(--line);
+  overflow-wrap:anywhere;
+}
+.txt {
+  padding:10px;
+  font-size:14px;
+  line-height:1.45;
+  overflow-wrap:anywhere;
+}
+.shared {
+  margin-top:7px;
+  display:inline-block !important;
+  font-size:12px;
+  font-weight:800;
+  color:#0b4a7a;
+  background:#eaf4ff;
+  border:1px solid #c9e3ff;
+  border-radius:999px;
+  padding:3px 8px;
+}
+footer {
+  padding:16px 12px calc(28px + env(safe-area-inset-bottom));
+  color:var(--muted);
+  font-size:12px;
+  max-width:1280px;
+  margin:auto;
+}
+
+/* Small phones: one-column card list; largest tap targets. */
+@media (max-width:430px) {
+  header { padding-left:10px; padding-right:10px; }
+  main { padding:10px; }
+  .owner { border-radius:14px; }
+  .task { grid-template-columns:82px 1fr; }
+  .date { font-size:11px; padding:10px 7px; }
+  .txt { font-size:13.5px; padding:10px 9px; }
+  .owner-controls label { font-size:12.5px; padding:9px 11px; }
+}
+
+/* Large phones / small tablets: comfortable single-column. */
+@media (min-width:431px) and (max-width:759px) {
+  main { padding:14px; }
+  .txt { font-size:14.5px; }
+}
+
+/* Tablets: two-column owner cards. */
+@media (min-width:760px) and (max-width:1099px) {
+  header { padding-left:18px; padding-right:18px; }
+  main {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+    padding:16px;
+  }
+  .owner { margin:0; }
+  #owner-all:checked ~ main .owner { display:block; }
+  #owner-ej:checked ~ main .owner-ej { grid-column:1 / -1; }
+#owner-yoji:checked ~ main .owner-yoji { grid-column:1 / -1; }
+#owner-ota:checked ~ main .owner-ota { grid-column:1 / -1; }
+#owner-yuko:checked ~ main .owner-yuko { grid-column:1 / -1; }
+#owner-jp:checked ~ main .owner-jp { grid-column:1 / -1; }
+#owner-makiko:checked ~ main .owner-makiko { grid-column:1 / -1; }
+#owner-media-manager:checked ~ main .owner-media-manager { grid-column:1 / -1; }
+#owner-nh:checked ~ main .owner-nh { grid-column:1 / -1; }
+#owner-js:checked ~ main .owner-js { grid-column:1 / -1; }
+#owner-shoya:checked ~ main .owner-shoya { grid-column:1 / -1; }
+#owner-kage:checked ~ main .owner-kage { grid-column:1 / -1; }
+#owner-ooka:checked ~ main .owner-ooka { grid-column:1 / -1; }
+#owner-yuji:checked ~ main .owner-yuji { grid-column:1 / -1; }
+#owner-head-of-medical:checked ~ main .owner-head-of-medical { grid-column:1 / -1; }
+#owner-jtb:checked ~ main .owner-jtb { grid-column:1 / -1; }
+#owner-kaori:checked ~ main .owner-kaori { grid-column:1 / -1; }
+#owner-manager-liaison:checked ~ main .owner-manager-liaison { grid-column:1 / -1; }
+#owner-muu:checked ~ main .owner-muu { grid-column:1 / -1; }
+#owner-n-a:checked ~ main .owner-n-a { grid-column:1 / -1; }
+#owner-use-players-interpreter:checked ~ main .owner-use-players-interpreter { grid-column:1 / -1; }
+}
+
+/* Desktop / landscape iPad: dense dashboard. */
+@media (min-width:1100px) {
+  header { padding-left:24px; padding-right:24px; }
+  .topbar {
+    max-width:1280px;
+    margin:auto;
+  }
+  main {
+    display:grid;
+    grid-template-columns:repeat(3, minmax(0, 1fr));
+    gap:14px;
+    padding:18px;
+  }
+  .owner { margin:0; }
+  .task { grid-template-columns:96px 1fr; }
+  .date { font-size:12px; }
+  .txt { font-size:13.3px; }
+  #owner-all:checked ~ main .owner { display:block; }
+  #owner-ej:checked ~ main .owner-ej { grid-column:1 / -1; }
+#owner-yoji:checked ~ main .owner-yoji { grid-column:1 / -1; }
+#owner-ota:checked ~ main .owner-ota { grid-column:1 / -1; }
+#owner-yuko:checked ~ main .owner-yuko { grid-column:1 / -1; }
+#owner-jp:checked ~ main .owner-jp { grid-column:1 / -1; }
+#owner-makiko:checked ~ main .owner-makiko { grid-column:1 / -1; }
+#owner-media-manager:checked ~ main .owner-media-manager { grid-column:1 / -1; }
+#owner-nh:checked ~ main .owner-nh { grid-column:1 / -1; }
+#owner-js:checked ~ main .owner-js { grid-column:1 / -1; }
+#owner-shoya:checked ~ main .owner-shoya { grid-column:1 / -1; }
+#owner-kage:checked ~ main .owner-kage { grid-column:1 / -1; }
+#owner-ooka:checked ~ main .owner-ooka { grid-column:1 / -1; }
+#owner-yuji:checked ~ main .owner-yuji { grid-column:1 / -1; }
+#owner-head-of-medical:checked ~ main .owner-head-of-medical { grid-column:1 / -1; }
+#owner-jtb:checked ~ main .owner-jtb { grid-column:1 / -1; }
+#owner-kaori:checked ~ main .owner-kaori { grid-column:1 / -1; }
+#owner-manager-liaison:checked ~ main .owner-manager-liaison { grid-column:1 / -1; }
+#owner-muu:checked ~ main .owner-muu { grid-column:1 / -1; }
+#owner-n-a:checked ~ main .owner-n-a { grid-column:1 / -1; }
+#owner-use-players-interpreter:checked ~ main .owner-use-players-interpreter { grid-column:1 / -1; }
+}
+
+/* Very wide screens: four columns. */
+@media (min-width:1500px) {
+  main { max-width:1600px; grid-template-columns:repeat(4, minmax(0, 1fr)); }
+  footer { max-width:1600px; }
+}
+
+/* Landscape phones: reduce sticky header height. */
+@media (max-height:500px) and (orientation:landscape) {
+  header { position:relative; }
+  h1 { font-size:18px; }
+  .sub { display:none; }
+  .lang-controls label { padding:8px; }
+  .owner-controls label { padding:7px 10px; }
+}
+
+/* Print / PDF export: show all, readable pages. */
+@page { size:A4 portrait; margin:10mm; }
+@media print {
+  * { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body { background:#fff; }
+  header { position:static; box-shadow:none; padding:0 0 8px; }
+  .lang-controls, .owner-controls, .sub, .pdf-button { display:none; }
+  h1 { font-size:20px; margin:0 0 8px; }
+  main { display:block; max-width:none; padding:0; }
+  /*
+    Keep the current owner filter when printing:
+    - If "All" is selected, every owner prints.
+    - If one owner is selected, hidden owners remain hidden.
+  */
+  #owner-all:checked ~ main .owner { display:block; }
+  .owner { break-inside:avoid; page-break-inside:avoid; margin:0 0 10px; box-shadow:none; }
+  .task { grid-template-columns:95px 1fr; }
+  footer { max-width:none; }
+}
+</style>
+</head>
+<body>
+<input type="radio" name="lang" id="lang-ja" checked>
+<input type="radio" name="lang" id="lang-en">
+<input type="radio" name="owner-filter" id="owner-all" checked>
+<input type="radio" name="owner-filter" id="owner-ej">
+<input type="radio" name="owner-filter" id="owner-yoji">
+<input type="radio" name="owner-filter" id="owner-ota">
+<input type="radio" name="owner-filter" id="owner-yuko">
+<input type="radio" name="owner-filter" id="owner-jp">
+<input type="radio" name="owner-filter" id="owner-makiko">
+<input type="radio" name="owner-filter" id="owner-media-manager">
+<input type="radio" name="owner-filter" id="owner-nh">
+<input type="radio" name="owner-filter" id="owner-js">
+<input type="radio" name="owner-filter" id="owner-shoya">
+<input type="radio" name="owner-filter" id="owner-kage">
+<input type="radio" name="owner-filter" id="owner-ooka">
+<input type="radio" name="owner-filter" id="owner-yuji">
+<input type="radio" name="owner-filter" id="owner-head-of-medical">
+<input type="radio" name="owner-filter" id="owner-jtb">
+<input type="radio" name="owner-filter" id="owner-kaori">
+<input type="radio" name="owner-filter" id="owner-manager-liaison">
+<input type="radio" name="owner-filter" id="owner-muu">
+<input type="radio" name="owner-filter" id="owner-n-a">
+<input type="radio" name="owner-filter" id="owner-use-players-interpreter">
+
+<header>
+  <div class="topbar">
+    <h1><span class="en">RUGBY WORLD CUP — Task List</span><span class="ja">ラグビーワールドカップ — タスクリスト</span></h1>
+    <div class="sub"><span class="en">Adaptive layout for phone, tablet, desktop, landscape, and print. Use Export PDF / Print, then save as PDF. If an owner is selected, only that owner is printed.</span><span class="ja">端末や画面幅に合わせて表示を自動調整します。PDF出力ボタンから「プリント」→「PDFに保存」ができます。担当者で絞り込んでいる場合は、その担当者だけを印刷します。</span></div>
+    <div class="lang-controls">
+      <label for="lang-ja">日本語</label>
+      <label for="lang-en">English</label>
+    </div>
+    <button class="pdf-button" type="button" onclick="window.print()">
+      <span class="ja">PDF出力 / 印刷</span><span class="en">Export PDF / Print</span>
+    </button>
+    <div class="owner-controls" aria-label="Owner filter">
+      <label for="owner-all"><span class="ja">全員</span><span class="en">All</span></label>
+<label for="owner-ej">EJ</label>
+<label for="owner-yoji">Yoji</label>
+<label for="owner-ota">Ota</label>
+<label for="owner-yuko">Yuko</label>
+<label for="owner-jp">JP</label>
+<label for="owner-makiko">Makiko</label>
+<label for="owner-media-manager">Media Manager</label>
+<label for="owner-nh">NH</label>
+<label for="owner-js">JS</label>
+<label for="owner-shoya">Shoya</label>
+<label for="owner-kage">Kage</label>
+<label for="owner-ooka">Ooka</label>
+<label for="owner-yuji">Yuji</label>
+<label for="owner-head-of-medical">Head of Medical</label>
+<label for="owner-jtb">JTB</label>
+<label for="owner-kaori">Kaori</label>
+<label for="owner-manager-liaison">Manager (Liaison)</label>
+<label for="owner-muu">Muu</label>
+<label for="owner-n-a">N/A</label>
+<label for="owner-use-players-interpreter">Use players/interpreter</label>
+    </div>
+  </div>
+</header>
+<main id="list">
+
+
+
+
+    <section class="owner owner-ej" data-owner="EJ">
+      <h2><span class="en">EJ</span><span class="ja">EJ</span> <small>(17 tasks)</small></h2>
+      
+        <article class="task">
+          <div class="date">—</div>
+          <div class="txt en">Agreement with the club regarding IDP tracking and communication with players<div class="shared en">Shared with: Yoji</div></div>
+          <div class="txt ja">IDPの追跡と選手とのコミュニケーションに関するクラブとの合意<div class="shared ja">共有: Yoji</div></div>
+        </article>
+        <article class="task">
+          <div class="date">—</div>
+          <div class="txt en">Quality trial matches arranged at an appropriate standard of competition (6-days turnaround?)<div class="shared en">Shared with: Yoji</div></div>
+          <div class="txt ja">適切な競技レベルの質の高いトライアルマッチを手配（6日間のターンアラウンド？）<div class="shared ja">共有: Yoji</div></div>
+        </article>
+        <article class="task">
+          <div class="date">Ongoing</div>
+          <div class="txt en">Alternative activities to enhance competition application (e.g. simulated in training environment)<div class="shared en">Shared with: Yuko</div></div>
+          <div class="txt ja">競技での実践力を高める代替活動（例：トレーニング環境でのシミュレーション）<div class="shared ja">共有: Yuko</div></div>
+        </article>
+        <article class="task">
+          <div class="date">—</div>
+          <div class="txt en">Planning &amp; methods to ensure psychological, physical &amp; emotional peak(s) in the lead into &amp; during the RWC<div class="shared en">Shared with: JP</div></div>
+          <div class="txt ja">RWCに向けた期間および期間中に、心理・身体・感情面のピークを確保するための計画と方法<div class="shared ja">共有: JP</div></div>
+        </article>
+        <article class="task">
+          <div class="date">TBC</div>
+          <div class="txt en">Specific purpose camps/objectives<div class="shared en">Shared with: NH</div></div>
+          <div class="txt ja">特定目的のキャンプ／目標<div class="shared ja">共有: NH</div></div>
+        </article>
+        <article class="task">
+          <div class="date">TBC</div>
+          <div class="txt en">Final residential period in host country<div class="shared en">Shared with: JP, NH</div></div>
+          <div class="txt ja">開催国での最終滞在期間<div class="shared ja">共有: JP, NH</div></div>
+        </article>
+        <article class="task">
+          <div class="date">April 2027</div>
+          <div class="txt en">Strategy to “educate” the media in relation to expectations, team athletes etc.<div class="shared en">Shared with: Media Manager</div></div>
+          <div class="txt ja">期待値、チーム、選手等に関してメディアを“教育”する戦略<div class="shared ja">共有: メディアマネージャー</div></div>
+        </article>
+        <article class="task">
+          <div class="date">TBC</div>
+          <div class="txt en">Media policy document – specific guidelines/responsibilities for staff/players, including what to say/not to say in interviews<div class="shared en">Shared with: Media Manager</div></div>
+          <div class="txt ja">メディアポリシー文書：スタッフ／選手向けの具体的ガイドラインと責任（インタビューで言うべきこと／言わないことを含む）<div class="shared ja">共有: メディアマネージャー</div></div>
+        </article>
+        <article class="task">
+          <div class="date">August 2027</div>
+          <div class="txt en">Pre-RWC meeting(s) planned<div class="shared en">Shared with: Yuko</div></div>
+          <div class="txt ja">RWC前ミーティングの計画<div class="shared ja">共有: Yuko</div></div>
+        </article>
+        <article class="task">
+          <div class="date">30/May/2026</div>
+          <div class="txt en">Consideration of avoiding travel on training free days once tournament commences (to ensure player recovery)</div>
+          <div class="txt ja">大会開始後、トレーニング休養日に移動を避ける検討（選手の回復確保のため）</div>
+        </article>
+        <article class="task">
+          <div class="date">April 2027</div>
+          <div class="txt en">Mechanisms to cope under extreme pressure<div class="shared en">Shared with: JP</div></div>
+          <div class="txt ja">極度のプレッシャー下で対処する仕組み<div class="shared ja">共有: JP</div></div>
+        </article>
+        <article class="task">
+          <div class="date">April 2027</div>
+          <div class="txt en">Realistic expectations</div>
+          <div class="txt ja">現実的な期待値</div>
+        </article>
+        <article class="task">
+          <div class="date">April 2027</div>
+          <div class="txt en">Emotional highs and lows</div>
+          <div class="txt ja">感情の高低</div>
+        </article>
+        <article class="task">
+          <div class="date">April 2027</div>
+          <div class="txt en">Pressure – medal expectations, mental imagery, hype etc. - how to cope?<div class="shared en">Shared with: Kaori</div></div>
+          <div class="txt ja">プレッシャー（メダル期待、メンタルイメージ、過熱報道等）への対処方法<div class="shared ja">共有: Kaori</div></div>
+        </article>
+        <article class="task">
+          <div class="date">April 2027</div>
+          <div class="txt en">Protocol for players that are struggling</div>
+          <div class="txt ja">苦戦している選手への対応プロトコル</div>
+        </article>
+        <article class="task">
+          <div class="date">August 2027</div>
+          <div class="txt en">Event selection/withdrawals. Non selected players</div>
+          <div class="txt ja">大会選考／辞退。非選出選手</div>
+        </article>
+        <article class="task">
+          <div class="date">Ongoing</div>
+          <div class="txt en">What has changed since the last RWC? What strategies are required?</div>
+          <div class="txt ja">前回RWCから何が変わったか？どのような戦略が必要か？</div>
+        </article>
+    </section>
+    <section class="owner owner-yoji" data-owner="Yoji">
+      <h2><span class="en">Yoji</span><span class="ja">Yoji</span> <small>(16 tasks)</small></h2>
+      
+        <article class="task">
+          <div class="date">—</div>
+          <div class="txt en">Agreement with the club regarding IDP tracking and communication with players<div class="shared en">Shared with: EJ</div></div>
+          <div class="txt ja">IDPの追跡と選手とのコミュニケーションに関するクラブとの合意<div class="shared ja">共有: EJ</div></div>
+        </article>
+        <article class="task">
+          <div class="date">—</div>
+          <div class="txt en">Quality trial matches arranged at an appropriate standard of competition (6-days turnaround?)<div class="shared en">Shared with: EJ</div></div>
+          <div class="txt ja">適切な競技レベルの質の高いトライアルマッチを手配（6日間のターンアラウンド？）<div class="shared ja">共有: EJ</div></div>
+        </article>
+        <article class="task">
+          <div class="date">May,2026</div>
+          <div class="txt en">Shadow squad in place and/or key position players in host country (preparation/communication/staffing)</div>
+          <div class="txt ja">シャドースクワッド、および／または開催国にいる重要ポジション選手の配置（準備／コミュニケーション／スタッフ体制）</div>
+        </article>
+        <article class="task">
+          <div class="date">—</div>
+          <div class="txt en">Responsibilities determined (ie. clearly identified Job Descriptions/Duty Statements for all personnel) and circulated (i.e. list of who’s responsible for particular tasks and contact details)</div>
+          <div class="txt ja">責任範囲の決定と周知（全員の職務記述書／任務記述、各タスクの担当者と連絡先リスト）</div>
+        </article>
+        <article class="task">
+          <div class="date">—</div>
+          <div class="txt en">Family tragedy</div>
+          <div class="txt ja">家族の不幸</div>
+        </article>
+        <article class="task">
+          <div class="date">May 2027</div>
+          <div class="txt en">Post-RWC planning including:</div>
+          <div class="txt ja">RWC後の計画（以下を含む）</div>
+        </article>
+        <article class="task">
+          <div class="date">May 2027</div>
+          <div class="txt en">Agreed leave period, off-season training programs, return standards/testing</div>
+          <div class="txt ja">合意済み休暇期間、オフシーズントレーニングプログラム、復帰基準／テスト</div>
+        </article>
+        <article class="task">
+          <div class="date">May 2027</div>
+          <div class="txt en">Players and management requesting to stay on in host nation post RWC</div>
+          <div class="txt ja">RWC後に開催国に滞在継続を希望する選手・マネジメント</div>
+        </article>
+        <article class="task">
+          <div class="date">May 2027</div>
+          <div class="txt en">Retirement (post career planning in place and distraction free)</div>
+          <div class="txt ja">引退（キャリア後の計画を整え、気を散らさない状態にする）</div>
+        </article>
+        <article class="task">
+          <div class="date">May 2027</div>
+          <div class="txt en">Staff leaving National program (exit interview to include recommendations for the future)</div>
+          <div class="txt ja">代表プログラムを離れるスタッフ（今後への提言を含む退任面談）</div>
+        </article>
+        <article class="task">
+          <div class="date">May 2027</div>
+          <div class="txt en">Plan for “closure” after event e.g. athlete team meeting, de-brief etc</div>
+          <div class="txt ja">大会後の“クロージャー”計画（選手チームミーティング、デブリーフ等）</div>
+        </article>
+        <article class="task">
+          <div class="date">May 2027</div>
+          <div class="txt en">Player/team preparation and performance evaluation (eg. was planning and execution successful?)</div>
+          <div class="txt ja">選手／チームの準備とパフォーマンス評価（例：計画と実行は成功したか？）</div>
+        </article>
+        <article class="task">
+          <div class="date">April 2027</div>
+          <div class="txt en">Back up staff in the event someone must exit the tournament</div>
+          <div class="txt ja">誰かが大会を離脱する場合のバックアップスタッフ</div>
+        </article>
+        <article class="task">
+          <div class="date">Ongoing</div>
+          <div class="txt en">Staff risk assessment and vulnerabilities profiled</div>
+          <div class="txt ja">スタッフのリスク評価と脆弱性プロファイル</div>
+        </article>
+        <article class="task">
+          <div class="date">April 2027</div>
+          <div class="txt en">Experience of “new” staff – Plan “B” – support (risk assess)</div>
+          <div class="txt ja">“新規”スタッフの経験値：プランB・サポート（リスク評価）</div>
+        </article>
+        <article class="task">
+          <div class="date">April 2027</div>
+          <div class="txt en">Role clarity of support staff</div>
+          <div class="txt ja">サポートスタッフの役割明確化</div>
+        </article>
+    </section>
+    <section class="owner owner-ota" data-owner="Ota">
+      <h2><span class="en">Ota</span><span class="ja">Ota</span> <small>(15 tasks)</small></h2>
+      
+        <article class="task">
+          <div class="date">Jan, 2027</div>
+          <div class="txt en">Create IDP and share with players<div class="shared en">Shared with: NH</div></div>
+          <div class="txt ja">IDPを作成し選手と共有<div class="shared ja">共有: NH</div></div>
+        </article>
+        <article class="task">
+          <div class="date">30/May/2026</div>
+          <div class="txt en">Inspection, or ideally use of training facilities planned (pre-event) – if not possible. At least, familiarisation with facilities through maps, video, visits etc</div>
+          <div class="txt ja">トレーニング施設の視察、理想的には事前利用を計画。不可能な場合は地図、動画、訪問等で施設に慣れる</div>
+        </article>
+        <article class="task">
+          <div class="date">Dec/2026</div>
+          <div class="txt en">Consider if facilities provided by organisers will be adequate</div>
+          <div class="txt ja">主催者が提供する施設が十分か検討</div>
+        </article>
+        <article class="task">
+          <div class="date">Dec/2026</div>
+          <div class="txt en">Consideration of the difference desired training equipment and ecology and that supplied by WR</div>
+          <div class="txt ja">希望するトレーニング機材・環境とWR提供物との差異を検討</div>
+        </article>
+        <article class="task">
+          <div class="date">Dec/2026</div>
+          <div class="txt en">Arrange alternative training venues, if necessary, in the event of excessive rain (functional indoor facilities).</div>
+          <div class="txt ja">大雨の場合に備え、必要に応じて代替トレーニング会場（機能的な屋内施設）を手配</div>
+        </article>
+        <article class="task">
+          <div class="date">April 2027</div>
+          <div class="txt en">Plans for specific event/day routines etc. based on knowledge from (pre-event) familiarisation with venues. Once this has been confirmed it should be replicated in prep?</div>
+          <div class="txt ja">会場の事前確認から得た知識に基づく、特定イベント／日のルーティン計画。確定後は準備で再現すべきか？</div>
+        </article>
+        <article class="task">
+          <div class="date">April 2027</div>
+          <div class="txt en">Familiarisation with daily routine and city lay-out – a familiarisation “walk-through” on arrival</div>
+          <div class="txt ja">日々のルーティンと都市レイアウトへの慣れ：到着時の“ウォークスルー”</div>
+        </article>
+        <article class="task">
+          <div class="date">April 2027</div>
+          <div class="txt en">Daily planner and schedule for each day of the RWC tournament so that there is clear understanding of what the competition routine involves, bus timetables, staff meetings (when, how often etc.), exactly who is required at each day of competition and meeting and for how long</div>
+          <div class="txt ja">RWC期間中の各日のデイリープランとスケジュール。競技ルーティン、バス時刻、スタッフ会議（いつ・頻度等）、各日・各会議で誰がどれだけ必要かを明確化</div>
+        </article>
+        <article class="task">
+          <div class="date">April 2027</div>
+          <div class="txt en">Diet for athletes during event – temptation of food provided in camp, perhaps develop guidelines – scales and skinfolds?</div>
+          <div class="txt ja">大会中の選手の食事：キャンプ提供食の誘惑、ガイドライン作成の検討（体重計・皮脂厚？）</div>
+        </article>
+        <article class="task">
+          <div class="date">May/2027</div>
+          <div class="txt en">Food– nutrition and products as per home environment</div>
+          <div class="txt ja">食事：ホーム環境と同様の栄養・製品</div>
+        </article>
+        <article class="task">
+          <div class="date">May/2027</div>
+          <div class="txt en">Water – nutrition and products as per home environment</div>
+          <div class="txt ja">水：ホーム環境と同様の栄養・製品</div>
+        </article>
+        <article class="task">
+          <div class="date">April 2027</div>
+          <div class="txt en">Player/team free time organised/structured – timing, activities etc.</div>
+          <div class="txt ja">選手／チームの自由時間の整理・構造化（タイミング、活動等）</div>
+        </article>
+        <article class="task">
+          <div class="date">May 2027</div>
+          <div class="txt en">Handover to clubs from National team staff upon return from RWC<div class="shared en">Shared with: NH</div></div>
+          <div class="txt ja">RWCから帰国後、代表スタッフからクラブへの引き継ぎ<div class="shared ja">共有: NH</div></div>
+        </article>
+        <article class="task">
+          <div class="date">Ongoing</div>
+          <div class="txt en">Schedule of regular meetings between coaching and support staff to discuss preparation matters</div>
+          <div class="txt ja">準備事項を話し合うコーチングスタッフとサポートスタッフの定例会議スケジュール</div>
+        </article>
+        <article class="task">
+          <div class="date">Ongoing</div>
+          <div class="txt en">Material learnings from last RWC Review report?</div>
+          <div class="txt ja">前回RWCレビュー報告書からの重要な学びは？</div>
+        </article>
+    </section>
+    <section class="owner owner-yuko" data-owner="Yuko">
+      <h2><span class="en">Yuko</span><span class="ja">Yuko</span> <small>(14 tasks)</small></h2>
+      
+        <article class="task">
+          <div class="date">Ongoing</div>
+          <div class="txt en">Alternative activities to enhance competition application (e.g. simulated in training environment)<div class="shared en">Shared with: EJ</div></div>
+          <div class="txt ja">競技での実践力を高める代替活動（例：トレーニング環境でのシミュレーション）<div class="shared ja">共有: EJ</div></div>
+        </article>
+        <article class="task">
+          <div class="date">Dec,2026</div>
+          <div class="txt en">All competition/camps commitments clearly communicated to players and staff</div>
+          <div class="txt ja">全ての試合／キャンプのコミットメントを選手・スタッフに明確に伝達</div>
+        </article>
+        <article class="task">
+          <div class="date">April 2027</div>
+          <div class="txt en">A directory of contact people (i.e. who is responsible for what) in the event of advice or support being required (both before and during the event)<div class="shared en">Shared with: Media Manager</div></div>
+          <div class="txt ja">助言やサポートが必要な場合の連絡先ディレクトリ（誰が何を担当するか、大会前・大会中）<div class="shared ja">共有: メディアマネージャー</div></div>
+        </article>
+        <article class="task">
+          <div class="date">August 2027</div>
+          <div class="txt en">Pre-RWC meeting(s) planned<div class="shared en">Shared with: EJ</div></div>
+          <div class="txt ja">RWC前ミーティングの計画<div class="shared ja">共有: EJ</div></div>
+        </article>
+        <article class="task">
+          <div class="date">Jan 2027</div>
+          <div class="txt en">Transport delays</div>
+          <div class="txt ja">交通遅延</div>
+        </article>
+        <article class="task">
+          <div class="date">TBC</div>
+          <div class="txt en">Arrangements made for non-team accommodation</div>
+          <div class="txt ja">チーム外宿泊の手配</div>
+        </article>
+        <article class="task">
+          <div class="date">TBC</div>
+          <div class="txt en">Key event information received from World Rugby</div>
+          <div class="txt ja">World Rugbyから主要大会情報を受領</div>
+        </article>
+        <article class="task">
+          <div class="date">Dec/2026</div>
+          <div class="txt en">Arrange back-up/alternative transport if necessary eg. For travel to alternative training venues or for travel at different times to the transport provided (late night drug testing)</div>
+          <div class="txt ja">必要に応じたバックアップ／代替交通手段の手配（代替練習会場への移動、提供交通と異なる時間の移動：深夜ドーピング検査等）</div>
+        </article>
+        <article class="task">
+          <div class="date">30/May/2026</div>
+          <div class="txt en">Plan for meetings (team and staff) throughout the RWC, considering access to and location of meeting rooms</div>
+          <div class="txt ja">RWC期間中のチーム／スタッフ会議計画（会議室へのアクセスと場所を考慮）</div>
+        </article>
+        <article class="task">
+          <div class="date">April 2027</div>
+          <div class="txt en">Activities planned for possible long waiting periods and more generally for killing time – activities in airline lounges, in village and at lead-in camps</div>
+          <div class="txt ja">長い待機時間や時間つぶしの活動計画（空港ラウンジ、選手村、直前キャンプ等）</div>
+        </article>
+        <article class="task">
+          <div class="date">April 2027</div>
+          <div class="txt en">Rooming plans for athletes and staff (personalities and/or behaviours, ease of access etc.)</div>
+          <div class="txt ja">選手・スタッフの部屋割り計画（性格／行動、アクセスのしやすさ等）</div>
+        </article>
+        <article class="task">
+          <div class="date">April 2027</div>
+          <div class="txt en">Closest hospital/grocery story etc</div>
+          <div class="txt ja">最寄り病院／食料品店等</div>
+        </article>
+        <article class="task">
+          <div class="date">Dec/2026</div>
+          <div class="txt en">Communication is the key – teamworks / LINE</div>
+          <div class="txt ja">コミュニケーションが鍵：Teamworks / LINE</div>
+        </article>
+        <article class="task">
+          <div class="date">—</div>
+          <div class="txt en">Orientating “new” competitors/staff (individual cover support)</div>
+          <div class="txt ja">“新規”選手／スタッフのオリエンテーション（個別サポート）</div>
+        </article>
+    </section>
+    <section class="owner owner-jp" data-owner="JP">
+      <h2><span class="en">JP</span><span class="ja">JP</span> <small>(13 tasks)</small></h2>
+      
+        <article class="task">
+          <div class="date">Jan, 2027</div>
+          <div class="txt en">Player handover between clubs and national team including collaborative IDP<div class="shared en">Shared with: NH</div></div>
+          <div class="txt ja">クラブと代表チーム間の選手引き継ぎ（共同IDPを含む）<div class="shared ja">共有: NH</div></div>
+        </article>
+        <article class="task">
+          <div class="date">May,2026</div>
+          <div class="txt en">Optimal balance between PREPARATION (adaptation), PERFORMANCE (application) and RECOVERY</div>
+          <div class="txt ja">準備（適応）、パフォーマンス（実践）、回復の最適バランス</div>
+        </article>
+        <article class="task">
+          <div class="date">—</div>
+          <div class="txt en">Planning &amp; methods to ensure psychological, physical &amp; emotional peak(s) in the lead into &amp; during the RWC<div class="shared en">Shared with: EJ</div></div>
+          <div class="txt ja">RWCに向けた期間および期間中に、心理・身体・感情面のピークを確保するための計画と方法<div class="shared ja">共有: EJ</div></div>
+        </article>
+        <article class="task">
+          <div class="date">Ongoing</div>
+          <div class="txt en">PUSH-PROTECT process of risk assessment/management for each player</div>
+          <div class="txt ja">各選手のリスク評価／管理におけるPUSH-PROTECTプロセス</div>
+        </article>
+        <article class="task">
+          <div class="date">TBC</div>
+          <div class="txt en">Adaptation stimulus (heat/humidity acclimatization)</div>
+          <div class="txt ja">適応刺激（暑熱／湿度順化）</div>
+        </article>
+        <article class="task">
+          <div class="date">TBC</div>
+          <div class="txt en">Final residential period in host country<div class="shared en">Shared with: EJ, NH</div></div>
+          <div class="txt ja">開催国での最終滞在期間<div class="shared ja">共有: EJ, NH</div></div>
+        </article>
+        <article class="task">
+          <div class="date">May,2026</div>
+          <div class="txt en">Pre-determined rest periods in the lead up to and during the RWC</div>
+          <div class="txt ja">RWCに向けた期間および期間中の事前設定された休息期間</div>
+        </article>
+        <article class="task">
+          <div class="date">May,2026</div>
+          <div class="txt en">Recovery management plan – determining access to recovery facilities during the RWC and camps - alternatives if required</div>
+          <div class="txt ja">リカバリー管理計画：RWC・キャンプ中の回復施設へのアクセス確定、必要時の代替策</div>
+        </article>
+        <article class="task">
+          <div class="date">May,2026</div>
+          <div class="txt en">Planning is adjusted where necessary and redirected with a willingness to change to suit the circumstances. Such as, where injury/illness affects the team performance or individual. Have a Plan “A”, “B” and “C” – all of equal merit. Should this be discussed, or rehearsed?</div>
+          <div class="txt ja">必要に応じて計画を調整し、状況に合わせて変更する意志を持つ。怪我／ illness がチームや個人に影響する場合など。プランA・B・Cを全て同等の価値で用意。これは議論またはリハーサルすべきか？</div>
+        </article>
+        <article class="task">
+          <div class="date">Dec/2026</div>
+          <div class="txt en">Sleep environment: length of beds, firmness of mattress, pillow considerations, optimisation of noise and light in each room</div>
+          <div class="txt ja">睡眠環境：ベッド長、マットレスの硬さ、枕、各部屋の騒音・光の最適化</div>
+        </article>
+        <article class="task">
+          <div class="date">Dec/2026</div>
+          <div class="txt en">Recovery facilities: heat and cold therapies</div>
+          <div class="txt ja">回復施設：温冷療法</div>
+        </article>
+        <article class="task">
+          <div class="date">April 2027</div>
+          <div class="txt en">Relaxation strategies (e.g. social and recreational such as golf)</div>
+          <div class="txt ja">リラクゼーション戦略（例：ゴルフ等の社交・レクリエーション）</div>
+        </article>
+        <article class="task">
+          <div class="date">April 2027</div>
+          <div class="txt en">Mechanisms to cope under extreme pressure<div class="shared en">Shared with: EJ</div></div>
+          <div class="txt ja">極度のプレッシャー下で対処する仕組み<div class="shared ja">共有: EJ</div></div>
+        </article>
+    </section>
+    <section class="owner owner-makiko" data-owner="Makiko">
+      <h2><span class="en">Makiko</span><span class="ja">Makiko</span> <small>(12 tasks)</small></h2>
+      
+        <article class="task">
+          <div class="date">April 2027</div>
+          <div class="txt en">Information sheets for “significant others”</div>
+          <div class="txt ja">“重要な関係者”向け情報シート</div>
+        </article>
+        <article class="task">
+          <div class="date">TBC</div>
+          <div class="txt en">Dedicated family liaison officer to deal with family and friends related matters</div>
+          <div class="txt ja">家族・友人関連事項を扱う専任ファミリーリエゾン担当</div>
+        </article>
+        <article class="task">
+          <div class="date">Ongoing</div>
+          <div class="txt en">Encourage athletes to address issues with their own families</div>
+          <div class="txt ja">選手が自身の家族との問題に対応するよう促す</div>
+        </article>
+        <article class="task">
+          <div class="date">April 2027</div>
+          <div class="txt en">Visa/passport information – who organises and how? Ensure accuracy to prevent refused boarding<div class="shared en">Shared with: JTB</div></div>
+          <div class="txt ja">ビザ／パスポート情報：誰がどう手配するか？搭乗拒否を防ぐため正確性を確保<div class="shared ja">共有: JTB</div></div>
+        </article>
+        <article class="task">
+          <div class="date">May 2027</div>
+          <div class="txt en">Communication by athletes to friends and family during camp/competition – WiFi access.</div>
+          <div class="txt ja">キャンプ／大会中の選手から友人・家族への連絡：WiFiアクセス</div>
+        </article>
+        <article class="task">
+          <div class="date">April 2027</div>
+          <div class="txt en">Communication between staff during the meet – two way radios, local SIM cards, replacement batteries and chargers etc. for all equipment.<div class="shared en">Shared with: JS</div></div>
+          <div class="txt ja">大会中のスタッフ間コミュニケーション：無線機、現地SIM、交換バッテリー、各機器の充電器等<div class="shared ja">共有: JS</div></div>
+        </article>
+        <article class="task">
+          <div class="date">April 2027</div>
+          <div class="txt en">Accreditation</div>
+          <div class="txt ja">アクレディテーション</div>
+        </article>
+        <article class="task">
+          <div class="date">April 2027</div>
+          <div class="txt en">Coordination of additional personnel</div>
+          <div class="txt ja">追加人員の調整</div>
+        </article>
+        <article class="task">
+          <div class="date">April 2027</div>
+          <div class="txt en">Accommodation and transport</div>
+          <div class="txt ja">宿泊と交通</div>
+        </article>
+        <article class="task">
+          <div class="date">April 2027</div>
+          <div class="txt en">Family and friends’ requests</div>
+          <div class="txt ja">家族・友人からの要望</div>
+        </article>
+        <article class="task">
+          <div class="date">April 2027</div>
+          <div class="txt en">Arrangements in place for handover for accreditations.</div>
+          <div class="txt ja">アクレディテーション引き継ぎの手配</div>
+        </article>
+        <article class="task">
+          <div class="date">April 2027</div>
+          <div class="txt en">Arrangements in place for attendance at official information sessions</div>
+          <div class="txt ja">公式情報セッション参加の手配</div>
+        </article>
+    </section>
+    <section class="owner owner-media-manager" data-owner="Media Manager">
+      <h2><span class="en">Media Manager</span><span class="ja">メディアマネージャー</span> <small>(7 tasks)</small></h2>
+      
+        <article class="task">
+          <div class="date">April 2027</div>
+          <div class="txt en">Strategy to “educate” the media in relation to expectations, team athletes etc.<div class="shared en">Shared with: EJ</div></div>
+          <div class="txt ja">期待値、チーム、選手等に関してメディアを“教育”する戦略<div class="shared ja">共有: EJ</div></div>
+        </article>
+        <article class="task">
+          <div class="date">TBC</div>
+          <div class="txt en">Media training for players, coaches and key support staff</div>
+          <div class="txt ja">選手、コーチ、主要サポートスタッフのメディアトレーニング</div>
+        </article>
+        <article class="task">
+          <div class="date">April 2027</div>
+          <div class="txt en">Basic local language and culture tutoring (if required)<div class="shared en">Shared with: Use players/interpreter</div></div>
+          <div class="txt ja">基本的な現地語・文化のレクチャー（必要な場合）<div class="shared ja">共有: 選手/通訳を活用</div></div>
+        </article>
+        <article class="task">
+          <div class="date">TBC</div>
+          <div class="txt en">Media policy document – specific guidelines/responsibilities for staff/players, including what to say/not to say in interviews<div class="shared en">Shared with: EJ</div></div>
+          <div class="txt ja">メディアポリシー文書：スタッフ／選手向けの具体的ガイドラインと責任（インタビューで言うべきこと／言わないことを含む）<div class="shared ja">共有: EJ</div></div>
+        </article>
+        <article class="task">
+          <div class="date">TBC</div>
+          <div class="txt en">Who will be the media? – view previous interviews</div>
+          <div class="txt ja">メディアは誰か？過去のインタビューを確認</div>
+        </article>
+        <article class="task">
+          <div class="date">April 2027</div>
+          <div class="txt en">A directory of contact people (i.e. who is responsible for what) in the event of advice or support being required (both before and during the event)<div class="shared en">Shared with: Yuko</div></div>
+          <div class="txt ja">助言やサポートが必要な場合の連絡先ディレクトリ（誰が何を担当するか、大会前・大会中）<div class="shared ja">共有: Yuko</div></div>
+        </article>
+        <article class="task">
+          <div class="date">TBC</div>
+          <div class="txt en">Social Media Distraction – It is necessary to assign someone to manage the players account and monitor comments</div>
+          <div class="txt ja">SNSによる distraction：選手アカウント管理とコメント監視の担当者を割り当てる必要</div>
+        </article>
+    </section>
+    <section class="owner owner-nh" data-owner="NH">
+      <h2><span class="en">NH</span><span class="ja">NH</span> <small>(5 tasks)</small></h2>
+      
+        <article class="task">
+          <div class="date">Jan, 2027</div>
+          <div class="txt en">Create IDP and share with players<div class="shared en">Shared with: Ota</div></div>
+          <div class="txt ja">IDPを作成し選手と共有<div class="shared ja">共有: Ota</div></div>
+        </article>
+        <article class="task">
+          <div class="date">Jan, 2027</div>
+          <div class="txt en">Player handover between clubs and national team including collaborative IDP<div class="shared en">Shared with: JP</div></div>
+          <div class="txt ja">クラブと代表チーム間の選手引き継ぎ（共同IDPを含む）<div class="shared ja">共有: JP</div></div>
+        </article>
+        <article class="task">
+          <div class="date">TBC</div>
+          <div class="txt en">Specific purpose camps/objectives<div class="shared en">Shared with: EJ</div></div>
+          <div class="txt ja">特定目的のキャンプ／目標<div class="shared ja">共有: EJ</div></div>
+        </article>
+        <article class="task">
+          <div class="date">TBC</div>
+          <div class="txt en">Final residential period in host country<div class="shared en">Shared with: EJ, JP</div></div>
+          <div class="txt ja">開催国での最終滞在期間<div class="shared ja">共有: EJ, JP</div></div>
+        </article>
+        <article class="task">
+          <div class="date">May 2027</div>
+          <div class="txt en">Handover to clubs from National team staff upon return from RWC<div class="shared en">Shared with: Ota</div></div>
+          <div class="txt ja">RWCから帰国後、代表スタッフからクラブへの引き継ぎ<div class="shared ja">共有: Ota</div></div>
+        </article>
+    </section>
+    <section class="owner owner-js" data-owner="JS">
+      <h2><span class="en">JS</span><span class="ja">JS</span> <small>(4 tasks)</small></h2>
+      
+        <article class="task">
+          <div class="date">May 2027</div>
+          <div class="txt en">Access to audio/visual equipment for team de-briefs, scouting etc. such as TV screens, overhead projectors</div>
+          <div class="txt ja">チームデブリーフ、スカウティング等のためのAV機器へのアクセス（TV画面、プロジェクター等）</div>
+        </article>
+        <article class="task">
+          <div class="date">April 2027</div>
+          <div class="txt en">Communication between staff during the meet – two way radios, local SIM cards, replacement batteries and chargers etc. for all equipment.<div class="shared en">Shared with: Makiko</div></div>
+          <div class="txt ja">大会中のスタッフ間コミュニケーション：無線機、現地SIM、交換バッテリー、各機器の充電器等<div class="shared ja">共有: Makiko</div></div>
+        </article>
+        <article class="task">
+          <div class="date">April 2027</div>
+          <div class="txt en">Unexpected changes in climate/training environment. Use of meteorologist during RWC</div>
+          <div class="txt ja">気候／トレーニング環境の予期せぬ変化。RWC中の気象専門家活用</div>
+        </article>
+        <article class="task">
+          <div class="date">April 2027</div>
+          <div class="txt en">Security and protection of IP in team room areas</div>
+          <div class="txt ja">チームルームエリアでの知的財産の安全確保・保護</div>
+        </article>
+    </section>
+    <section class="owner owner-shoya" data-owner="Shoya">
+      <h2><span class="en">Shoya</span><span class="ja">Shoya</span> <small>(3 tasks)</small></h2>
+      
+        <article class="task">
+          <div class="date">June 2027</div>
+          <div class="txt en">Ensure equipment is trialled before the RWC to ensure familiarity</div>
+          <div class="txt ja">RWC前に機材を試用し、慣れておく</div>
+        </article>
+        <article class="task">
+          <div class="date">April 2027</div>
+          <div class="txt en">Develop a contingency plan for broken or misplaced equipment</div>
+          <div class="txt ja">破損・紛失機材へのコンティンジェンシープラン作成</div>
+        </article>
+        <article class="task">
+          <div class="date">April 2027</div>
+          <div class="txt en">Equipment transportation – how, when, what? Who organises?</div>
+          <div class="txt ja">機材輸送：どのように、いつ、何を？誰が手配するか？</div>
+        </article>
+    </section>
+    <section class="owner owner-kage" data-owner="Kage">
+      <h2><span class="en">Kage</span><span class="ja">Kage</span> <small>(2 tasks)</small></h2>
+      
+        <article class="task">
+          <div class="date">April 2027</div>
+          <div class="txt en">Medical insurance cards – are they needed?</div>
+          <div class="txt ja">医療保険カードは必要か？</div>
+        </article>
+        <article class="task">
+          <div class="date">April 2027</div>
+          <div class="txt en">Emergency protocol/procedures (reporting procedures from competition location back to JRFU and WR) in the event of natural disasters, terrorism etc.</div>
+          <div class="txt ja">自然災害・テロ等発生時の緊急プロトコル／手順（大会地からJRFU・WRへの報告手順）</div>
+        </article>
+    </section>
+    <section class="owner owner-ooka" data-owner="Ooka">
+      <h2><span class="en">Ooka</span><span class="ja">Ooka</span> <small>(2 tasks)</small></h2>
+      
+        <article class="task">
+          <div class="date">May 2027</div>
+          <div class="txt en">Anti-doping violation</div>
+          <div class="txt ja">アンチドーピング違反</div>
+        </article>
+        <article class="task">
+          <div class="date">May 2027</div>
+          <div class="txt en">Contagious illness</div>
+          <div class="txt ja">感染症</div>
+        </article>
+    </section>
+    <section class="owner owner-yuji" data-owner="Yuji">
+      <h2><span class="en">Yuji</span><span class="ja">Yuji</span> <small>(2 tasks)</small></h2>
+      
+        <article class="task">
+          <div class="date">May 2027</div>
+          <div class="txt en">Surgical/non-surgical rehabilitation</div>
+          <div class="txt ja">手術／非手術リハビリ</div>
+        </article>
+        <article class="task">
+          <div class="date">May 2027</div>
+          <div class="txt en">Exit medicals</div>
+          <div class="txt ja">退出時メディカルチェック</div>
+        </article>
+    </section>
+    <section class="owner owner-head-of-medical" data-owner="Head of Medical">
+      <h2><span class="en">Head of Medical</span><span class="ja">医療責任者</span> <small>(1 tasks)</small></h2>
+      
+        <article class="task">
+          <div class="date">Jan 2027</div>
+          <div class="txt en">JRFU medical screening arrangements in place for team, coaching group or individual arrangements including vaccinations, therapeutic exemptions, hygiene packs and education on preventing and managing illness</div>
+          <div class="txt ja">チーム、コーチンググループ、個別手配のJRFUメディカルスクリーニング体制（予防接種、治療使用特例、衛生パック、疾病予防・管理教育を含む）</div>
+        </article>
+    </section>
+    <section class="owner owner-jtb" data-owner="JTB">
+      <h2><span class="en">JTB</span><span class="ja">JTB</span> <small>(1 tasks)</small></h2>
+      
+        <article class="task">
+          <div class="date">April 2027</div>
+          <div class="txt en">Visa/passport information – who organises and how? Ensure accuracy to prevent refused boarding<div class="shared en">Shared with: Makiko</div></div>
+          <div class="txt ja">ビザ／パスポート情報：誰がどう手配するか？搭乗拒否を防ぐため正確性を確保<div class="shared ja">共有: Makiko</div></div>
+        </article>
+    </section>
+    <section class="owner owner-kaori" data-owner="Kaori">
+      <h2><span class="en">Kaori</span><span class="ja">Kaori</span> <small>(1 tasks)</small></h2>
+      
+        <article class="task">
+          <div class="date">April 2027</div>
+          <div class="txt en">Pressure – medal expectations, mental imagery, hype etc. - how to cope?<div class="shared en">Shared with: EJ</div></div>
+          <div class="txt ja">プレッシャー（メダル期待、メンタルイメージ、過熱報道等）への対処方法<div class="shared ja">共有: EJ</div></div>
+        </article>
+    </section>
+    <section class="owner owner-manager-liaison" data-owner="Manager (Liaison)">
+      <h2><span class="en">Manager (Liaison)</span><span class="ja">マネージャー（リエゾン）</span> <small>(1 tasks)</small></h2>
+      
+        <article class="task">
+          <div class="date">—</div>
+          <div class="txt en">Local contingency plans for acquiring/repairing specialised kit – access local contacts</div>
+          <div class="txt ja">特殊キットの調達／修理に関する現地コンティンジェンシープラン：現地連絡先へのアクセス</div>
+        </article>
+    </section>
+    <section class="owner owner-muu" data-owner="Muu">
+      <h2><span class="en">Muu</span><span class="ja">Muu</span> <small>(1 tasks)</small></h2>
+      
+        <article class="task">
+          <div class="date">Ongoing</div>
+          <div class="txt en">Staff social</div>
+          <div class="txt ja">スタッフ懇親</div>
+        </article>
+    </section>
+    <section class="owner owner-n-a" data-owner="N/A">
+      <h2><span class="en">N/A</span><span class="ja">N/A</span> <small>(1 tasks)</small></h2>
+      
+        <article class="task">
+          <div class="date">April 2027</div>
+          <div class="txt en">Maintaining a balance between training and other commitments (eg. media, sponsors).</div>
+          <div class="txt ja">トレーニングと他のコミットメント（例：メディア、スポンサー）のバランス維持</div>
+        </article>
+    </section>
+    <section class="owner owner-use-players-interpreter" data-owner="Use players/interpreter">
+      <h2><span class="en">Use players/interpreter</span><span class="ja">選手/通訳を活用</span> <small>(1 tasks)</small></h2>
+      
+        <article class="task">
+          <div class="date">April 2027</div>
+          <div class="txt en">Basic local language and culture tutoring (if required)<div class="shared en">Shared with: Media Manager</div></div>
+          <div class="txt ja">基本的な現地語・文化のレクチャー（必要な場合）<div class="shared ja">共有: メディアマネージャー</div></div>
+        </article>
+    </section>
+
+
+
+</main>
+<footer><span class="ja">出典: RUGBY WORLD CUP - PRE-MORTEM and PREPARATION CHECKLIST。共有担当は各担当者へ分割しています。</span><span class="en">Source: RUGBY WORLD CUP - PRE-MORTEM and PREPARATION CHECKLIST. Shared responsibilities split to each owner.</span></footer>
+</body>
+</html>
