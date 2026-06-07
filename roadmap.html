@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="format-detection" content="telephone=no">
+<title>JAPAN RUGBY - Road to RWC 2027 (V2)</title>
+<style>
+:root {
+  --navy:#082653; --navy2:#0b376f; --line:#d9e1ec; --bg:#f6f8fb; --text:#172033; --muted:#667085; --card:#fff;
+  --accent:#0b4a7a;
+}
+* { box-sizing:border-box; }
+body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif; background:var(--bg); color:var(--text); -webkit-text-size-adjust:100%; }
+header { position:sticky; top:0; z-index:10; background:rgba(255,255,255,.98); border-bottom:1px solid var(--line); padding:calc(10px + env(safe-area-inset-top)) 12px 10px; box-shadow:0 1px 5px rgba(16,24,40,.06); }
+.wrap { max-width:1280px; margin:auto; }
+h1 { font-size:clamp(20px,4.5vw,32px); margin:0 0 6px; color:#0b1d3f; line-height:1.15; letter-spacing:-.02em; }
+.sub { font-size:13px; color:var(--muted); margin-bottom:10px; line-height:1.35; }
+.nav { display:flex; gap:8px; overflow-x:auto; -webkit-overflow-scrolling:touch; padding-bottom:6px; }
+.nav a, .pdf-button { flex:0 0 auto; border-radius:999px; padding:9px 13px; font-size:13px; font-weight:800; text-decoration:none; border:1px solid var(--line); color:#1f2a44; background:#fff; font-family:inherit; }
+.nav a.active { background:var(--navy); color:#fff; border-color:var(--navy); }
+.pdf-button { background:#0b4a7a; color:#fff; border-color:#0b4a7a; }
+main { max-width:1280px; margin:auto; padding:12px; }
+.summary { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:12px; }
+.stat { background:#fff; border:1px solid var(--line); border-radius:14px; padding:12px; box-shadow:0 1px 5px rgba(16,24,40,.05); }
+.stat b { display:block; color:var(--navy); font-size:22px; }
+.stat span { font-size:12px; color:var(--muted); font-weight:700; }
+.table-shell { background:#fff; border:1px solid var(--line); border-radius:16px; overflow:auto; box-shadow:0 1px 7px rgba(16,24,40,.06); }
+table { border-collapse:separate; border-spacing:0; width:100%; min-width:1450px; }
+th { position:sticky; top:0; z-index:1; background:linear-gradient(135deg,var(--navy),var(--navy2)); color:#fff; text-align:left; font-size:12px; padding:10px; border-right:1px solid rgba(255,255,255,.22); white-space:nowrap; }
+td { vertical-align:top; font-size:12.5px; line-height:1.38; padding:10px; border-top:1px solid var(--line); border-right:1px solid var(--line); min-width:135px; }
+td:first-child { font-weight:800; color:#20304a; background:#f3f7fc; min-width:120px; }
+td:nth-child(2) { font-weight:800; min-width:160px; }
+td:nth-child(4) { font-weight:800; color:#0b4a7a; background:#eef7ff; min-width:150px; }
+tr.major td { background:#fbfcff; }
+tr.major td:first-child { background:#eaf2ff; }
+.cards { display:none; }
+.road-card { background:#fff; border:1px solid var(--line); border-radius:16px; margin:0 0 12px; overflow:hidden; box-shadow:0 1px 7px rgba(16,24,40,.06); }
+.card-top { padding:12px; background:linear-gradient(135deg,var(--navy),var(--navy2)); color:#fff; display:grid; grid-template-columns:1fr; gap:8px; }
+.period { font-size:12px; font-weight:800; opacity:.9; }
+.card-top h2 { margin:2px 0 0; font-size:18px; line-height:1.2; }
+.theme { display:inline-block; font-size:13px; font-weight:800; background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.2); border-radius:12px; padding:8px; }
+.kv { display:grid; grid-template-columns:105px 1fr; border-top:1px solid var(--line); }
+.k { padding:10px; font-size:12px; font-weight:900; color:#27364c; background:#f0f4fa; border-right:1px solid var(--line); }
+.v { padding:10px; font-size:14px; line-height:1.45; overflow-wrap:anywhere; }
+footer { max-width:1280px; margin:auto; padding:16px 12px calc(28px + env(safe-area-inset-bottom)); color:var(--muted); font-size:12px; }
+@media (max-width:760px) {
+  header { padding-left:10px; padding-right:10px; }
+  .summary { grid-template-columns:1fr 1fr; }
+  .summary .stat:last-child { grid-column:1 / -1; }
+  .table-shell { display:none; }
+  .cards { display:block; }
+  main { padding:10px; }
+}
+@media (min-width:761px) and (max-width:1199px) {
+  .table-shell { display:block; }
+  td { font-size:12px; }
+}
+@media (max-height:500px) and (orientation:landscape) {
+  header { position:relative; }
+  .sub { display:none; }
+}
+@page { size:A4 landscape; margin:8mm; }
+@media print {
+  * { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body { background:#fff; }
+  header { position:static; box-shadow:none; padding:0 0 8px; }
+  .nav, .pdf-button, .sub, .summary { display:none; }
+  main { max-width:none; padding:0; }
+  .cards { display:none !important; }
+  .table-shell { display:block !important; overflow:visible; border:0; box-shadow:none; }
+  table { min-width:0; width:100%; }
+  th { position:static; font-size:8px; padding:4px; }
+  td { font-size:7.5px; line-height:1.2; padding:4px; min-width:0; }
+  footer { max-width:none; padding:8px 0 0; }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>JAPAN RUGBY - Road to RWC 2027 (V2)</h1>
+    <div class="sub">Responsive HTML version of the uploaded Excel roadmap. Use the print button to save as PDF.</div>
+    <div class="nav">
+      <a href="index.html">Task List</a>
+      <a class="active" href="roadmap.html">Roadmap</a>
+      <button class="pdf-button" type="button" onclick="window.print()">Export PDF / Print</button>
+    </div>
+  </div>
+</header>
+<main>
+  <section class="summary">
+    <div class="stat"><b>19</b><span>Schedule rows</span></div>
+    <div class="stat"><b>9</b><span>Planning columns</span></div>
+    <div class="stat"><b>2027</b><span>Road to RWC</span></div>
+  </section>
+  <section class="table-shell" aria-label="Roadmap table">
+    <table>
+      <thead><tr><th>Time Period</th><th>Game</th><th>Key team issues to address</th><th>Theme</th><th>Media</th><th>Logistics</th><th>Rugby</th><th>S&amp;C</th><th>Medical</th></tr></thead>
+      <tbody><tr class='major'><td data-label='Time Period'>12/01/2027</td><td data-label='Game'>L/O games </td><td data-label='Key team issues to address'>(A) First medical check  (Top45 )<br>plus<br>(B) Play like Japan Camp (1day) <br>(C) Planning JTS<br>Hold 1 day camp at JISS (medical &amp; 1-1 meeting) </td><td data-label='Theme'>Set the scene </td><td data-label='Media'>Preliminerary  RWC squad announced Bye week (Top 45)  </td><td data-label='Logistics'>(A) Distribute 2027 Master schedule to squad<br>(B) JISS - Medical check organised  </td><td data-label='Rugby'>(A) Play like Japan<br> Principles of Play <br>(B) RWC Training Principles <br>(discuss with players)  </td><td data-label='S&amp;C'>(A)Individual Plans<br>(01/01 assembly 29/06.<br>(B) Colts, gym update <br>(C) Finalize RWC Loading plan <br></td><td data-label='Medical'>(A) Medical check (Top 45) </td></tr>
+<tr class=''><td data-label='Time Period'>Bye week 1 to <br>Bye week 2 L/O <br>(Dates TBC)</td><td data-label='Game'>L/O games </td><td data-label='Key team issues to address'>(A) Review Players performance (10 games) <br>(B) JTS operation - produce 2/3 RWC players </td><td data-label='Theme'>Travelling Show:<br>(to organise with JTS Camps) <br></td><td data-label='Media'>Review Selection &quot;gossip&quot;<br>Older Players Discussion.</td><td data-label='Logistics'>Travelling show organised  (6-10 clubs)</td><td data-label='Rugby'>1-1 Meeting @ Players clubs <br>(EJ / JP / NH/Ota)</td><td data-label='S&amp;C'></td><td data-label='Medical'>Constant of Players monitoring<br>(top 45)<br></td></tr>
+<tr class=''><td data-label='Time Period'>Bye week 2 to <br>Bye week  3 L/O  <br>(Dates TBC)</td><td data-label='Game'>L/O games </td><td data-label='Key team issues to address'>(A) Second medical check  (Top45 )<br>(B) Leadership meeting  <br>(C) JTS operation <br></td><td data-label='Theme'>Where are we?<br>Best players availability? </td><td data-label='Media'>Assess Media environment</td><td data-label='Logistics'>Medical check JISS.<br>Leadership Meetings<br>Japan First. <br>Leadership<br>Tactical  mini groups</td><td data-label='Rugby'>Internal  feedback  to players specific to plan</td><td data-label='S&amp;C'>Individual training habits check<br>Relationship with players important issue </td><td data-label='Medical'>Medical Check top 45 Players <br>potential playes identified </td></tr>
+<tr class=''><td data-label='Time Period'>Bye week 3 to<br>L/O final  <br>(Dates TBC) </td><td data-label='Game'>L/O games </td><td data-label='Key team issues to address'><br>(A) JTS potential RWC members</td><td data-label='Theme'>First Blood </td><td data-label='Media'>Selection Issues<br>Pre Assembly <br>Media get  together?</td><td data-label='Logistics'>RWC Planning to be finalized </td><td data-label='Rugby'>Selection update -Look ahead <br>45→33 </td><td data-label='S&amp;C'>Review players progress </td><td data-label='Medical'>Medical check to be done on individual basis </td></tr>
+<tr class='major'><td data-label='Time Period'>14/06 - 22/06</td><td data-label='Game'>Trainning Camp <br>(Non-playoff members) <br>Sugadaira or Wakayama </td><td data-label='Key team issues to address'>Selection-training camp ( up to 30 players)  </td><td data-label='Theme'>Head Start <br>(hard yards) </td><td data-label='Media'>Engage Japanese Media <br>Issue of older players </td><td data-label='Logistics'>(A) Family information finalized<br>(B) Basic Camp to commence <br></td><td data-label='Rugby'>(A) Play line Japan Principles<br>-Attack -Defence -Live 3 <br>(B) Smaller coaching staff ( 3coaches max)? <br>(C) 3days - training pattern </td><td data-label='S&amp;C'>Assessing individual&#x27;s ability to handle load<br>What players can make it? </td><td data-label='Medical'>Start process of Project push of Fiji</td></tr>
+<tr class=''><td data-label='Time Period'>23/06 - 25/06</td><td data-label='Game'>Individual trainning <br>(Play-off members 2weeks regeneration) </td><td data-label='Key team issues to address'>prep to RWC Camp</td><td data-label='Theme'>Start the show </td><td data-label='Media'>Announcement for first RWC trainning squad approx 38 playrs.<br></td><td data-label='Logistics'>Family information <br>Distributed to 38 players </td><td data-label='Rugby'>(A) 1-1 where needed <br>(B) Individual trainning assistance </td><td data-label='S&amp;C'></td><td data-label='Medical'>(A) 1-1 what&#x27;s  needed</td></tr>
+<tr class=''><td data-label='Time Period'>26/06 - 18/07</td><td data-label='Game'>RWC Camp 1 <br>10/07 vs ABXV <br>17/07 vs ABXV<br>Beppu </td><td data-label='Key team issues to address'>Non playoff members (80%) to play vs ABXV</td><td data-label='Theme'>Opportunity knocks </td><td data-label='Media'>(A) Settibg the tone of working with Media - open sessions training clinics<br>(B) Be the team Of Japan  <br>(C) Be inclusive </td><td data-label='Logistics'>Beppu camp <br>(provision of gym &amp; tatakai @hotel? )<br>(Condition of Beppu pitch) </td><td data-label='Rugby'>(A) Emphasize Building the foundation<br>-Capacity<br>-Fundamentals<br>-Cohesion</td><td data-label='S&amp;C'>(A) Individual capacity audit <br>(B) Set the tone for <br></td><td data-label='Medical'>(A) Indivisual players plan</td></tr>
+<tr class=''><td data-label='Time Period'>19/07 - 24/07</td><td data-label='Game'>Individual <br>Training </td><td data-label='Key team issues to address'>(A)  Review by staff of progress so far<br>Major review meeting to be scheduled </td><td data-label='Theme'>Personal Bests <br>(Strength/ Power)</td><td data-label='Media'>Family interests? </td><td data-label='Logistics'>(A) Review family movements<br>(B) Risk assesment of RWC<br>(C) Fiji Camp update </td><td data-label='Rugby'>Review meeting of players <br>(Maximum of 36/88 players players)</td><td data-label='S&amp;C'>(A) Optimization of individual  training <br>(B) Review S+C operation -What&#x27;s needed next? </td><td data-label='Medical'>Review medical operation </td></tr>
+<tr class=''><td data-label='Time Period'>25/07 - 29/07</td><td data-label='Game'>Regional RWC Camp 1 <br>eg: Tokyo Kobe Osaka </td><td data-label='Key team issues to address'>(A) Home &amp; appropriate <br>trainning schedules <br>(B) Allocation of staff (2 or 3 others) </td><td data-label='Theme'>Start Review <br>What do you need? </td><td data-label='Media'>Selection Speculation</td><td data-label='Logistics'>Location-Tokyo, Osaka, Kobe<br>(Use of L/O training centres  or major universities eg: Meiji? </td><td data-label='Rugby'>Mini Units : FR BR 9/10s Outside Backs <br>to be considered </td><td data-label='S&amp;C'>Fiji &quot;Ready&quot; (close to 90% ready) <br>Planning next 3 weeks </td><td data-label='Medical'>Fiji participation readiness? </td></tr>
+<tr class='major'><td data-label='Time Period'>30/07 - 15/08</td><td data-label='Game'>RWC camp 2<br>7/08 vs 14/08 Fiji </td><td data-label='Key team issues to address'>(A) Fiji Camp <br>(B) hygience in Fiji <br>(C) &quot;Heat&quot; policy </td><td data-label='Theme'>&quot;Heat&quot; - our friend <br>&quot;Play like Japan&quot; 20/40/20 </td><td data-label='Media'>Special Doc in Fiji? </td><td data-label='Logistics'>(A) Risk management in Fiji<br>(B) Fiji Camp Logistics (JP to assist) </td><td data-label='Rugby'>(A) Preparation for wet Ball rugby <br>(B) Test our spark defence - ability  to be  resilient -keep fighting <br>(C) Practice Sin Bin Sceanarios </td><td data-label='S&amp;C'>(A) Optimize Heat Acclimatisation <br>Top 23 to play approx. 80mins  <br>bottom 10 to play approx. 60 mins </td><td data-label='Medical'>Asess indivisual&#x27;s ability to handle heat<br>appropriate protocols</td></tr>
+<tr class=''><td data-label='Time Period'>16/08-21/08</td><td data-label='Game'>Individual <br>Training </td><td data-label='Key team issues to address'>Selection update </td><td data-label='Theme'>Reflection Re-charge Refocus  </td><td data-label='Media'></td><td data-label='Logistics'>6 day prep organisation <br></td><td data-label='Rugby'>(A) Review &quot;wet ball&quot; rugby <br>(B) Spark review </td><td data-label='S&amp;C'>Recovery from Fiji</td><td data-label='Medical'>Medical Assistance<br>Re- Fiji issues </td></tr>
+<tr class=''><td data-label='Time Period'>22/08 → 29/08</td><td data-label='Game'>RWC Camp 3 <br>28/08<br>vs Tonga </td><td data-label='Key team issues to address'>(A) 6 day prep Dress Reheasal <br>(B) Game plan Dress Reheasal vs Samoa <br>(C) Understanding implementary game plan vs <br>Samoa most important  </td><td data-label='Theme'>&quot;First Hit &quot;<br>Tonga = Samoa </td><td data-label='Media'>Promote younger players</td><td data-label='Logistics'>(A) 6 day prep details <br>Day 1 -Recharge<br>Day 2 -Chosoku/Units <br>Day 3 - Takakai/Units, PM free<br>Day 4 - Re-charge <br>Day 5 - Game scenarios </td><td data-label='Rugby'>(A) Maximizing intensity →Volume - 6 days?<br>(B) Units efficiency training <br>(C) Dress Reheasal Samoa Game plan </td><td data-label='S&amp;C'>(A) Individual&#x27;s response to 6day prep<br>(B) Non members training </td><td data-label='Medical'>RWC RTP : Borderline Players Assessment <br>( 1month go)</td></tr>
+<tr class=''><td data-label='Time Period'>30/08-02/09</td><td data-label='Game'>Individual <br>Training </td><td data-label='Key team issues to address'>Trainning to suit personal circumstances </td><td data-label='Theme'>Family time </td><td data-label='Media'>(A) Selection Issues.<br>(B) Re-group pf Media Function? </td><td data-label='Logistics'>Checking family situation </td><td data-label='Rugby'>(A) Tonga Pre-mortem <br>How do we meet the physical challenge? <br>(B) What&#x27;s next <br>(C) Review 6day prep </td><td data-label='S&amp;C'>Individual 4 days Check in.</td><td data-label='Medical'>Individual priority</td></tr>
+<tr class=''><td data-label='Time Period'>03/09-05/09</td><td data-label='Game'>Regional RWC Camp 2</td><td data-label='Key team issues to address'>(A) Units &quot;Readiness&quot;<br>(B) Georgia Game plan preparation <br>(C) Georgia =France </td><td data-label='Theme'>Next level  vs Georgia <br>(95% Ready to Play)</td><td data-label='Media'>Promotion of Japan first values</td><td data-label='Logistics'>6 day prep x2<br></td><td data-label='Rugby'>(A) Dress rehearsal  France game plan<br>(B) Prioritize Gold 30</td><td data-label='S&amp;C'>(A) Gold 30 mindset reinforced<br>(B) Top 23 to play approx.90 mins <br>Bottom 10 to play approx. 60 mins<br>(S+C →Medical) </td><td data-label='Medical'>Individual status </td></tr>
+<tr class='major'><td data-label='Time Period'>06/09-18/09</td><td data-label='Game'>RWC Camp 4 <br>Games vs Georgia <br>10/09 <br>17/09 </td><td data-label='Key team issues to address'>(A) Dress Rehearsal<br>Georgia = France<br>(B) Win the Gold Battle</td><td data-label='Theme'>Sharpen the Sword </td><td data-label='Media'>Set the Tone for RWC</td><td data-label='Logistics'>(A) 6 day prep details <br>(B) RWC Final Logistic check <br>(C) Team farewell </td><td data-label='Rugby'>(A) Physically dominant <br>(B) Win the mindset battle for gold <br>(C) Correct Habits </td><td data-label='S&amp;C'>(A) Team is about 90%-95 % capacity <br></td><td data-label='Medical'>(A) Indivisual priorities <br>(B) No surprises  </td></tr>
+<tr class=''><td data-label='Time Period'>19/09/2027</td><td data-label='Game'>Travel to Australia</td><td data-label='Key team issues to address'>Family Departure </td><td data-label='Theme'>The show begins </td><td data-label='Media'>Farewell -coherent message -<br>JRFU/team? <br>(Who will be responsible for this?) </td><td data-label='Logistics'>Presents to families </td><td data-label='Rugby'>Re-charge</td><td data-label='S&amp;C'>Re-charge  Travel Plan </td><td data-label='Medical'></td></tr>
+<tr class='major'><td data-label='Time Period'>20/09-25/09</td><td data-label='Game'>RWC Camp 5 <br>Coffs Harbour </td><td data-label='Key team issues to address'>(A) Adapt to Australia <br>(B) Cohesion of 33 </td><td data-label='Theme'>Hard Yards -Prep vs Samoa </td><td data-label='Media'>Engage Japanese Medica</td><td data-label='Logistics'>(A) Optimising Coffs<br>Training time plus community time plus<br>team time </td><td data-label='Rugby'>(A) 3 priorit areas vs Samoa <br>(B) Finalising 23 to play Samoa. <br>(C) Managing 10 players not playing <br>(D) Dive cohesion of 33 <br>(E) Don&#x27;t overcoach Samoa </td><td data-label='S&amp;C'>What do the players need now? <br>Individual </td><td data-label='Medical'>Accurate information of each player -no surpsrise</td></tr>
+<tr class=''><td data-label='Time Period'>26/09-15/10<br></td><td data-label='Game'>3x Pool games <br>03/10 Samoa (Newcastle)<br> 09/10 France (Brisbane)<br>15/10 USA (Adelaide) </td><td data-label='Key team issues to address'>(A) Expectation = reality <br>(B) Prepare to win <br></td><td data-label='Theme'>Best Japan Team Ever </td><td data-label='Media'>Good communication keep Japan media onside </td><td data-label='Logistics'>Managing RWC regulations</td><td data-label='Rugby'>Concise Prep - calm, Focused, energetic</td><td data-label='S&amp;C'>Peaking each game <br>(France -major) </td><td data-label='Medical'>No surprises </td></tr>
+<tr class=''><td data-label='Time Period'>15/10 - 24/10</td><td data-label='Game'>Best 16 P/O </td><td data-label='Key team issues to address'>Expectation = Reality </td><td data-label='Theme'>Once in a lifetime </td><td data-label='Media'>Minimize noise </td><td data-label='Logistics'>Dealing with uncertaincy </td><td data-label='Rugby'>(A) Coaching consequence game <br>(B) Best 23 after 3 games</td><td data-label='S&amp;C'>Peaking</td><td data-label='Medical'>Accurate information </td></tr></tbody>
+    </table>
+  </section>
+  <section class="cards" aria-label="Roadmap cards">
+    
+    <article class="road-card">
+      <div class="card-top"><div><span class="period">12/01/2027</span><h2>L/O games </h2></div><div class="theme">Set the scene </div></div>
+      <div class='kv'><div class='k'>Key team issues to address</div><div class='v'>(A) First medical check  (Top45 )<br>plus<br>(B) Play like Japan Camp (1day) <br>(C) Planning JTS<br>Hold 1 day camp at JISS (medical &amp; 1-1 meeting) </div></div><div class='kv'><div class='k'>Media</div><div class='v'>Preliminerary  RWC squad announced Bye week (Top 45)  </div></div><div class='kv'><div class='k'>Logistics</div><div class='v'>(A) Distribute 2027 Master schedule to squad<br>(B) JISS - Medical check organised  </div></div><div class='kv'><div class='k'>Rugby</div><div class='v'>(A) Play like Japan<br> Principles of Play <br>(B) RWC Training Principles <br>(discuss with players)  </div></div><div class='kv'><div class='k'>S&amp;C</div><div class='v'>(A)Individual Plans<br>(01/01 assembly 29/06.<br>(B) Colts, gym update <br>(C) Finalize RWC Loading plan <br></div></div><div class='kv'><div class='k'>Medical</div><div class='v'>(A) Medical check (Top 45) </div></div>
+    </article>
+
+    <article class="road-card">
+      <div class="card-top"><div><span class="period">Bye week 1 to <br>Bye week 2 L/O <br>(Dates TBC)</span><h2>L/O games </h2></div><div class="theme">Travelling Show:<br>(to organise with JTS Camps) <br></div></div>
+      <div class='kv'><div class='k'>Key team issues to address</div><div class='v'>(A) Review Players performance (10 games) <br>(B) JTS operation - produce 2/3 RWC players </div></div><div class='kv'><div class='k'>Media</div><div class='v'>Review Selection &quot;gossip&quot;<br>Older Players Discussion.</div></div><div class='kv'><div class='k'>Logistics</div><div class='v'>Travelling show organised  (6-10 clubs)</div></div><div class='kv'><div class='k'>Rugby</div><div class='v'>1-1 Meeting @ Players clubs <br>(EJ / JP / NH/Ota)</div></div><div class='kv'><div class='k'>Medical</div><div class='v'>Constant of Players monitoring<br>(top 45)<br></div></div>
+    </article>
+
+    <article class="road-card">
+      <div class="card-top"><div><span class="period">Bye week 2 to <br>Bye week  3 L/O  <br>(Dates TBC)</span><h2>L/O games </h2></div><div class="theme">Where are we?<br>Best players availability? </div></div>
+      <div class='kv'><div class='k'>Key team issues to address</div><div class='v'>(A) Second medical check  (Top45 )<br>(B) Leadership meeting  <br>(C) JTS operation <br></div></div><div class='kv'><div class='k'>Media</div><div class='v'>Assess Media environment</div></div><div class='kv'><div class='k'>Logistics</div><div class='v'>Medical check JISS.<br>Leadership Meetings<br>Japan First. <br>Leadership<br>Tactical  mini groups</div></div><div class='kv'><div class='k'>Rugby</div><div class='v'>Internal  feedback  to players specific to plan</div></div><div class='kv'><div class='k'>S&amp;C</div><div class='v'>Individual training habits check<br>Relationship with players important issue </div></div><div class='kv'><div class='k'>Medical</div><div class='v'>Medical Check top 45 Players <br>potential playes identified </div></div>
+    </article>
+
+    <article class="road-card">
+      <div class="card-top"><div><span class="period">Bye week 3 to<br>L/O final  <br>(Dates TBC) </span><h2>L/O games </h2></div><div class="theme">First Blood </div></div>
+      <div class='kv'><div class='k'>Key team issues to address</div><div class='v'><br>(A) JTS potential RWC members</div></div><div class='kv'><div class='k'>Media</div><div class='v'>Selection Issues<br>Pre Assembly <br>Media get  together?</div></div><div class='kv'><div class='k'>Logistics</div><div class='v'>RWC Planning to be finalized </div></div><div class='kv'><div class='k'>Rugby</div><div class='v'>Selection update -Look ahead <br>45→33 </div></div><div class='kv'><div class='k'>S&amp;C</div><div class='v'>Review players progress </div></div><div class='kv'><div class='k'>Medical</div><div class='v'>Medical check to be done on individual basis </div></div>
+    </article>
+
+    <article class="road-card">
+      <div class="card-top"><div><span class="period">14/06 - 22/06</span><h2>Trainning Camp <br>(Non-playoff members) <br>Sugadaira or Wakayama </h2></div><div class="theme">Head Start <br>(hard yards) </div></div>
+      <div class='kv'><div class='k'>Key team issues to address</div><div class='v'>Selection-training camp ( up to 30 players)  </div></div><div class='kv'><div class='k'>Media</div><div class='v'>Engage Japanese Media <br>Issue of older players </div></div><div class='kv'><div class='k'>Logistics</div><div class='v'>(A) Family information finalized<br>(B) Basic Camp to commence <br></div></div><div class='kv'><div class='k'>Rugby</div><div class='v'>(A) Play line Japan Principles<br>-Attack -Defence -Live 3 <br>(B) Smaller coaching staff ( 3coaches max)? <br>(C) 3days - training pattern </div></div><div class='kv'><div class='k'>S&amp;C</div><div class='v'>Assessing individual&#x27;s ability to handle load<br>What players can make it? </div></div><div class='kv'><div class='k'>Medical</div><div class='v'>Start process of Project push of Fiji</div></div>
+    </article>
+
+    <article class="road-card">
+      <div class="card-top"><div><span class="period">23/06 - 25/06</span><h2>Individual trainning <br>(Play-off members 2weeks regeneration) </h2></div><div class="theme">Start the show </div></div>
+      <div class='kv'><div class='k'>Key team issues to address</div><div class='v'>prep to RWC Camp</div></div><div class='kv'><div class='k'>Media</div><div class='v'>Announcement for first RWC trainning squad approx 38 playrs.<br></div></div><div class='kv'><div class='k'>Logistics</div><div class='v'>Family information <br>Distributed to 38 players </div></div><div class='kv'><div class='k'>Rugby</div><div class='v'>(A) 1-1 where needed <br>(B) Individual trainning assistance </div></div><div class='kv'><div class='k'>Medical</div><div class='v'>(A) 1-1 what&#x27;s  needed</div></div>
+    </article>
+
+    <article class="road-card">
+      <div class="card-top"><div><span class="period">26/06 - 18/07</span><h2>RWC Camp 1 <br>10/07 vs ABXV <br>17/07 vs ABXV<br>Beppu </h2></div><div class="theme">Opportunity knocks </div></div>
+      <div class='kv'><div class='k'>Key team issues to address</div><div class='v'>Non playoff members (80%) to play vs ABXV</div></div><div class='kv'><div class='k'>Media</div><div class='v'>(A) Settibg the tone of working with Media - open sessions training clinics<br>(B) Be the team Of Japan  <br>(C) Be inclusive </div></div><div class='kv'><div class='k'>Logistics</div><div class='v'>Beppu camp <br>(provision of gym &amp; tatakai @hotel? )<br>(Condition of Beppu pitch) </div></div><div class='kv'><div class='k'>Rugby</div><div class='v'>(A) Emphasize Building the foundation<br>-Capacity<br>-Fundamentals<br>-Cohesion</div></div><div class='kv'><div class='k'>S&amp;C</div><div class='v'>(A) Individual capacity audit <br>(B) Set the tone for <br></div></div><div class='kv'><div class='k'>Medical</div><div class='v'>(A) Indivisual players plan</div></div>
+    </article>
+
+    <article class="road-card">
+      <div class="card-top"><div><span class="period">19/07 - 24/07</span><h2>Individual <br>Training </h2></div><div class="theme">Personal Bests <br>(Strength/ Power)</div></div>
+      <div class='kv'><div class='k'>Key team issues to address</div><div class='v'>(A)  Review by staff of progress so far<br>Major review meeting to be scheduled </div></div><div class='kv'><div class='k'>Media</div><div class='v'>Family interests? </div></div><div class='kv'><div class='k'>Logistics</div><div class='v'>(A) Review family movements<br>(B) Risk assesment of RWC<br>(C) Fiji Camp update </div></div><div class='kv'><div class='k'>Rugby</div><div class='v'>Review meeting of players <br>(Maximum of 36/88 players players)</div></div><div class='kv'><div class='k'>S&amp;C</div><div class='v'>(A) Optimization of individual  training <br>(B) Review S+C operation -What&#x27;s needed next? </div></div><div class='kv'><div class='k'>Medical</div><div class='v'>Review medical operation </div></div>
+    </article>
+
+    <article class="road-card">
+      <div class="card-top"><div><span class="period">25/07 - 29/07</span><h2>Regional RWC Camp 1 <br>eg: Tokyo Kobe Osaka </h2></div><div class="theme">Start Review <br>What do you need? </div></div>
+      <div class='kv'><div class='k'>Key team issues to address</div><div class='v'>(A) Home &amp; appropriate <br>trainning schedules <br>(B) Allocation of staff (2 or 3 others) </div></div><div class='kv'><div class='k'>Media</div><div class='v'>Selection Speculation</div></div><div class='kv'><div class='k'>Logistics</div><div class='v'>Location-Tokyo, Osaka, Kobe<br>(Use of L/O training centres  or major universities eg: Meiji? </div></div><div class='kv'><div class='k'>Rugby</div><div class='v'>Mini Units : FR BR 9/10s Outside Backs <br>to be considered </div></div><div class='kv'><div class='k'>S&amp;C</div><div class='v'>Fiji &quot;Ready&quot; (close to 90% ready) <br>Planning next 3 weeks </div></div><div class='kv'><div class='k'>Medical</div><div class='v'>Fiji participation readiness? </div></div>
+    </article>
+
+    <article class="road-card">
+      <div class="card-top"><div><span class="period">30/07 - 15/08</span><h2>RWC camp 2<br>7/08 vs 14/08 Fiji </h2></div><div class="theme">&quot;Heat&quot; - our friend <br>&quot;Play like Japan&quot; 20/40/20 </div></div>
+      <div class='kv'><div class='k'>Key team issues to address</div><div class='v'>(A) Fiji Camp <br>(B) hygience in Fiji <br>(C) &quot;Heat&quot; policy </div></div><div class='kv'><div class='k'>Media</div><div class='v'>Special Doc in Fiji? </div></div><div class='kv'><div class='k'>Logistics</div><div class='v'>(A) Risk management in Fiji<br>(B) Fiji Camp Logistics (JP to assist) </div></div><div class='kv'><div class='k'>Rugby</div><div class='v'>(A) Preparation for wet Ball rugby <br>(B) Test our spark defence - ability  to be  resilient -keep fighting <br>(C) Practice Sin Bin Sceanarios </div></div><div class='kv'><div class='k'>S&amp;C</div><div class='v'>(A) Optimize Heat Acclimatisation <br>Top 23 to play approx. 80mins  <br>bottom 10 to play approx. 60 mins </div></div><div class='kv'><div class='k'>Medical</div><div class='v'>Asess indivisual&#x27;s ability to handle heat<br>appropriate protocols</div></div>
+    </article>
+
+    <article class="road-card">
+      <div class="card-top"><div><span class="period">16/08-21/08</span><h2>Individual <br>Training </h2></div><div class="theme">Reflection Re-charge Refocus  </div></div>
+      <div class='kv'><div class='k'>Key team issues to address</div><div class='v'>Selection update </div></div><div class='kv'><div class='k'>Logistics</div><div class='v'>6 day prep organisation <br></div></div><div class='kv'><div class='k'>Rugby</div><div class='v'>(A) Review &quot;wet ball&quot; rugby <br>(B) Spark review </div></div><div class='kv'><div class='k'>S&amp;C</div><div class='v'>Recovery from Fiji</div></div><div class='kv'><div class='k'>Medical</div><div class='v'>Medical Assistance<br>Re- Fiji issues </div></div>
+    </article>
+
+    <article class="road-card">
+      <div class="card-top"><div><span class="period">22/08 → 29/08</span><h2>RWC Camp 3 <br>28/08<br>vs Tonga </h2></div><div class="theme">&quot;First Hit &quot;<br>Tonga = Samoa </div></div>
+      <div class='kv'><div class='k'>Key team issues to address</div><div class='v'>(A) 6 day prep Dress Reheasal <br>(B) Game plan Dress Reheasal vs Samoa <br>(C) Understanding implementary game plan vs <br>Samoa most important  </div></div><div class='kv'><div class='k'>Media</div><div class='v'>Promote younger players</div></div><div class='kv'><div class='k'>Logistics</div><div class='v'>(A) 6 day prep details <br>Day 1 -Recharge<br>Day 2 -Chosoku/Units <br>Day 3 - Takakai/Units, PM free<br>Day 4 - Re-charge <br>Day 5 - Game scenarios </div></div><div class='kv'><div class='k'>Rugby</div><div class='v'>(A) Maximizing intensity →Volume - 6 days?<br>(B) Units efficiency training <br>(C) Dress Reheasal Samoa Game plan </div></div><div class='kv'><div class='k'>S&amp;C</div><div class='v'>(A) Individual&#x27;s response to 6day prep<br>(B) Non members training </div></div><div class='kv'><div class='k'>Medical</div><div class='v'>RWC RTP : Borderline Players Assessment <br>( 1month go)</div></div>
+    </article>
+
+    <article class="road-card">
+      <div class="card-top"><div><span class="period">30/08-02/09</span><h2>Individual <br>Training </h2></div><div class="theme">Family time </div></div>
+      <div class='kv'><div class='k'>Key team issues to address</div><div class='v'>Trainning to suit personal circumstances </div></div><div class='kv'><div class='k'>Media</div><div class='v'>(A) Selection Issues.<br>(B) Re-group pf Media Function? </div></div><div class='kv'><div class='k'>Logistics</div><div class='v'>Checking family situation </div></div><div class='kv'><div class='k'>Rugby</div><div class='v'>(A) Tonga Pre-mortem <br>How do we meet the physical challenge? <br>(B) What&#x27;s next <br>(C) Review 6day prep </div></div><div class='kv'><div class='k'>S&amp;C</div><div class='v'>Individual 4 days Check in.</div></div><div class='kv'><div class='k'>Medical</div><div class='v'>Individual priority</div></div>
+    </article>
+
+    <article class="road-card">
+      <div class="card-top"><div><span class="period">03/09-05/09</span><h2>Regional RWC Camp 2</h2></div><div class="theme">Next level  vs Georgia <br>(95% Ready to Play)</div></div>
+      <div class='kv'><div class='k'>Key team issues to address</div><div class='v'>(A) Units &quot;Readiness&quot;<br>(B) Georgia Game plan preparation <br>(C) Georgia =France </div></div><div class='kv'><div class='k'>Media</div><div class='v'>Promotion of Japan first values</div></div><div class='kv'><div class='k'>Logistics</div><div class='v'>6 day prep x2<br></div></div><div class='kv'><div class='k'>Rugby</div><div class='v'>(A) Dress rehearsal  France game plan<br>(B) Prioritize Gold 30</div></div><div class='kv'><div class='k'>S&amp;C</div><div class='v'>(A) Gold 30 mindset reinforced<br>(B) Top 23 to play approx.90 mins <br>Bottom 10 to play approx. 60 mins<br>(S+C →Medical) </div></div><div class='kv'><div class='k'>Medical</div><div class='v'>Individual status </div></div>
+    </article>
+
+    <article class="road-card">
+      <div class="card-top"><div><span class="period">06/09-18/09</span><h2>RWC Camp 4 <br>Games vs Georgia <br>10/09 <br>17/09 </h2></div><div class="theme">Sharpen the Sword </div></div>
+      <div class='kv'><div class='k'>Key team issues to address</div><div class='v'>(A) Dress Rehearsal<br>Georgia = France<br>(B) Win the Gold Battle</div></div><div class='kv'><div class='k'>Media</div><div class='v'>Set the Tone for RWC</div></div><div class='kv'><div class='k'>Logistics</div><div class='v'>(A) 6 day prep details <br>(B) RWC Final Logistic check <br>(C) Team farewell </div></div><div class='kv'><div class='k'>Rugby</div><div class='v'>(A) Physically dominant <br>(B) Win the mindset battle for gold <br>(C) Correct Habits </div></div><div class='kv'><div class='k'>S&amp;C</div><div class='v'>(A) Team is about 90%-95 % capacity <br></div></div><div class='kv'><div class='k'>Medical</div><div class='v'>(A) Indivisual priorities <br>(B) No surprises  </div></div>
+    </article>
+
+    <article class="road-card">
+      <div class="card-top"><div><span class="period">19/09/2027</span><h2>Travel to Australia</h2></div><div class="theme">The show begins </div></div>
+      <div class='kv'><div class='k'>Key team issues to address</div><div class='v'>Family Departure </div></div><div class='kv'><div class='k'>Media</div><div class='v'>Farewell -coherent message -<br>JRFU/team? <br>(Who will be responsible for this?) </div></div><div class='kv'><div class='k'>Logistics</div><div class='v'>Presents to families </div></div><div class='kv'><div class='k'>Rugby</div><div class='v'>Re-charge</div></div><div class='kv'><div class='k'>S&amp;C</div><div class='v'>Re-charge  Travel Plan </div></div>
+    </article>
+
+    <article class="road-card">
+      <div class="card-top"><div><span class="period">20/09-25/09</span><h2>RWC Camp 5 <br>Coffs Harbour </h2></div><div class="theme">Hard Yards -Prep vs Samoa </div></div>
+      <div class='kv'><div class='k'>Key team issues to address</div><div class='v'>(A) Adapt to Australia <br>(B) Cohesion of 33 </div></div><div class='kv'><div class='k'>Media</div><div class='v'>Engage Japanese Medica</div></div><div class='kv'><div class='k'>Logistics</div><div class='v'>(A) Optimising Coffs<br>Training time plus community time plus<br>team time </div></div><div class='kv'><div class='k'>Rugby</div><div class='v'>(A) 3 priorit areas vs Samoa <br>(B) Finalising 23 to play Samoa. <br>(C) Managing 10 players not playing <br>(D) Dive cohesion of 33 <br>(E) Don&#x27;t overcoach Samoa </div></div><div class='kv'><div class='k'>S&amp;C</div><div class='v'>What do the players need now? <br>Individual </div></div><div class='kv'><div class='k'>Medical</div><div class='v'>Accurate information of each player -no surpsrise</div></div>
+    </article>
+
+    <article class="road-card">
+      <div class="card-top"><div><span class="period">26/09-15/10<br></span><h2>3x Pool games <br>03/10 Samoa (Newcastle)<br> 09/10 France (Brisbane)<br>15/10 USA (Adelaide) </h2></div><div class="theme">Best Japan Team Ever </div></div>
+      <div class='kv'><div class='k'>Key team issues to address</div><div class='v'>(A) Expectation = reality <br>(B) Prepare to win <br></div></div><div class='kv'><div class='k'>Media</div><div class='v'>Good communication keep Japan media onside </div></div><div class='kv'><div class='k'>Logistics</div><div class='v'>Managing RWC regulations</div></div><div class='kv'><div class='k'>Rugby</div><div class='v'>Concise Prep - calm, Focused, energetic</div></div><div class='kv'><div class='k'>S&amp;C</div><div class='v'>Peaking each game <br>(France -major) </div></div><div class='kv'><div class='k'>Medical</div><div class='v'>No surprises </div></div>
+    </article>
+
+    <article class="road-card">
+      <div class="card-top"><div><span class="period">15/10 - 24/10</span><h2>Best 16 P/O </h2></div><div class="theme">Once in a lifetime </div></div>
+      <div class='kv'><div class='k'>Key team issues to address</div><div class='v'>Expectation = Reality </div></div><div class='kv'><div class='k'>Media</div><div class='v'>Minimize noise </div></div><div class='kv'><div class='k'>Logistics</div><div class='v'>Dealing with uncertaincy </div></div><div class='kv'><div class='k'>Rugby</div><div class='v'>(A) Coaching consequence game <br>(B) Best 23 after 3 games</div></div><div class='kv'><div class='k'>S&amp;C</div><div class='v'>Peaking</div></div><div class='kv'><div class='k'>Medical</div><div class='v'>Accurate information </div></div>
+    </article>
+  </section>
+</main>
+<footer>Source: Japan_Rugby_Roadmap_and_Meeting_Summary(2).xlsx / Sheet: Roadmap Schedule.</footer>
+</body>
+</html>

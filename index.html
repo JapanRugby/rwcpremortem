@@ -148,6 +148,28 @@ h1 {
   -webkit-tap-highlight-color:transparent;
 }
 .pdf-button:active { transform:translateY(1px); }
+.site-nav {
+  display:flex;
+  gap:8px;
+  margin:0 0 8px;
+}
+.site-nav a {
+  flex:1;
+  border:1px solid var(--line);
+  background:#fff;
+  color:#1f2a44;
+  border-radius:999px;
+  padding:9px 12px;
+  text-decoration:none;
+  font-weight:800;
+  font-size:13px;
+  text-align:center;
+}
+.site-nav a.active {
+  background:var(--navy);
+  border-color:var(--navy);
+  color:#fff;
+}
 .owner-controls {
   display:flex;
   gap:7px;
@@ -343,7 +365,7 @@ footer {
   * { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
   body { background:#fff; }
   header { position:static; box-shadow:none; padding:0 0 8px; }
-  .lang-controls, .owner-controls, .sub, .pdf-button { display:none; }
+  .lang-controls, .owner-controls, .sub, .pdf-button, .site-nav { display:none; }
   h1 { font-size:20px; margin:0 0 8px; }
   main { display:block; max-width:none; padding:0; }
   /*
@@ -394,6 +416,10 @@ footer {
     <button class="pdf-button" type="button" onclick="window.print()">
       <span class="ja">PDF出力 / 印刷</span><span class="en">Export PDF / Print</span>
     </button>
+    <div class="site-nav">
+      <a class="active" href="index.html"><span class="ja">タスクリスト</span><span class="en">Task List</span></a>
+      <a href="roadmap.html"><span class="ja">ロードマップ</span><span class="en">Roadmap</span></a>
+    </div>
     <div class="owner-controls" aria-label="Owner filter">
       <label for="owner-all"><span class="ja">全員</span><span class="en">All</span></label>
 <label for="owner-ej">EJ</label>
