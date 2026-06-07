@@ -90,46 +90,7 @@ footer { max-width:1280px; margin:auto; padding:16px 12px calc(28px + env(safe-a
 }
 
 
-/* Roadmap table: freeze first row and first column */
-.table-shell {
-  max-height: calc(100vh - 230px);
-  overflow: auto;
-  position: relative;
-}
-.table-shell table {
-  border-collapse: separate;
-  border-spacing: 0;
-}
-.table-shell thead th {
-  position: sticky;
-  top: 0;
-  z-index: 4;
-}
-.table-shell thead th:first-child {
-  left: 0;
-  z-index: 6;
-}
-.table-shell tbody td:first-child {
-  position: sticky;
-  left: 0;
-  z-index: 3;
-  background: #f3f7fc;
-  box-shadow: 2px 0 0 var(--line);
-}
-.table-shell tbody tr.major td:first-child {
-  background: #eaf2ff;
-}
-@media (max-width:760px) {
-  .table-shell {
-    max-height: none;
-  }
-}
-@media print {
-  .table-shell {
-    max-height: none;
-    overflow: visible;
-  }
-  .table-shell thead th,
+.table-shell thead th,
   .table-shell thead th:first-child,
   .table-shell tbody td:first-child {
     position: static;
@@ -354,6 +315,68 @@ footer { max-width:1280px; margin:auto; padding:16px 12px calc(28px + env(safe-a
   }
 }
 
+
+.table-shell thead th {
+    position: static;
+    top: auto;
+    z-index: auto;
+    box-shadow: none;
+  }
+}
+
+
+/* Roadmap table: freeze first row and first column */
+.table-shell {
+  max-height: calc(100vh - 230px);
+  overflow: auto;
+  position: relative;
+}
+.table-shell table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+.table-shell thead th {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: linear-gradient(135deg,var(--navy),var(--navy2));
+  box-shadow: 0 2px 0 var(--line);
+}
+.table-shell thead th:first-child {
+  left: 0;
+  z-index: 12;
+}
+.table-shell tbody td:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 6;
+  background: #f3f7fc;
+  box-shadow: 2px 0 0 var(--line);
+}
+.table-shell tbody tr.major td:first-child {
+  background: #eaf2ff;
+}
+@media (max-width:760px) {
+  .table-shell {
+    max-height: none;
+  }
+}
+@media print {
+  .table-shell {
+    max-height: none;
+    overflow: visible;
+  }
+  .table-shell thead th,
+  .table-shell thead th:first-child,
+  .table-shell tbody td:first-child {
+    position: static;
+    top: auto;
+    left: auto;
+    z-index: auto;
+    box-shadow: none;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -362,7 +385,7 @@ footer { max-width:1280px; margin:auto; padding:16px 12px calc(28px + env(safe-a
 <header>
   <div class="wrap">
     <h1><span class="en">JAPAN RUGBY - Road to RWC 2027 (V2)</span><span class="ja">JAPAN RUGBY - RWC 2027へのロードマップ（V2）</span></h1>
-    <div class="sub"><span class="en">Roadmap table with frozen header row and first column. Switch pages with the buttons below.</span><span class="ja">Roadmap表は1行目と1列目を固定表示します。下のボタンでページを切り替えできます。</span></div>
+    <div class="sub"><span class="en">Roadmap table with a frozen header row and first column. Switch pages with the buttons below.</span><span class="ja">Roadmap表は1行目と1列目を固定表示します。下のボタンでページを切り替えできます。</span></div>
   <nav class="clean-nav" aria-label="Primary navigation">
     <div class="clean-pages">
       <a href="./index.html" aria-label="Tasks"><span class="en">Tasks</span><span class="ja">タスク</span></a>
