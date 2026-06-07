@@ -378,11 +378,36 @@ footer {
   .task { grid-template-columns:95px 1fr; }
   footer { max-width:none; }
 }
+
+/* Common simple page navigation */
+.page-nav {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin:8px 0;
+}
+.page-nav a {
+  display:block;
+  text-align:center;
+  text-decoration:none;
+  border:1px solid var(--navy);
+  border-radius:12px;
+  padding:10px 8px;
+  font-weight:800;
+  font-size:15px;
+  color:var(--navy);
+  background:#fff;
+}
+.page-nav a.active {
+  background:var(--navy);
+  color:#fff;
+}
+
 </style>
 </head>
 <body>
-<input type="radio" name="lang" id="lang-ja" checked>
-<input type="radio" name="lang" id="lang-en">
+<input type="radio" name="lang" id="lang-ja">
+<input type="radio" name="lang" id="lang-en" checked>
 <input type="radio" name="owner-filter" id="owner-all" checked>
 <input type="radio" name="owner-filter" id="owner-ej">
 <input type="radio" name="owner-filter" id="owner-yoji">
@@ -408,19 +433,19 @@ footer {
 <header>
   <div class="topbar">
     <h1><span class="en">RUGBY WORLD CUP — Task List</span><span class="ja">ラグビーワールドカップ — タスクリスト</span></h1>
-    <div class="sub"><span class="en">Use the Task List / Roadmap links to move between pages. Adaptive layout for phone, tablet, desktop, landscape, and print. Use Export PDF / Print, then save as PDF. If an owner is selected, only that owner is printed.</span><span class="ja">上部の「タスクリスト / ロードマップ」からページ移動できます。端末や画面幅に合わせて表示を自動調整します。PDF出力ボタンから「プリント」→「PDFに保存」ができます。担当者で絞り込んでいる場合は、その担当者だけを印刷します。</span></div>
+    <div class="sub"><span class="en">Switch pages with the buttons below. English is the default view.</span><span class="ja">下のボタンでページを切り替えできます。初期表示は英語です。</span></div>
     <div class="lang-controls">
       <label for="lang-ja">日本語</label>
       <label for="lang-en">English</label>
     </div>
+    <nav class="page-nav" aria-label="Page navigation">
+      <a class="active" href="index.html"><span class="en">Task List</span><span class="ja">タスクリスト</span></a>
+      <a href="roadmap.html"><span class="en">Roadmap</span><span class="ja">ロードマップ</span></a>
+    </nav>
     <button class="pdf-button" type="button" onclick="window.print()">
       <span class="ja">PDF出力 / 印刷</span><span class="en">Export PDF / Print</span>
     </button>
-    <div class="site-nav">
-      <a class="active" href="index.html"><span class="ja">タスクリスト</span><span class="en">Task List</span></a>
-      <a href="roadmap.html"><span class="ja">ロードマップ</span><span class="en">Roadmap</span></a>
-    </div>
-    <div class="owner-controls" aria-label="Owner filter">
+<div class="owner-controls" aria-label="Owner filter">
       <label for="owner-all"><span class="ja">全員</span><span class="en">All</span></label>
 <label for="owner-ej">EJ</label>
 <label for="owner-yoji">Yoji</label>
