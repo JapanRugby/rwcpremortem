@@ -110,6 +110,117 @@ footer { max-width:1280px; margin:auto; padding:16px 12px calc(28px + env(safe-a
   color:#fff;
 }
 
+
+/* Common simple page navigation */
+.page-nav {
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:8px;
+  margin:8px 0;
+}
+.page-nav a {
+  display:block;
+  text-align:center;
+  text-decoration:none;
+  border:1px solid var(--navy);
+  border-radius:12px;
+  padding:10px 6px;
+  font-weight:800;
+  font-size:14px;
+  color:var(--navy);
+  background:#fff;
+  white-space:nowrap;
+}
+.page-nav a.active {
+  background:var(--navy);
+  color:#fff;
+}
+@media (max-width:420px) {
+  .page-nav { gap:6px; }
+  .page-nav a { font-size:12px; padding:9px 4px; }
+}
+
+
+/* Roadmap table: freeze first row and first column */
+.table-shell {
+  max-height: calc(100vh - 230px);
+  overflow: auto;
+  position: relative;
+}
+.table-shell table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+.table-shell thead th {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+}
+.table-shell thead th:first-child {
+  left: 0;
+  z-index: 6;
+}
+.table-shell tbody td:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 3;
+  background: #f3f7fc;
+  box-shadow: 2px 0 0 var(--line);
+}
+.table-shell tbody tr.major td:first-child {
+  background: #eaf2ff;
+}
+@media (max-width:760px) {
+  .table-shell {
+    max-height: none;
+  }
+}
+@media print {
+  .table-shell {
+    max-height: none;
+    overflow: visible;
+  }
+  .table-shell thead th,
+  .table-shell thead th:first-child,
+  .table-shell tbody td:first-child {
+    position: static;
+    left: auto;
+    top: auto;
+    z-index: auto;
+    box-shadow: none;
+  }
+}
+
+
+/* Common simple page navigation */
+.page-nav {
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:8px;
+  margin:8px 0;
+}
+.page-nav a {
+  display:block;
+  text-align:center;
+  text-decoration:none;
+  border:1px solid var(--navy);
+  border-radius:12px;
+  padding:10px 6px;
+  font-weight:800;
+  font-size:14px;
+  color:var(--navy);
+  background:#fff;
+  white-space:nowrap;
+}
+.page-nav a.active {
+  background:var(--navy);
+  color:#fff;
+}
+@media (max-width:420px) {
+  .page-nav { gap:6px; }
+  .page-nav a { font-size:12px; padding:9px 4px; }
+}
+
 </style>
 </head>
 <body>
@@ -118,16 +229,17 @@ footer { max-width:1280px; margin:auto; padding:16px 12px calc(28px + env(safe-a
 <header>
   <div class="wrap">
     <h1><span class="en">JAPAN RUGBY - Road to RWC 2027 (V2)</span><span class="ja">JAPAN RUGBY - RWC 2027へのロードマップ（V2）</span></h1>
-    <div class="sub"><span class="en">Switch pages with the buttons below. English is the default view.</span><span class="ja">下のボタンでページを切り替えできます。初期表示は英語です。</span></div>
-    <nav class="page-nav" aria-label="Page navigation">
-      <a href="index.html"><span class="en">Task List</span><span class="ja">タスクリスト</span></a>
-      <a class="active" href="roadmap.html"><span class="en">Roadmap</span><span class="ja">ロードマップ</span></a>
-    </nav>
-    <button class="pdf-button" type="button" onclick="window.print()"><span class="en">Export PDF / Print</span><span class="ja">PDF出力 / 印刷</span></button>
+    <div class="sub"><span class="en">Roadmap table with frozen header row and first column. Switch pages with the buttons below.</span><span class="ja">Roadmap表は1行目と1列目を固定表示します。下のボタンでページを切り替えできます。</span></div>
+<button class="pdf-button" type="button" onclick="window.print()"><span class="en">Export PDF / Print</span><span class="ja">PDF出力 / 印刷</span></button>
 <div class="lang-controls">
       <label for="lang-ja">日本語</label>
       <label for="lang-en">English</label>
     </div>
+<nav class="page-nav" aria-label="Page navigation">
+      <a href="./index.html"><span class="en">Task List</span><span class="ja">タスクリスト</span></a>
+      <a class="active" href="./roadmap.html"><span class="en">Roadmap</span><span class="ja">ロードマップ</span></a>
+      <a href="./schedule.html"><span class="en">Key Dates</span><span class="ja">主要日程</span></a>
+    </nav>
   </div>
 </header>
 <main>
@@ -242,5 +354,79 @@ footer { max-width:1280px; margin:auto; padding:16px 12px calc(28px + env(safe-a
   </section>
 </main>
 <footer><span class="en">Source: Japan_Rugby_Roadmap_and_Meeting_Summary(2).xlsx / Sheet: Roadmap Schedule.</span><span class="ja">出典: Japan_Rugby_Roadmap_and_Meeting_Summary(2).xlsx / シート: Roadmap Schedule.</span></footer>
+
+
+<script>
+(function () {
+  var KEY = 'rwc_site_lang';
+
+  function langFromUrl() {
+    try {
+      var v = new URLSearchParams(window.location.search).get('lang');
+      return (v === 'ja' || v === 'en') ? v : null;
+    } catch (e) { return null; }
+  }
+
+  function storedLang() {
+    try {
+      var v = localStorage.getItem(KEY);
+      return (v === 'ja' || v === 'en') ? v : null;
+    } catch (e) { return null; }
+  }
+
+  function saveLang(lang) {
+    try { localStorage.setItem(KEY, lang); } catch (e) {}
+  }
+
+  function currentLang() {
+    var ja = document.getElementById('lang-ja');
+    return (ja && ja.checked) ? 'ja' : 'en';
+  }
+
+  function setLang(lang) {
+    var ja = document.getElementById('lang-ja');
+    var en = document.getElementById('lang-en');
+    if (ja && en) {
+      ja.checked = (lang === 'ja');
+      en.checked = (lang !== 'ja');
+    }
+    document.documentElement.lang = (lang === 'ja') ? 'ja' : 'en';
+    saveLang(lang);
+    updateNavLinks(lang);
+  }
+
+  function updateNavLinks(lang) {
+    var links = document.querySelectorAll('.page-nav a[href]');
+    for (var i = 0; i < links.length; i++) {
+      var a = links[i];
+      var raw = a.getAttribute('href');
+      if (!raw || raw.indexOf('http') === 0 || raw.indexOf('#') === 0) continue;
+      var hash = "";
+      var href = raw;
+      var hashIndex = href.indexOf('#');
+      if (hashIndex >= 0) {
+        hash = href.substring(hashIndex);
+        href = href.substring(0, hashIndex);
+      }
+      var base = href.split('?')[0];
+      a.setAttribute('href', base + '?lang=' + encodeURIComponent(lang) + hash);
+    }
+  }
+
+  var initial = langFromUrl() || storedLang() || 'en';
+  setLang(initial);
+
+  var ja = document.getElementById('lang-ja');
+  var en = document.getElementById('lang-en');
+  if (ja) ja.addEventListener('change', function () { if (ja.checked) setLang('ja'); });
+  if (en) en.addEventListener('change', function () { if (en.checked) setLang('en'); });
+
+  document.addEventListener('pointerdown', function (ev) {
+    var a = ev.target.closest ? ev.target.closest('.page-nav a') : null;
+    if (a) updateNavLinks(currentLang());
+  }, true);
+})();
+</script>
+
 </body>
 </html>

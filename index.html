@@ -403,6 +403,66 @@ footer {
   color:#fff;
 }
 
+
+/* Common simple page navigation */
+.page-nav {
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:8px;
+  margin:8px 0;
+}
+.page-nav a {
+  display:block;
+  text-align:center;
+  text-decoration:none;
+  border:1px solid var(--navy);
+  border-radius:12px;
+  padding:10px 6px;
+  font-weight:800;
+  font-size:14px;
+  color:var(--navy);
+  background:#fff;
+  white-space:nowrap;
+}
+.page-nav a.active {
+  background:var(--navy);
+  color:#fff;
+}
+@media (max-width:420px) {
+  .page-nav { gap:6px; }
+  .page-nav a { font-size:12px; padding:9px 4px; }
+}
+
+
+/* Common simple page navigation */
+.page-nav {
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:8px;
+  margin:8px 0;
+}
+.page-nav a {
+  display:block;
+  text-align:center;
+  text-decoration:none;
+  border:1px solid var(--navy);
+  border-radius:12px;
+  padding:10px 6px;
+  font-weight:800;
+  font-size:14px;
+  color:var(--navy);
+  background:#fff;
+  white-space:nowrap;
+}
+.page-nav a.active {
+  background:var(--navy);
+  color:#fff;
+}
+@media (max-width:420px) {
+  .page-nav { gap:6px; }
+  .page-nav a { font-size:12px; padding:9px 4px; }
+}
+
 </style>
 </head>
 <body>
@@ -433,16 +493,17 @@ footer {
 <header>
   <div class="topbar">
     <h1><span class="en">RUGBY WORLD CUP — Task List</span><span class="ja">ラグビーワールドカップ — タスクリスト</span></h1>
-    <div class="sub"><span class="en">Switch pages with the buttons below. English is the default view.</span><span class="ja">下のボタンでページを切り替えできます。初期表示は英語です。</span></div>
+    <div class="sub"><span class="en">Switch pages with the buttons below. English is the default view and your language choice is kept across pages.</span><span class="ja">下のボタンでページを切り替えできます。初期表示は英語で、選んだ言語はページ移動後も維持されます。</span></div>
     <div class="lang-controls">
       <label for="lang-ja">日本語</label>
       <label for="lang-en">English</label>
     </div>
-    <nav class="page-nav" aria-label="Page navigation">
-      <a class="active" href="index.html"><span class="en">Task List</span><span class="ja">タスクリスト</span></a>
-      <a href="roadmap.html"><span class="en">Roadmap</span><span class="ja">ロードマップ</span></a>
+<nav class="page-nav" aria-label="Page navigation">
+      <a class="active" href="./index.html"><span class="en">Task List</span><span class="ja">タスクリスト</span></a>
+      <a href="./roadmap.html"><span class="en">Roadmap</span><span class="ja">ロードマップ</span></a>
+      <a href="./schedule.html"><span class="en">Key Dates</span><span class="ja">主要日程</span></a>
     </nav>
-    <button class="pdf-button" type="button" onclick="window.print()">
+<button class="pdf-button" type="button" onclick="window.print()">
       <span class="ja">PDF出力 / 印刷</span><span class="en">Export PDF / Print</span>
     </button>
 <div class="owner-controls" aria-label="Owner filter">
@@ -1155,5 +1216,79 @@ footer {
 
 </main>
 <footer><span class="ja">出典: RUGBY WORLD CUP - PRE-MORTEM and PREPARATION CHECKLIST。共有担当は各担当者へ分割しています。</span><span class="en">Source: RUGBY WORLD CUP - PRE-MORTEM and PREPARATION CHECKLIST. Shared responsibilities split to each owner.</span></footer>
+
+
+<script>
+(function () {
+  var KEY = 'rwc_site_lang';
+
+  function langFromUrl() {
+    try {
+      var v = new URLSearchParams(window.location.search).get('lang');
+      return (v === 'ja' || v === 'en') ? v : null;
+    } catch (e) { return null; }
+  }
+
+  function storedLang() {
+    try {
+      var v = localStorage.getItem(KEY);
+      return (v === 'ja' || v === 'en') ? v : null;
+    } catch (e) { return null; }
+  }
+
+  function saveLang(lang) {
+    try { localStorage.setItem(KEY, lang); } catch (e) {}
+  }
+
+  function currentLang() {
+    var ja = document.getElementById('lang-ja');
+    return (ja && ja.checked) ? 'ja' : 'en';
+  }
+
+  function setLang(lang) {
+    var ja = document.getElementById('lang-ja');
+    var en = document.getElementById('lang-en');
+    if (ja && en) {
+      ja.checked = (lang === 'ja');
+      en.checked = (lang !== 'ja');
+    }
+    document.documentElement.lang = (lang === 'ja') ? 'ja' : 'en';
+    saveLang(lang);
+    updateNavLinks(lang);
+  }
+
+  function updateNavLinks(lang) {
+    var links = document.querySelectorAll('.page-nav a[href]');
+    for (var i = 0; i < links.length; i++) {
+      var a = links[i];
+      var raw = a.getAttribute('href');
+      if (!raw || raw.indexOf('http') === 0 || raw.indexOf('#') === 0) continue;
+      var hash = "";
+      var href = raw;
+      var hashIndex = href.indexOf('#');
+      if (hashIndex >= 0) {
+        hash = href.substring(hashIndex);
+        href = href.substring(0, hashIndex);
+      }
+      var base = href.split('?')[0];
+      a.setAttribute('href', base + '?lang=' + encodeURIComponent(lang) + hash);
+    }
+  }
+
+  var initial = langFromUrl() || storedLang() || 'en';
+  setLang(initial);
+
+  var ja = document.getElementById('lang-ja');
+  var en = document.getElementById('lang-en');
+  if (ja) ja.addEventListener('change', function () { if (ja.checked) setLang('ja'); });
+  if (en) en.addEventListener('change', function () { if (en.checked) setLang('en'); });
+
+  document.addEventListener('pointerdown', function (ev) {
+    var a = ev.target.closest ? ev.target.closest('.page-nav a') : null;
+    if (a) updateNavLinks(currentLang());
+  }, true);
+})();
+</script>
+
 </body>
 </html>

@@ -1,0 +1,1550 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="format-detection" content="telephone=no">
+<title>RWC 2027 Key Dates</title>
+<style>
+:root {
+  --navy:#082653; --navy2:#0b376f; --line:#d9e1ec; --bg:#f6f8fb; --text:#172033; --muted:#667085; --card:#fff;
+  --accent:#0b4a7a;
+}
+* { box-sizing:border-box; }
+body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif; background:var(--bg); color:var(--text); -webkit-text-size-adjust:100%; }
+input[type="radio"] { position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden; }
+.en { display:block; }
+span.en { display:inline; }
+.ja { display:none; }
+#lang-ja:checked ~ header .en, #lang-ja:checked ~ main .en, #lang-ja:checked ~ footer .en { display:none; }
+#lang-ja:checked ~ header .ja, #lang-ja:checked ~ main .ja, #lang-ja:checked ~ footer .ja { display:block; }
+#lang-ja:checked ~ header span.ja, #lang-ja:checked ~ main span.ja, #lang-ja:checked ~ footer span.ja { display:inline; }
+#lang-en:checked ~ header label[for="lang-en"], #lang-ja:checked ~ header label[for="lang-ja"] { background:var(--navy); color:#fff; }
+#lang-en:checked ~ header label[for="lang-ja"], #lang-ja:checked ~ header label[for="lang-en"] { background:#fff; color:var(--navy); }
+#year-all:checked ~ header label[for="year-all"] { background:var(--navy); color:#fff; border-color:var(--navy); }
+#year-2025:checked ~ main [data-year] { display:none; }
+#year-2025:checked ~ main [data-year="2025"] { display:table-row; }
+#year-2025:checked ~ main .cards [data-year="2025"] { display:block; }
+#year-2025:checked ~ main .cards [data-year]:not([data-year="2025"]) { display:none; }
+#year-2025:checked ~ header label[for="year-2025"] { background:var(--navy); color:#fff; border-color:var(--navy); }
+#year-2026:checked ~ main [data-year] { display:none; }
+#year-2026:checked ~ main [data-year="2026"] { display:table-row; }
+#year-2026:checked ~ main .cards [data-year="2026"] { display:block; }
+#year-2026:checked ~ main .cards [data-year]:not([data-year="2026"]) { display:none; }
+#year-2026:checked ~ header label[for="year-2026"] { background:var(--navy); color:#fff; border-color:var(--navy); }
+#year-2027:checked ~ main [data-year] { display:none; }
+#year-2027:checked ~ main [data-year="2027"] { display:table-row; }
+#year-2027:checked ~ main .cards [data-year="2027"] { display:block; }
+#year-2027:checked ~ main .cards [data-year]:not([data-year="2027"]) { display:none; }
+#year-2027:checked ~ header label[for="year-2027"] { background:var(--navy); color:#fff; border-color:var(--navy); }
+#year-2028:checked ~ main [data-year] { display:none; }
+#year-2028:checked ~ main [data-year="2028"] { display:table-row; }
+#year-2028:checked ~ main .cards [data-year="2028"] { display:block; }
+#year-2028:checked ~ main .cards [data-year]:not([data-year="2028"]) { display:none; }
+#year-2028:checked ~ header label[for="year-2028"] { background:var(--navy); color:#fff; border-color:var(--navy); }
+#year-2029:checked ~ main [data-year] { display:none; }
+#year-2029:checked ~ main [data-year="2029"] { display:table-row; }
+#year-2029:checked ~ main .cards [data-year="2029"] { display:block; }
+#year-2029:checked ~ main .cards [data-year]:not([data-year="2029"]) { display:none; }
+#year-2029:checked ~ header label[for="year-2029"] { background:var(--navy); color:#fff; border-color:var(--navy); }
+header { position:sticky; top:0; z-index:10; background:rgba(255,255,255,.98); border-bottom:1px solid var(--line); padding:calc(10px + env(safe-area-inset-top)) 12px 10px; box-shadow:0 1px 5px rgba(16,24,40,.06); }
+.wrap { max-width:1280px; margin:auto; }
+h1 { font-size:clamp(20px,4.5vw,32px); margin:0 0 6px; color:#0b1d3f; line-height:1.15; letter-spacing:-.02em; }
+.sub { font-size:13px; color:var(--muted); margin-bottom:10px; line-height:1.35; }
+.lang-controls { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin:8px 0; }
+.lang-controls label, .year-controls label, .pdf-button { border:1px solid var(--navy); border-radius:12px; padding:10px 8px; font-weight:800; font-size:14px; text-align:center; background:#fff; color:var(--navy); font-family:inherit; }
+.pdf-button { width:100%; background:#0b4a7a; color:#fff; border-color:#0b4a7a; margin:0 0 8px; }
+.year-controls { display:flex; gap:7px; overflow-x:auto; -webkit-overflow-scrolling:touch; padding:2px 0 5px; }
+.year-controls label { flex:0 0 auto; border-color:var(--line); color:#1f2a44; border-radius:999px; padding:9px 12px; white-space:nowrap; }
+
+/* Common simple page navigation */
+.page-nav {
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:8px;
+  margin:8px 0;
+}
+.page-nav a {
+  display:block;
+  text-align:center;
+  text-decoration:none;
+  border:1px solid var(--navy);
+  border-radius:12px;
+  padding:10px 6px;
+  font-weight:800;
+  font-size:14px;
+  color:var(--navy);
+  background:#fff;
+  white-space:nowrap;
+}
+.page-nav a.active {
+  background:var(--navy);
+  color:#fff;
+}
+@media (max-width:420px) {
+  .page-nav { gap:6px; }
+  .page-nav a { font-size:12px; padding:9px 4px; }
+}
+
+main { max-width:1280px; margin:auto; padding:12px; }
+.summary { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-bottom:12px; }
+.stat { background:#fff; border:1px solid var(--line); border-radius:14px; padding:12px; box-shadow:0 1px 5px rgba(16,24,40,.05); }
+.stat b { display:block; color:var(--navy); font-size:24px; }
+.stat span { font-size:12px; color:var(--muted); font-weight:800; }
+.table-shell { background:#fff; border:1px solid var(--line); border-radius:16px; overflow:auto; box-shadow:0 1px 7px rgba(16,24,40,.06); }
+table { width:100%; border-collapse:separate; border-spacing:0; min-width:980px; }
+th { position:sticky; top:0; z-index:1; background:linear-gradient(135deg,var(--navy),var(--navy2)); color:#fff; text-align:left; font-size:13px; padding:10px; border-right:1px solid rgba(255,255,255,.2); white-space:nowrap; }
+td { vertical-align:top; padding:10px; border-top:1px solid var(--line); border-right:1px solid var(--line); font-size:13px; line-height:1.45; }
+td.year { font-weight:900; color:#20304a; background:#f3f7fc; width:70px; }
+td.date { font-weight:900; width:150px; }
+td.category { font-weight:800; color:#0b4a7a; width:170px; background:#eef7ff; }
+.cards { display:none; }
+.date-card { background:#fff; border:1px solid var(--line); border-radius:16px; margin:0 0 12px; overflow:hidden; box-shadow:0 1px 7px rgba(16,24,40,.06); padding:12px; }
+.card-head { display:flex; gap:8px; align-items:center; margin-bottom:8px; }
+.badge { background:var(--navy); color:#fff; border-radius:999px; padding:4px 8px; font-size:12px; font-weight:900; }
+.date-card .date { font-size:13px; font-weight:900; color:#20304a; }
+.date-card h2 { margin:0 0 6px; font-size:17px; line-height:1.25; color:#0b1d3f; }
+.cat { display:inline-block; color:#0b4a7a; background:#eef7ff; border:1px solid #c9e3ff; border-radius:999px; padding:3px 8px; font-weight:800; font-size:12px; margin-bottom:8px; }
+.date-card p { margin:0; font-size:14px; line-height:1.45; }
+footer { max-width:1280px; margin:auto; padding:16px 12px calc(28px + env(safe-area-inset-bottom)); color:var(--muted); font-size:12px; }
+@media (max-width:760px) {
+  header { padding-left:10px; padding-right:10px; }
+  .summary { grid-template-columns:1fr 1fr; }
+  .table-shell { display:none; }
+  .cards { display:block; }
+  main { padding:10px; }
+}
+@media (max-height:500px) and (orientation:landscape) {
+  header { position:relative; }
+  .sub { display:none; }
+}
+@page { size:A4 landscape; margin:8mm; }
+@media print {
+  * { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body { background:#fff; }
+  header { position:static; box-shadow:none; padding:0 0 8px; }
+  .lang-controls, .year-controls, .page-nav, .pdf-button, .sub, .summary { display:none; }
+  main { max-width:none; padding:0; }
+  .cards { display:none !important; }
+  .table-shell { display:block !important; overflow:visible; border:0; box-shadow:none; }
+  table { min-width:0; width:100%; }
+  th { position:static; font-size:8px; padding:4px; }
+  td { font-size:7.5px; line-height:1.2; padding:4px; }
+  footer { max-width:none; padding:8px 0 0; }
+}
+
+/* Common simple page navigation */
+.page-nav {
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:8px;
+  margin:8px 0;
+}
+.page-nav a {
+  display:block;
+  text-align:center;
+  text-decoration:none;
+  border:1px solid var(--navy);
+  border-radius:12px;
+  padding:10px 6px;
+  font-weight:800;
+  font-size:14px;
+  color:var(--navy);
+  background:#fff;
+  white-space:nowrap;
+}
+.page-nav a.active {
+  background:var(--navy);
+  color:#fff;
+}
+@media (max-width:420px) {
+  .page-nav { gap:6px; }
+  .page-nav a { font-size:12px; padding:9px 4px; }
+}
+
+</style>
+</head>
+<body>
+<input type="radio" name="lang" id="lang-ja">
+<input type="radio" name="lang" id="lang-en" checked>
+<input type="radio" name="year-filter" id="year-all" checked><input type="radio" name="year-filter" id="year-2025"><input type="radio" name="year-filter" id="year-2026"><input type="radio" name="year-filter" id="year-2027"><input type="radio" name="year-filter" id="year-2028"><input type="radio" name="year-filter" id="year-2029">
+<header>
+  <div class="wrap">
+    <h1><span class="en">RWC 2027 — Key Dates Timeline</span><span class="ja">RWC 2027 — 主要日程タイムライン</span></h1>
+    <div class="sub"><span class="en">A clear bilingual table based on the uploaded RWC 2027 Terms of Participation key dates.</span><span class="ja">アップロードされたRWC 2027 Terms of Participationの主要日程を、英日対応の分かりやすい表にしました。</span></div>
+    <div class="lang-controls">
+      <label for="lang-en">English</label>
+      <label for="lang-ja">日本語</label>
+    </div>
+<nav class="page-nav" aria-label="Page navigation">
+      <a href="./index.html"><span class="en">Task List</span><span class="ja">タスクリスト</span></a>
+      <a href="./roadmap.html"><span class="en">Roadmap</span><span class="ja">ロードマップ</span></a>
+      <a class="active" href="./schedule.html"><span class="en">Key Dates</span><span class="ja">主要日程</span></a>
+    </nav>
+<button class="pdf-button" type="button" onclick="window.print()"><span class="en">Export PDF / Print</span><span class="ja">PDF出力 / 印刷</span></button>
+    <div class="year-controls" aria-label="Year filter">
+      <label for="year-all"><span class="en">All</span><span class="ja">全て</span></label><label for="year-2025">2025</label><label for="year-2026">2026</label><label for="year-2027">2027</label><label for="year-2028">2028</label><label for="year-2029">2029</label>
+    </div>
+  </div>
+</header>
+<main>
+  <section class="summary">
+    <div class="stat"><b>84</b><span><span class="en">Key items</span><span class="ja">主要項目</span></span></div>
+    <div class="stat"><b>2025–2029</b><span><span class="en">Period</span><span class="ja">期間</span></span></div>
+    <div class="stat"><b>63</b><span><span class="en">Items in 2027</span><span class="ja">2027年項目</span></span></div>
+    <div class="stat"><b>34</b><span><span class="en">Categories</span><span class="ja">カテゴリ</span></span></div>
+  </section>
+  <section class="table-shell" aria-label="Key dates table">
+    <table>
+      <thead>
+        <tr>
+          <th><span class="en">Year</span><span class="ja">年</span></th>
+          <th><span class="en">Date / Window</span><span class="ja">日付 / 期間</span></th>
+          <th><span class="en">Category</span><span class="ja">カテゴリ</span></th>
+          <th><span class="en">Requirement / Event</span><span class="ja">要件 / イベント</span></th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr data-year="2025" data-cat="Commercial / Media / Broadcast">
+        <td class="year">2025</td>
+        <td class="date">18 December</td>
+        <td class="category">Commercial / Media / Broadcast</td>
+        <td><strong><span class="en">Commercial, Media and Broadcast</span><span class="ja">商業・メディア・放送ルール開始</span></strong><br>
+            <span class="en">Commercial, Media and Broadcast rules commence</span><span class="ja">商業・メディア・放送ルール開始</span></td>
+      </tr>
+    
+      <tr data-year="2026" data-cat="Commercial">
+        <td class="year">2026</td>
+        <td class="date">31 March</td>
+        <td class="category">Commercial</td>
+        <td><strong><span class="en">Support Product / Emblem</span><span class="ja">Support Product / Emblem</span></strong><br>
+            <span class="en">Participating Unions to notify WRED if they do not wish for the Support Product to feature its Emblem (only country/territory name, flag and icon)</span><span class="ja">サポート商品にエンブレムを使用しない場合、参加協会がWREDへ通知（国・地域名、旗、アイコンのみ）</span></td>
+      </tr>
+    
+      <tr data-year="2026" data-cat="Commercial">
+        <td class="year">2026</td>
+        <td class="date">31 March</td>
+        <td class="category">Commercial</td>
+        <td><strong><span class="en">Supporter Product approval contact</span><span class="ja">協会エンブレムを使用するサポーター商品の確認・承認担当窓口を指名</span></strong><br>
+            <span class="en">Participating Unions to nominate a point of contact for the purpose of reviewing and approving Supporter Products featuring the Union Emblem</span><span class="ja">協会エンブレムを使用するサポーター商品の確認・承認担当窓口を指名</span></td>
+      </tr>
+    
+      <tr data-year="2026" data-cat="Operations">
+        <td class="year">2026</td>
+        <td class="date">1 April – 31 Aug</td>
+        <td class="category">Operations</td>
+        <td><strong><span class="en">Team Site Visits</span><span class="ja">チームサイトビジット（チームベース・試合会場）</span></strong><br>
+            <span class="en">Team Site Visits (Team Bases &amp; Match Venues)</span><span class="ja">チームサイトビジット（チームベース・試合会場）</span></td>
+      </tr>
+    
+      <tr data-year="2026" data-cat="Ticketing">
+        <td class="year">2026</td>
+        <td class="date">5 May</td>
+        <td class="category">Ticketing</td>
+        <td><strong><span class="en">Ticketing contact</span><span class="ja">Ticketing contact</span></strong><br>
+            <span class="en">Ticketing point of contact confirmed to ticketingteam@worldrugby.org</span><span class="ja">チケッティング窓口を ticketingteam@worldrugby.org に確認</span></td>
+      </tr>
+    
+      <tr data-year="2026" data-cat="Ticketing">
+        <td class="year">2026</td>
+        <td class="date">June</td>
+        <td class="category">Ticketing</td>
+        <td><strong><span class="en">Ticketing Guide issued</span><span class="ja">チケッティングガイド発行</span></strong><br>
+            <span class="en">Ticketing Guide issued</span><span class="ja">チケッティングガイド発行</span></td>
+      </tr>
+    
+      <tr data-year="2026" data-cat="Ticketing">
+        <td class="year">2026</td>
+        <td class="date">25 Aug – 8 Sep</td>
+        <td class="category">Ticketing</td>
+        <td><strong><span class="en">Ticket request submission</span><span class="ja">参加協会がチケッティングポータルにチケットリクエストを提出（12:00 AEST）</span></strong><br>
+            <span class="en">Participating Unions submit their ticket request onto the Ticketing Portal (12:00 AEST)</span><span class="ja">参加協会がチケッティングポータルにチケットリクエストを提出（12:00 AEST）</span></td>
+      </tr>
+    
+      <tr data-year="2026" data-cat="Travel / Logistics">
+        <td class="year">2026</td>
+        <td class="date">28 August</td>
+        <td class="category">Travel / Logistics</td>
+        <td><strong><span class="en">Arrival date and advanced party details</span><span class="ja">公式到着日以前に到着する場合の到着日、豪州内目的地、希望国際便、先遣隊詳細を確認</span></strong><br>
+            <span class="en">Teams to confirm their arrival date (if prior to Official Arrival Date (OAD)), including any destination in Australia (if different to first Team Base), preferred International flight(s) and details of any advanced parties</span><span class="ja">公式到着日以前に到着する場合の到着日、豪州内目的地、希望国際便、先遣隊詳細を確認</span></td>
+      </tr>
+    
+      <tr data-year="2026" data-cat="Team Base">
+        <td class="year">2026</td>
+        <td class="date">11 September</td>
+        <td class="category">Team Base</td>
+        <td><strong><span class="en">Team Base preferences</span><span class="ja">チームベース希望を提出</span></strong><br>
+            <span class="en">Teams to submit their Team Base preferences</span><span class="ja">チームベース希望を提出</span></td>
+      </tr>
+    
+      <tr data-year="2026" data-cat="Team Base">
+        <td class="year">2026</td>
+        <td class="date">30 September</td>
+        <td class="category">Team Base</td>
+        <td><strong><span class="en">Knockout Team Bases confirmed</span><span class="ja">RWCAがノックアウトフェーズのチームベースを確認</span></strong><br>
+            <span class="en">RWCA to confirm knockout phase Team Bases</span><span class="ja">RWCAがノックアウトフェーズのチームベースを確認</span></td>
+      </tr>
+    
+      <tr data-year="2026" data-cat="Team Services">
+        <td class="year">2026</td>
+        <td class="date">2 October</td>
+        <td class="category">Team Services</td>
+        <td><strong><span class="en">Interpreter requirements</span><span class="ja">チームが通訳要件を確認</span></strong><br>
+            <span class="en">Confirmation of interpreter requirements by Teams</span><span class="ja">チームが通訳要件を確認</span></td>
+      </tr>
+    
+      <tr data-year="2026" data-cat="Kit">
+        <td class="year">2026</td>
+        <td class="date">30 October</td>
+        <td class="category">Kit</td>
+        <td><strong><span class="en">Team Kit artwork</span><span class="ja">全チームキットのアートワークを提出（チームキット仕様参照）</span></strong><br>
+            <span class="en">All Team Kit artwork submitted (see Team Kit Specifications)</span><span class="ja">全チームキットのアートワークを提出（チームキット仕様参照）</span></td>
+      </tr>
+    
+      <tr data-year="2026" data-cat="Freight">
+        <td class="year">2026</td>
+        <td class="date">30 October</td>
+        <td class="category">Freight</td>
+        <td><strong><span class="en">Freight guide received</span><span class="ja">チームが貨物輸送ガイドを受領</span></strong><br>
+            <span class="en">Teams to receive freight guide</span><span class="ja">チームが貨物輸送ガイドを受領</span></td>
+      </tr>
+    
+      <tr data-year="2026" data-cat="Meetings">
+        <td class="year">2026</td>
+        <td class="date">30 Nov – 1 Dec</td>
+        <td class="category">Meetings</td>
+        <td><strong><span class="en">Team Managers&#x27; Meeting</span><span class="ja">チームマネージャー会議（英国ロンドン）</span></strong><br>
+            <span class="en">Team Managers&#x27; Meeting, London, UK</span><span class="ja">チームマネージャー会議（英国ロンドン）</span></td>
+      </tr>
+    
+      <tr data-year="2026" data-cat="Accommodation">
+        <td class="year">2026</td>
+        <td class="date">4 December</td>
+        <td class="category">Accommodation</td>
+        <td><strong><span class="en">Additional hotel facilities/services</span><span class="ja">追加で必要なチームホテル施設・サービスを確認</span></strong><br>
+            <span class="en">Teams to confirm additional Team hotel facilities and services required</span><span class="ja">追加で必要なチームホテル施設・サービスを確認</span></td>
+      </tr>
+    
+      <tr data-year="2026" data-cat="Administration">
+        <td class="year">2026</td>
+        <td class="date">11 December</td>
+        <td class="category">Administration</td>
+        <td><strong><span class="en">Formal Acceptance form</span><span class="ja">参加協会による署名済みFormal Acceptanceフォーム提出期限</span></strong><br>
+            <span class="en">Deadline for submission of signed Formal Acceptance by Participating Union form</span><span class="ja">参加協会による署名済みFormal Acceptanceフォーム提出期限</span></td>
+      </tr>
+    
+      <tr data-year="2026" data-cat="Travel / Logistics">
+        <td class="year">2026</td>
+        <td class="date">22 December</td>
+        <td class="category">Travel / Logistics</td>
+        <td><strong><span class="en">Final arrival details advised</span><span class="ja">到着日、乗継時間、手荷物許容量を含む最終到着詳細がチームへ通知</span></strong><br>
+            <span class="en">The final detail of a Team’s arrival, including dates, connections times and baggage allowance will be advised to Teams</span><span class="ja">到着日、乗継時間、手荷物許容量を含む最終到着詳細がチームへ通知</span></td>
+      </tr>
+    
+      <tr data-year="2026" data-cat="Media">
+        <td class="year">2026</td>
+        <td class="date">31 December</td>
+        <td class="category">Media</td>
+        <td><strong><span class="en">Team Media Manager appointed</span><span class="ja">Team Media Manager appointed</span></strong><br>
+            <span class="en">Appoint a dedicated English-speaking Team Media Manager as part of Team Management and email teammedia@rugbyworldcup.com with the necessary contact details</span><span class="ja">チームマネジメントの一員として英語対応可能な専任チームメディアマネージャーを任命し、必要連絡先をメール送付</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Match Operations">
+        <td class="year">2027</td>
+        <td class="date">15 January</td>
+        <td class="category">Match Operations</td>
+        <td><strong><span class="en">Pool Match operational selections</span><span class="ja">各プール戦のスタジアムラン時間、更衣室選択、試合日到着時間、チームキットを確認</span></strong><br>
+            <span class="en">Teams to confirm Stadium Run time, changing room selections, Match Day arrival time and Team Kit for each pool Match</span><span class="ja">各プール戦のスタジアムラン時間、更衣室選択、試合日到着時間、チームキットを確認</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Kit">
+        <td class="year">2027</td>
+        <td class="date">29 January</td>
+        <td class="category">Kit</td>
+        <td><strong><span class="en">Kit pre-production samples</span><span class="ja">チームキットの量産前サンプル（正・副ジャージ、ショーツ、ソックス各1）提出期限</span></strong><br>
+            <span class="en">Team Kit pre-production samples (ONE pre-production samples of primary and alternate jerseys, shorts and socks) need to be submitted before this date (see Team Kit Specifications)</span><span class="ja">チームキットの量産前サンプル（正・副ジャージ、ショーツ、ソックス各1）提出期限</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Equipment">
+        <td class="year">2027</td>
+        <td class="date">29 January</td>
+        <td class="category">Equipment</td>
+        <td><strong><span class="en">Match ball/bag delivery details</span><span class="ja">参加協会が試合球・バッグの配送詳細を確認</span></strong><br>
+            <span class="en">Participating Unions to confirm delivery details for Match balls and bags</span><span class="ja">参加協会が試合球・バッグの配送詳細を確認</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Match Operations">
+        <td class="year">2027</td>
+        <td class="date">1 February</td>
+        <td class="category">Match Operations</td>
+        <td><strong><span class="en">Pool Match operations confirmed</span><span class="ja">各プール戦のスタジアムラン時間、更衣室選択、試合日到着時間が全チームへ確認</span></strong><br>
+            <span class="en">Stadium Run times, changing toom selections and Match day arrival times confirmed to all Teams for each pool Match</span><span class="ja">各プール戦のスタジアムラン時間、更衣室選択、試合日到着時間が全チームへ確認</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Ticketing">
+        <td class="year">2027</td>
+        <td class="date">16 Feb – 2 Mar</td>
+        <td class="category">Ticketing</td>
+        <td><strong><span class="en">Additional ticket requests/returns</span><span class="ja">Additional ticket requests/returns</span></strong><br>
+            <span class="en">Participating Unions submit their additional ticket requests (subject to availability) and any ticket returns (up to 15% of their confirmed ticket order per Match) onto the Ticket Portal</span><span class="ja">追加チケットリクエスト（在庫次第）と返券（各試合確定注文の最大15%）をチケットポータルへ提出</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Kit / Broadcast">
+        <td class="year">2027</td>
+        <td class="date">Mid - Feb</td>
+        <td class="category">Kit / Broadcast</td>
+        <td><strong><span class="en">Broadcast Team Kit testing</span><span class="ja">放送用チームキットテスト</span></strong><br>
+            <span class="en">Broadcast Team Kit testing</span><span class="ja">放送用チームキットテスト</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Kit">
+        <td class="year">2027</td>
+        <td class="date">End of Feb</td>
+        <td class="category">Kit</td>
+        <td><strong><span class="en">Pool Match kit selection</span><span class="ja">全プール戦のチームキット選択を確認</span></strong><br>
+            <span class="en">Team Kit selection for all pool Matches confirmed</span><span class="ja">全プール戦のチームキット選択を確認</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Accommodation">
+        <td class="year">2027</td>
+        <td class="date">28 February</td>
+        <td class="category">Accommodation</td>
+        <td><strong><span class="en">Additional Team Hotel requirements</span><span class="ja">RWCAが追加チームホテル要件をチームへ確認。客室削減期限もこの時点で通知</span></strong><br>
+            <span class="en">RWCA to confirm additional Team Hotel requirements to Teams – attrition deadlines will be communicated at this time</span><span class="ja">RWCAが追加チームホテル要件をチームへ確認。客室削減期限もこの時点で通知</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Equipment">
+        <td class="year">2027</td>
+        <td class="date">1 March</td>
+        <td class="category">Equipment</td>
+        <td><strong><span class="en">Pre-Tournament balls/bags delivered</span><span class="ja">大会前試合球・バッグの配送</span></strong><br>
+            <span class="en">Delivery of pre-Tournament Match balls and bags</span><span class="ja">大会前試合球・バッグの配送</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Catering">
+        <td class="year">2027</td>
+        <td class="date">31 March</td>
+        <td class="category">Catering</td>
+        <td><strong><span class="en">Menu adjustment requests</span><span class="ja">ホテル・試合会場のメニュー調整リクエストを提出</span></strong><br>
+            <span class="en">Teams to submit requests to adjust menus for hotels and Match Venues</span><span class="ja">ホテル・試合会場のメニュー調整リクエストを提出</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Kit">
+        <td class="year">2027</td>
+        <td class="date">31 March</td>
+        <td class="category">Kit</td>
+        <td><strong><span class="en">Training kit/formal wear samples</span><span class="ja">Training kit/formal wear samples</span></strong><br>
+            <span class="en">Training kit and formal wear pre-production samples to be submitted if RWC 2027 Event Mark has been applied (see Team Kit Specifications)</span><span class="ja">RWC 2027イベントマークを使用する場合、トレーニングキット・フォーマルウェア量産前サンプルを提出</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Commercial / Kit">
+        <td class="year">2027</td>
+        <td class="date">31 March</td>
+        <td class="category">Commercial / Kit</td>
+        <td><strong><span class="en">Commercial partner nomination</span><span class="ja">Commercial partner nomination</span></strong><br>
+            <span class="en">Last date for Participating Unions to nominate their proposed Primary and Secondary Union commercial partner for Non-Match Venue Team Kit to WRED for approval</span><span class="ja">試合会場外チームキットに関する主要・副次協会商業パートナー候補をWRED承認用に指名する最終日</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Commercial">
+        <td class="year">2027</td>
+        <td class="date">31 March</td>
+        <td class="category">Commercial</td>
+        <td><strong><span class="en">Primary/Secondary Union Partners</span><span class="ja">主要・副次協会パートナー指名期限</span></strong><br>
+            <span class="en">Deadline for Participating Unions to nominate their Primary and Secondary Union Partners</span><span class="ja">主要・副次協会パートナー指名期限</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Operations">
+        <td class="year">2027</td>
+        <td class="date">30 April</td>
+        <td class="category">Operations</td>
+        <td><strong><span class="en">Additional site visits deadline</span><span class="ja">追加サイトビジット期限</span></strong><br>
+            <span class="en">Deadline for additional site visits</span><span class="ja">追加サイトビジット期限</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Training Venues">
+        <td class="year">2027</td>
+        <td class="date">30 April</td>
+        <td class="category">Training Venues</td>
+        <td><strong><span class="en">Preliminary Training Venue requirements</span><span class="ja">チームが予備的なトレーニング会場予約要件を提供</span></strong><br>
+            <span class="en">Preliminary Training Venue booking requirements provided by Teams</span><span class="ja">チームが予備的なトレーニング会場予約要件を提供</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Tournament">
+        <td class="year">2027</td>
+        <td class="date">May</td>
+        <td class="category">Tournament</td>
+        <td><strong><span class="en">Match Officials confirmed</span><span class="ja">RWCマッチオフィシャル選出・確認</span></strong><br>
+            <span class="en">RWC Match Officials selected and confirmed</span><span class="ja">RWCマッチオフィシャル選出・確認</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Freight">
+        <td class="year">2027</td>
+        <td class="date">1 June</td>
+        <td class="category">Freight</td>
+        <td><strong><span class="en">Freight schedules circulated</span><span class="ja">チーム貨物スケジュールが各チームへ配布</span></strong><br>
+            <span class="en">Team freight schedules circulated to Teams</span><span class="ja">チーム貨物スケジュールが各チームへ配布</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Squad / Admin">
+        <td class="year">2027</td>
+        <td class="date">25 June</td>
+        <td class="category">Squad / Admin</td>
+        <td><strong><span class="en">Preliminary Training Squad</span><span class="ja">Preliminary Training Squad</span></strong><br>
+            <span class="en">Preliminary Training Squad submitted and the following provided: a) Personal information b) Team Member photos c) Passport information</span><span class="ja">予備トレーニングスコッドを提出し、個人情報、チームメンバー写真、パスポート情報を提供</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Media / Admin">
+        <td class="year">2027</td>
+        <td class="date">25 June</td>
+        <td class="category">Media / Admin</td>
+        <td><strong><span class="en">Bios and phonetic guides</span><span class="ja">チームメンバーの略歴と発音ガイドを提出</span></strong><br>
+            <span class="en">Submission of Team Members bio and phonetic guides</span><span class="ja">チームメンバーの略歴と発音ガイドを提出</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Media">
+        <td class="year">2027</td>
+        <td class="date">25 June</td>
+        <td class="category">Media</td>
+        <td><strong><span class="en">Second Team Media Manager notification</span><span class="ja">2人目のチームメディアマネージャーを任命する場合、WREDへ通知</span></strong><br>
+            <span class="en">Teams to notify WRED if appointing a second Team Media Manager as part of Team Management via teammedia@rugbyworldcup.com</span><span class="ja">2人目のチームメディアマネージャーを任命する場合、WREDへ通知</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Media">
+        <td class="year">2027</td>
+        <td class="date">25 June</td>
+        <td class="category">Media</td>
+        <td><strong><span class="en">Official photographer/videographer notification</span><span class="ja">公式チームフォトグラファー／ビデオグラファーを任命する場合、WREDへ通知</span></strong><br>
+            <span class="en">Teams to notify WRED if appointing an official Team photographer and/or an official Team videographer as part of Team Management</span><span class="ja">公式チームフォトグラファー／ビデオグラファーを任命する場合、WREDへ通知</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Media / Digital">
+        <td class="year">2027</td>
+        <td class="date">25 June</td>
+        <td class="category">Media / Digital</td>
+        <td><strong><span class="en">Key digital personnel confirmed</span><span class="ja">参加協会が主要デジタル担当者をメールで確認</span></strong><br>
+            <span class="en">Participating Unions must confirm their key digital personnel or persons via email teammedia@rugbyworldcup.com</span><span class="ja">参加協会が主要デジタル担当者をメールで確認</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Finance">
+        <td class="year">2027</td>
+        <td class="date">30 June</td>
+        <td class="category">Finance</td>
+        <td><strong><span class="en">Second Tournament Subsidy Payment</span><span class="ja">第2回大会補助金支払い</span></strong><br>
+            <span class="en">Second Tournament Subsidy Payment</span><span class="ja">第2回大会補助金支払い</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Administration">
+        <td class="year">2027</td>
+        <td class="date">2 July</td>
+        <td class="category">Administration</td>
+        <td><strong><span class="en">Insurance certificates</span><span class="ja">保険証明書を提出</span></strong><br>
+            <span class="en">Submit insurance certificates</span><span class="ja">保険証明書を提出</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Ticketing">
+        <td class="year">2027</td>
+        <td class="date">6 – 20 July</td>
+        <td class="category">Ticketing</td>
+        <td><strong><span class="en">Team Member ticket requests</span><span class="ja">Team Member ticket requests</span></strong><br>
+            <span class="en">Final deadline for Participating Unions to submit Team Member ticket requests (price categories subject to availability) for pool Matches onto the Ticket Portal</span><span class="ja">参加協会がプール戦のチームメンバーチケットリクエストをチケットポータルへ提出する最終期限</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Compliance">
+        <td class="year">2027</td>
+        <td class="date">16 July</td>
+        <td class="category">Compliance</td>
+        <td><strong><span class="en">Team Member Forms / education confirmation</span><span class="ja">Team Member Forms / education confirmation</span></strong><br>
+            <span class="en">Team Member Forms submitted: ‘Formal Acceptance by Team Member’ forms, signed by Participating Unions and Team Members; Confirmation that all Team Members have completed online Anti-Doping and Anti-Corruption Education Programmes</span><span class="ja">チームメンバーフォーム提出：Formal Acceptance by Team Member、アンチドーピング・腐敗防止教育完了確認</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Training Venues">
+        <td class="year">2027</td>
+        <td class="date">16 July</td>
+        <td class="category">Training Venues</td>
+        <td><strong><span class="en">Final Training Venue requirements</span><span class="ja">チームが最終トレーニング会場予約要件を提供</span></strong><br>
+            <span class="en">Final Training Venue booking requirements provided by Teams</span><span class="ja">チームが最終トレーニング会場予約要件を提供</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Travel / Logistics">
+        <td class="year">2027</td>
+        <td class="date">30 July</td>
+        <td class="category">Travel / Logistics</td>
+        <td><strong><span class="en">Homeward Journey deviations</span><span class="ja">帰国行程の変更リクエストをRWCAへ確認</span></strong><br>
+            <span class="en">Confirm any Homeward Journey deviation requests to RWCA</span><span class="ja">帰国行程の変更リクエストをRWCAへ確認</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Match Operations">
+        <td class="year">2027</td>
+        <td class="date">31 July</td>
+        <td class="category">Match Operations</td>
+        <td><strong><span class="en">Match Day run sheets</span><span class="ja">試合日ランシートをチームへ配布</span></strong><br>
+            <span class="en">Match Day run sheets to be circulated to Teams</span><span class="ja">試合日ランシートをチームへ配布</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Media / Digital">
+        <td class="year">2027</td>
+        <td class="date">1 August</td>
+        <td class="category">Media / Digital</td>
+        <td><strong><span class="en">Tournament footage/content sharing process</span><span class="ja">公式プラットフォームで使用する大会映像・コンテンツ共有プロセスをWREDが確認</span></strong><br>
+            <span class="en">WRED to confirm process for sharing Tournament footage and content with Teams to use on their official platforms</span><span class="ja">公式プラットフォームで使用する大会映像・コンテンツ共有プロセスをWREDが確認</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Media">
+        <td class="year">2027</td>
+        <td class="date">1 August</td>
+        <td class="category">Media</td>
+        <td><strong><span class="en">Photographer/videographer venue access</span><span class="ja">チームフォトグラファー／ビデオグラファーの試合会場アクセス詳細を提供</span></strong><br>
+            <span class="en">Details of Match Venue access provided for Team photographer/videographer</span><span class="ja">チームフォトグラファー／ビデオグラファーの試合会場アクセス詳細を提供</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Medical / Compliance">
+        <td class="year">2027</td>
+        <td class="date">9 August</td>
+        <td class="category">Medical / Compliance</td>
+        <td><strong><span class="en">TUE applications</span><span class="ja">治療使用特例（TUE）申請期限</span></strong><br>
+            <span class="en">Therapeutic Use Exemptions (TUE) applications deadline</span><span class="ja">治療使用特例（TUE）申請期限</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Kit">
+        <td class="year">2027</td>
+        <td class="date">17 August</td>
+        <td class="category">Kit</td>
+        <td><strong><span class="en">Team Kit post-production samples</span><span class="ja">全チームキットの量産後サンプル提出期限</span></strong><br>
+            <span class="en">All Team Kit post-production samples must be submitted</span><span class="ja">全チームキットの量産後サンプル提出期限</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Media / Digital">
+        <td class="year">2027</td>
+        <td class="date">31 August</td>
+        <td class="category">Media / Digital</td>
+        <td><strong><span class="en">Team social media guidelines</span><span class="ja">チームSNSガイドライン提出</span></strong><br>
+            <span class="en">Submission of Team social media guidelines</span><span class="ja">チームSNSガイドライン提出</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Media">
+        <td class="year">2027</td>
+        <td class="date">1 September</td>
+        <td class="category">Media</td>
+        <td><strong><span class="en">Pool Phase Team Media Schedule</span><span class="ja">プールフェーズのチームメディアスケジュール提出</span></strong><br>
+            <span class="en">Submission of Team Media Schedule for the Pool Phase</span><span class="ja">プールフェーズのチームメディアスケジュール提出</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Compliance">
+        <td class="year">2027</td>
+        <td class="date">1 September</td>
+        <td class="category">Compliance</td>
+        <td><strong><span class="en">NADO results reporting</span><span class="ja">NADO結果報告への準拠期限</span></strong><br>
+            <span class="en">Deadline to comply with NADO results reporting</span><span class="ja">NADO結果報告への準拠期限</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Media">
+        <td class="year">2027</td>
+        <td class="date">1 September</td>
+        <td class="category">Media</td>
+        <td><strong><span class="en">Provisional Team Media Schedule</span><span class="ja">プール戦の暫定チームメディアスケジュール提出</span></strong><br>
+            <span class="en">Submission of provisional Team Media Schedule for pool Matches</span><span class="ja">プール戦の暫定チームメディアスケジュール提出</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Compliance">
+        <td class="year">2027</td>
+        <td class="date">6 September</td>
+        <td class="category">Compliance</td>
+        <td><strong><span class="en">Anti-Doping Event Period begins</span><span class="ja">アンチドーピング規則上のイベント期間開始</span></strong><br>
+            <span class="en">The beginning of the Event Period for the purposes of the Anti-Doping Rules</span><span class="ja">アンチドーピング規則上のイベント期間開始</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Media / Squad">
+        <td class="year">2027</td>
+        <td class="date">6 September</td>
+        <td class="category">Media / Squad</td>
+        <td><strong><span class="en">Tournament Team announcement plans</span><span class="ja">大会チーム発表計画を確認</span></strong><br>
+            <span class="en">Teams to confirm their Tournament Team announcement plans</span><span class="ja">大会チーム発表計画を確認</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Medical">
+        <td class="year">2027</td>
+        <td class="date">7 September</td>
+        <td class="category">Medical</td>
+        <td><strong><span class="en">Medical staff ICIR completion</span><span class="ja">Medical staff ICIR completion</span></strong><br>
+            <span class="en">Deadline to complete and confirm completion of Level 2 ICIR course or equivalent by all medical staff entering the Field of Play (FOP)</span><span class="ja">フィールドオブプレーに入る全医療スタッフのLevel 2 ICIRまたは同等コース完了確認期限</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Squad">
+        <td class="year">2027</td>
+        <td class="date">13 September</td>
+        <td class="category">Squad</td>
+        <td><strong><span class="en">Tournament Team submission</span><span class="ja">大会チーム提出</span></strong><br>
+            <span class="en">Submission of Tournament Team</span><span class="ja">大会チーム提出</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Rugby">
+        <td class="year">2027</td>
+        <td class="date">19 September</td>
+        <td class="category">Rugby</td>
+        <td><strong><span class="en">Pre-Tournament international match deadline</span><span class="ja">大会前国際試合の実施期限</span></strong><br>
+            <span class="en">Deadline for playing pre-Tournament international Matches</span><span class="ja">大会前国際試合の実施期限</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Media">
+        <td class="year">2027</td>
+        <td class="date">20 September</td>
+        <td class="category">Media</td>
+        <td><strong><span class="en">Team Media Guide</span><span class="ja">チームメディアガイド電子提出</span></strong><br>
+            <span class="en">Electronic submission of Team Media Guide</span><span class="ja">チームメディアガイド電子提出</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Media / Squad">
+        <td class="year">2027</td>
+        <td class="date">20 September</td>
+        <td class="category">Media / Squad</td>
+        <td><strong><span class="en">Public Tournament Team announcement</span><span class="ja">WREDと協議の上、大会チーム発表を公表する期限</span></strong><br>
+            <span class="en">Deadline for Teams to make their Tournament Team announcement public in consultation with WRED</span><span class="ja">WREDと協議の上、大会チーム発表を公表する期限</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Kit">
+        <td class="year">2027</td>
+        <td class="date">23 September</td>
+        <td class="category">Kit</td>
+        <td><strong><span class="en">Team Kit Specifications period</span><span class="ja">大会後の帰国行程完了までチームキット仕様が適用</span></strong><br>
+            <span class="en">Team Kit Specifications in place until completion of Team’s Homeward Journey following the Tournament</span><span class="ja">大会後の帰国行程完了までチームキット仕様が適用</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Compliance">
+        <td class="year">2027</td>
+        <td class="date">24 September</td>
+        <td class="category">Compliance</td>
+        <td><strong><span class="en">Player disciplinary records</span><span class="ja">選手懲戒記録をWREDへ確認</span></strong><br>
+            <span class="en">Confirm Player disciplinary records to WRED</span><span class="ja">選手懲戒記録をWREDへ確認</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Meetings">
+        <td class="year">2027</td>
+        <td class="date">By end of September</td>
+        <td class="category">Meetings</td>
+        <td><strong><span class="en">Operations / Media / Doctors / Coaches briefings</span><span class="ja">Operations / Media / Doctors / Coaches briefings</span></strong><br>
+            <span class="en">Team Managers Operations Briefing, Team Media Managers Meeting, Team Doctors Meeting, Coaches’ Briefing</span><span class="ja">チームマネージャー運営説明会、メディアマネージャー会議、チームドクター会議、コーチ説明会</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Commercial / Kit">
+        <td class="year">2027</td>
+        <td class="date">By end of September</td>
+        <td class="category">Commercial / Kit</td>
+        <td><strong><span class="en">10 signed jerseys to WRED</span><span class="ja">RWC 2027署名入りジャージ10枚をWREDへ提供</span></strong><br>
+            <span class="en">Provide WRED with 10 RWC 2027 signed jerseys</span><span class="ja">RWC 2027署名入りジャージ10枚をWREDへ提供</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Media">
+        <td class="year">2027</td>
+        <td class="date">1 October</td>
+        <td class="category">Media</td>
+        <td><strong><span class="en">Official Team photo (optional)</span><span class="ja">公式チーム写真提出（任意）</span></strong><br>
+            <span class="en">Submission of official Team photo (Optional)</span><span class="ja">公式チーム写真提出（任意）</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Tournament">
+        <td class="year">2027</td>
+        <td class="date">1 – 17 October</td>
+        <td class="category">Tournament</td>
+        <td><strong><span class="en">Pool Phase</span><span class="ja">プールフェーズ</span></strong><br>
+            <span class="en">Pool Phase</span><span class="ja">プールフェーズ</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Tournament">
+        <td class="year">2027</td>
+        <td class="date">1 October</td>
+        <td class="category">Tournament</td>
+        <td><strong><span class="en">Opening Ceremony / Opening Match</span><span class="ja">開会式・開幕戦</span></strong><br>
+            <span class="en">Opening Ceremony and Opening Match</span><span class="ja">開会式・開幕戦</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Integrity">
+        <td class="year">2027</td>
+        <td class="date">6 – 11 October</td>
+        <td class="category">Integrity</td>
+        <td><strong><span class="en">Keep Rugby Clean Promotions</span><span class="ja">Keep Rugby Cleanプロモーション</span></strong><br>
+            <span class="en">Keep Rugby Clean Promotions</span><span class="ja">Keep Rugby Cleanプロモーション</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Match Operations">
+        <td class="year">2027</td>
+        <td class="date">18 October</td>
+        <td class="category">Match Operations</td>
+        <td><strong><span class="en">Round of 16 operational preferences</span><span class="ja">ラウンド16のスタジアムラン希望時間、到着時間、会場施設、キット選択を確認</span></strong><br>
+            <span class="en">Teams to confirm Stadium Run time slot preferences, arrival times, Match Venue facilities and kit choices for Round of 16 Matches</span><span class="ja">ラウンド16のスタジアムラン希望時間、到着時間、会場施設、キット選択を確認</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Tournament">
+        <td class="year">2027</td>
+        <td class="date">23 – 24 October</td>
+        <td class="category">Tournament</td>
+        <td><strong><span class="en">Round of 16</span><span class="ja">ラウンド16</span></strong><br>
+            <span class="en">Round of 16</span><span class="ja">ラウンド16</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Match Operations">
+        <td class="year">2027</td>
+        <td class="date">25 October</td>
+        <td class="category">Match Operations</td>
+        <td><strong><span class="en">Quarter-final operational preferences</span><span class="ja">準々決勝のスタジアムラン希望時間、到着時間、会場施設、キット選択を確認</span></strong><br>
+            <span class="en">Teams to confirm Stadium Run time slot preferences, arrival times, Match Venue facilities and kit choices for quarter-final Matches</span><span class="ja">準々決勝のスタジアムラン希望時間、到着時間、会場施設、キット選択を確認</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Tournament">
+        <td class="year">2027</td>
+        <td class="date">30 – 31 October</td>
+        <td class="category">Tournament</td>
+        <td><strong><span class="en">Quarter-Finals</span><span class="ja">準々決勝</span></strong><br>
+            <span class="en">Quarter-Finals</span><span class="ja">準々決勝</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Match Operations">
+        <td class="year">2027</td>
+        <td class="date">1 November</td>
+        <td class="category">Match Operations</td>
+        <td><strong><span class="en">Semi-final operational preferences</span><span class="ja">準決勝のスタジアムラン希望時間、到着時間、会場施設、キット選択を確認</span></strong><br>
+            <span class="en">Teams to confirm Stadium Run time slot preferences, arrival time, Match Venue facilities and kit choice for semi-final</span><span class="ja">準決勝のスタジアムラン希望時間、到着時間、会場施設、キット選択を確認</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Tournament">
+        <td class="year">2027</td>
+        <td class="date">5 – 6 November</td>
+        <td class="category">Tournament</td>
+        <td><strong><span class="en">Semi finals</span><span class="ja">準決勝</span></strong><br>
+            <span class="en">Semi finals</span><span class="ja">準決勝</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Match Operations">
+        <td class="year">2027</td>
+        <td class="date">7 November</td>
+        <td class="category">Match Operations</td>
+        <td><strong><span class="en">Final / Bronze Final operational preferences</span><span class="ja">決勝・3位決定戦のスタジアムラン希望時間、到着時間、会場施設、キット選択を確認</span></strong><br>
+            <span class="en">Teams to confirm Stadium Run time slot preferences, arrival time, Match Venue facilities and kit choice for Final and Bronze Final</span><span class="ja">決勝・3位決定戦のスタジアムラン希望時間、到着時間、会場施設、キット選択を確認</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Tournament">
+        <td class="year">2027</td>
+        <td class="date">12 November</td>
+        <td class="category">Tournament</td>
+        <td><strong><span class="en">Bronze Final</span><span class="ja">3位決定戦</span></strong><br>
+            <span class="en">Bronze Final</span><span class="ja">3位決定戦</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Tournament">
+        <td class="year">2027</td>
+        <td class="date">13 November</td>
+        <td class="category">Tournament</td>
+        <td><strong><span class="en">Final and Closing Ceremony</span><span class="ja">決勝・閉会式</span></strong><br>
+            <span class="en">Final and Closing Ceremony</span><span class="ja">決勝・閉会式</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Travel / Admin">
+        <td class="year">2027</td>
+        <td class="date">13 December</td>
+        <td class="category">Travel / Admin</td>
+        <td><strong><span class="en">Visa validity deadline</span><span class="ja">全チームメンバーのビザはこの日まで有効である必要</span></strong><br>
+            <span class="en">All Team Members’ visas must be valid until this date</span><span class="ja">全チームメンバーのビザはこの日まで有効である必要</span></td>
+      </tr>
+    
+      <tr data-year="2027" data-cat="Administration">
+        <td class="year">2027</td>
+        <td class="date">31 December</td>
+        <td class="category">Administration</td>
+        <td><strong><span class="en">Post-Tournament reports</span><span class="ja">参加協会による大会後レポート提出</span></strong><br>
+            <span class="en">Participating Union submission of post-Tournament reports</span><span class="ja">参加協会による大会後レポート提出</span></td>
+      </tr>
+    
+      <tr data-year="2028" data-cat="Media / Rights">
+        <td class="year">2028</td>
+        <td class="date">1 January</td>
+        <td class="category">Media / Rights</td>
+        <td><strong><span class="en">Tournament footage documentary embargo</span><span class="ja">Tournament footage documentary embargo</span></strong><br>
+            <span class="en">Any documentaries/programmes including Tournament footage must not be on sale or otherwise available for download or viewing prior to this date</span><span class="ja">大会映像を含むドキュメンタリー／番組はこの日より前に販売・ダウンロード・視聴可能にしてはならない</span></td>
+      </tr>
+    
+      <tr data-year="2028" data-cat="Finance">
+        <td class="year">2028</td>
+        <td class="date">31 January</td>
+        <td class="category">Finance</td>
+        <td><strong><span class="en">Final Tournament Subsidy payment</span><span class="ja">最終大会補助金支払い</span></strong><br>
+            <span class="en">Final Tournament Subsidy payment</span><span class="ja">最終大会補助金支払い</span></td>
+      </tr>
+    
+      <tr data-year="2029" data-cat="Trophy / Admin">
+        <td class="year">2029</td>
+        <td class="date">1 September</td>
+        <td class="category">Trophy / Admin</td>
+        <td><strong><span class="en">Webb Ellis Cup return</span><span class="ja">ウェブ・エリス・カップおよびケースをWREDへ返却</span></strong><br>
+            <span class="en">The Webb Ellis Cup and any encasement must be returned to WRED</span><span class="ja">ウェブ・エリス・カップおよびケースをWREDへ返却</span></td>
+      </tr>
+    </tbody>
+    </table>
+  </section>
+  <section class="cards" aria-label="Key dates cards">
+    
+      <article class="date-card" data-year="2025" data-cat="Commercial / Media / Broadcast">
+        <div class="card-head"><span class="badge">2025</span><span class="date">18 December</span></div>
+        <h2><span class="en">Commercial, Media and Broadcast</span><span class="ja">商業・メディア・放送ルール開始</span></h2>
+        <div class="cat">Commercial / Media / Broadcast</div>
+        <p><span class="en">Commercial, Media and Broadcast rules commence</span><span class="ja">商業・メディア・放送ルール開始</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2026" data-cat="Commercial">
+        <div class="card-head"><span class="badge">2026</span><span class="date">31 March</span></div>
+        <h2><span class="en">Support Product / Emblem</span><span class="ja">Support Product / Emblem</span></h2>
+        <div class="cat">Commercial</div>
+        <p><span class="en">Participating Unions to notify WRED if they do not wish for the Support Product to feature its Emblem (only country/territory name, flag and icon)</span><span class="ja">サポート商品にエンブレムを使用しない場合、参加協会がWREDへ通知（国・地域名、旗、アイコンのみ）</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2026" data-cat="Commercial">
+        <div class="card-head"><span class="badge">2026</span><span class="date">31 March</span></div>
+        <h2><span class="en">Supporter Product approval contact</span><span class="ja">協会エンブレムを使用するサポーター商品の確認・承認担当窓口を指名</span></h2>
+        <div class="cat">Commercial</div>
+        <p><span class="en">Participating Unions to nominate a point of contact for the purpose of reviewing and approving Supporter Products featuring the Union Emblem</span><span class="ja">協会エンブレムを使用するサポーター商品の確認・承認担当窓口を指名</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2026" data-cat="Operations">
+        <div class="card-head"><span class="badge">2026</span><span class="date">1 April – 31 Aug</span></div>
+        <h2><span class="en">Team Site Visits</span><span class="ja">チームサイトビジット（チームベース・試合会場）</span></h2>
+        <div class="cat">Operations</div>
+        <p><span class="en">Team Site Visits (Team Bases &amp; Match Venues)</span><span class="ja">チームサイトビジット（チームベース・試合会場）</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2026" data-cat="Ticketing">
+        <div class="card-head"><span class="badge">2026</span><span class="date">5 May</span></div>
+        <h2><span class="en">Ticketing contact</span><span class="ja">チケッティング窓口を ticketingteam@worldrugby.org に確認</span></h2>
+        <div class="cat">Ticketing</div>
+        <p><span class="en">Ticketing point of contact confirmed to ticketingteam@worldrugby.org</span><span class="ja">チケッティング窓口を ticketingteam@worldrugby.org に確認</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2026" data-cat="Ticketing">
+        <div class="card-head"><span class="badge">2026</span><span class="date">June</span></div>
+        <h2><span class="en">Ticketing Guide issued</span><span class="ja">チケッティングガイド発行</span></h2>
+        <div class="cat">Ticketing</div>
+        <p><span class="en">Ticketing Guide issued</span><span class="ja">チケッティングガイド発行</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2026" data-cat="Ticketing">
+        <div class="card-head"><span class="badge">2026</span><span class="date">25 Aug – 8 Sep</span></div>
+        <h2><span class="en">Ticket request submission</span><span class="ja">参加協会がチケッティングポータルにチケットリクエストを提出（12:00 AEST）</span></h2>
+        <div class="cat">Ticketing</div>
+        <p><span class="en">Participating Unions submit their ticket request onto the Ticketing Portal (12:00 AEST)</span><span class="ja">参加協会がチケッティングポータルにチケットリクエストを提出（12:00 AEST）</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2026" data-cat="Travel / Logistics">
+        <div class="card-head"><span class="badge">2026</span><span class="date">28 August</span></div>
+        <h2><span class="en">Arrival date and advanced party details</span><span class="ja">公式到着日以前に到着する場合の到着日、豪州内目的地、希望国際便、先遣隊詳細を確認</span></h2>
+        <div class="cat">Travel / Logistics</div>
+        <p><span class="en">Teams to confirm their arrival date (if prior to Official Arrival Date (OAD)), including any destination in Australia (if different to first Team Base), preferred International flight(s) and details of any advanced parties</span><span class="ja">公式到着日以前に到着する場合の到着日、豪州内目的地、希望国際便、先遣隊詳細を確認</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2026" data-cat="Team Base">
+        <div class="card-head"><span class="badge">2026</span><span class="date">11 September</span></div>
+        <h2><span class="en">Team Base preferences</span><span class="ja">チームベース希望を提出</span></h2>
+        <div class="cat">Team Base</div>
+        <p><span class="en">Teams to submit their Team Base preferences</span><span class="ja">チームベース希望を提出</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2026" data-cat="Team Base">
+        <div class="card-head"><span class="badge">2026</span><span class="date">30 September</span></div>
+        <h2><span class="en">Knockout Team Bases confirmed</span><span class="ja">RWCAがノックアウトフェーズのチームベースを確認</span></h2>
+        <div class="cat">Team Base</div>
+        <p><span class="en">RWCA to confirm knockout phase Team Bases</span><span class="ja">RWCAがノックアウトフェーズのチームベースを確認</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2026" data-cat="Team Services">
+        <div class="card-head"><span class="badge">2026</span><span class="date">2 October</span></div>
+        <h2><span class="en">Interpreter requirements</span><span class="ja">チームが通訳要件を確認</span></h2>
+        <div class="cat">Team Services</div>
+        <p><span class="en">Confirmation of interpreter requirements by Teams</span><span class="ja">チームが通訳要件を確認</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2026" data-cat="Kit">
+        <div class="card-head"><span class="badge">2026</span><span class="date">30 October</span></div>
+        <h2><span class="en">Team Kit artwork</span><span class="ja">全チームキットのアートワークを提出（チームキット仕様参照）</span></h2>
+        <div class="cat">Kit</div>
+        <p><span class="en">All Team Kit artwork submitted (see Team Kit Specifications)</span><span class="ja">全チームキットのアートワークを提出（チームキット仕様参照）</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2026" data-cat="Freight">
+        <div class="card-head"><span class="badge">2026</span><span class="date">30 October</span></div>
+        <h2><span class="en">Freight guide received</span><span class="ja">チームが貨物輸送ガイドを受領</span></h2>
+        <div class="cat">Freight</div>
+        <p><span class="en">Teams to receive freight guide</span><span class="ja">チームが貨物輸送ガイドを受領</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2026" data-cat="Meetings">
+        <div class="card-head"><span class="badge">2026</span><span class="date">30 Nov – 1 Dec</span></div>
+        <h2><span class="en">Team Managers&#x27; Meeting</span><span class="ja">チームマネージャー会議（英国ロンドン）</span></h2>
+        <div class="cat">Meetings</div>
+        <p><span class="en">Team Managers&#x27; Meeting, London, UK</span><span class="ja">チームマネージャー会議（英国ロンドン）</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2026" data-cat="Accommodation">
+        <div class="card-head"><span class="badge">2026</span><span class="date">4 December</span></div>
+        <h2><span class="en">Additional hotel facilities/services</span><span class="ja">追加で必要なチームホテル施設・サービスを確認</span></h2>
+        <div class="cat">Accommodation</div>
+        <p><span class="en">Teams to confirm additional Team hotel facilities and services required</span><span class="ja">追加で必要なチームホテル施設・サービスを確認</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2026" data-cat="Administration">
+        <div class="card-head"><span class="badge">2026</span><span class="date">11 December</span></div>
+        <h2><span class="en">Formal Acceptance form</span><span class="ja">参加協会による署名済みFormal Acceptanceフォーム提出期限</span></h2>
+        <div class="cat">Administration</div>
+        <p><span class="en">Deadline for submission of signed Formal Acceptance by Participating Union form</span><span class="ja">参加協会による署名済みFormal Acceptanceフォーム提出期限</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2026" data-cat="Travel / Logistics">
+        <div class="card-head"><span class="badge">2026</span><span class="date">22 December</span></div>
+        <h2><span class="en">Final arrival details advised</span><span class="ja">到着日、乗継時間、手荷物許容量を含む最終到着詳細がチームへ通知</span></h2>
+        <div class="cat">Travel / Logistics</div>
+        <p><span class="en">The final detail of a Team’s arrival, including dates, connections times and baggage allowance will be advised to Teams</span><span class="ja">到着日、乗継時間、手荷物許容量を含む最終到着詳細がチームへ通知</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2026" data-cat="Media">
+        <div class="card-head"><span class="badge">2026</span><span class="date">31 December</span></div>
+        <h2><span class="en">Team Media Manager appointed</span><span class="ja">Team Media Manager appointed</span></h2>
+        <div class="cat">Media</div>
+        <p><span class="en">Appoint a dedicated English-speaking Team Media Manager as part of Team Management and email teammedia@rugbyworldcup.com with the necessary contact details</span><span class="ja">チームマネジメントの一員として英語対応可能な専任チームメディアマネージャーを任命し、必要連絡先をメール送付</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Match Operations">
+        <div class="card-head"><span class="badge">2027</span><span class="date">15 January</span></div>
+        <h2><span class="en">Pool Match operational selections</span><span class="ja">各プール戦のスタジアムラン時間、更衣室選択、試合日到着時間、チームキットを確認</span></h2>
+        <div class="cat">Match Operations</div>
+        <p><span class="en">Teams to confirm Stadium Run time, changing room selections, Match Day arrival time and Team Kit for each pool Match</span><span class="ja">各プール戦のスタジアムラン時間、更衣室選択、試合日到着時間、チームキットを確認</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Kit">
+        <div class="card-head"><span class="badge">2027</span><span class="date">29 January</span></div>
+        <h2><span class="en">Kit pre-production samples</span><span class="ja">チームキットの量産前サンプル（正・副ジャージ、ショーツ、ソックス各1）提出期限</span></h2>
+        <div class="cat">Kit</div>
+        <p><span class="en">Team Kit pre-production samples (ONE pre-production samples of primary and alternate jerseys, shorts and socks) need to be submitted before this date (see Team Kit Specifications)</span><span class="ja">チームキットの量産前サンプル（正・副ジャージ、ショーツ、ソックス各1）提出期限</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Equipment">
+        <div class="card-head"><span class="badge">2027</span><span class="date">29 January</span></div>
+        <h2><span class="en">Match ball/bag delivery details</span><span class="ja">参加協会が試合球・バッグの配送詳細を確認</span></h2>
+        <div class="cat">Equipment</div>
+        <p><span class="en">Participating Unions to confirm delivery details for Match balls and bags</span><span class="ja">参加協会が試合球・バッグの配送詳細を確認</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Match Operations">
+        <div class="card-head"><span class="badge">2027</span><span class="date">1 February</span></div>
+        <h2><span class="en">Pool Match operations confirmed</span><span class="ja">各プール戦のスタジアムラン時間、更衣室選択、試合日到着時間が全チームへ確認</span></h2>
+        <div class="cat">Match Operations</div>
+        <p><span class="en">Stadium Run times, changing toom selections and Match day arrival times confirmed to all Teams for each pool Match</span><span class="ja">各プール戦のスタジアムラン時間、更衣室選択、試合日到着時間が全チームへ確認</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Ticketing">
+        <div class="card-head"><span class="badge">2027</span><span class="date">16 Feb – 2 Mar</span></div>
+        <h2><span class="en">Additional ticket requests/returns</span><span class="ja">Additional ticket requests/returns</span></h2>
+        <div class="cat">Ticketing</div>
+        <p><span class="en">Participating Unions submit their additional ticket requests (subject to availability) and any ticket returns (up to 15% of their confirmed ticket order per Match) onto the Ticket Portal</span><span class="ja">追加チケットリクエスト（在庫次第）と返券（各試合確定注文の最大15%）をチケットポータルへ提出</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Kit / Broadcast">
+        <div class="card-head"><span class="badge">2027</span><span class="date">Mid - Feb</span></div>
+        <h2><span class="en">Broadcast Team Kit testing</span><span class="ja">放送用チームキットテスト</span></h2>
+        <div class="cat">Kit / Broadcast</div>
+        <p><span class="en">Broadcast Team Kit testing</span><span class="ja">放送用チームキットテスト</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Kit">
+        <div class="card-head"><span class="badge">2027</span><span class="date">End of Feb</span></div>
+        <h2><span class="en">Pool Match kit selection</span><span class="ja">全プール戦のチームキット選択を確認</span></h2>
+        <div class="cat">Kit</div>
+        <p><span class="en">Team Kit selection for all pool Matches confirmed</span><span class="ja">全プール戦のチームキット選択を確認</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Accommodation">
+        <div class="card-head"><span class="badge">2027</span><span class="date">28 February</span></div>
+        <h2><span class="en">Additional Team Hotel requirements</span><span class="ja">RWCAが追加チームホテル要件をチームへ確認。客室削減期限もこの時点で通知</span></h2>
+        <div class="cat">Accommodation</div>
+        <p><span class="en">RWCA to confirm additional Team Hotel requirements to Teams – attrition deadlines will be communicated at this time</span><span class="ja">RWCAが追加チームホテル要件をチームへ確認。客室削減期限もこの時点で通知</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Equipment">
+        <div class="card-head"><span class="badge">2027</span><span class="date">1 March</span></div>
+        <h2><span class="en">Pre-Tournament balls/bags delivered</span><span class="ja">大会前試合球・バッグの配送</span></h2>
+        <div class="cat">Equipment</div>
+        <p><span class="en">Delivery of pre-Tournament Match balls and bags</span><span class="ja">大会前試合球・バッグの配送</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Catering">
+        <div class="card-head"><span class="badge">2027</span><span class="date">31 March</span></div>
+        <h2><span class="en">Menu adjustment requests</span><span class="ja">ホテル・試合会場のメニュー調整リクエストを提出</span></h2>
+        <div class="cat">Catering</div>
+        <p><span class="en">Teams to submit requests to adjust menus for hotels and Match Venues</span><span class="ja">ホテル・試合会場のメニュー調整リクエストを提出</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Kit">
+        <div class="card-head"><span class="badge">2027</span><span class="date">31 March</span></div>
+        <h2><span class="en">Training kit/formal wear samples</span><span class="ja">Training kit/formal wear samples</span></h2>
+        <div class="cat">Kit</div>
+        <p><span class="en">Training kit and formal wear pre-production samples to be submitted if RWC 2027 Event Mark has been applied (see Team Kit Specifications)</span><span class="ja">RWC 2027イベントマークを使用する場合、トレーニングキット・フォーマルウェア量産前サンプルを提出</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Commercial / Kit">
+        <div class="card-head"><span class="badge">2027</span><span class="date">31 March</span></div>
+        <h2><span class="en">Commercial partner nomination</span><span class="ja">Commercial partner nomination</span></h2>
+        <div class="cat">Commercial / Kit</div>
+        <p><span class="en">Last date for Participating Unions to nominate their proposed Primary and Secondary Union commercial partner for Non-Match Venue Team Kit to WRED for approval</span><span class="ja">試合会場外チームキットに関する主要・副次協会商業パートナー候補をWRED承認用に指名する最終日</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Commercial">
+        <div class="card-head"><span class="badge">2027</span><span class="date">31 March</span></div>
+        <h2><span class="en">Primary/Secondary Union Partners</span><span class="ja">主要・副次協会パートナー指名期限</span></h2>
+        <div class="cat">Commercial</div>
+        <p><span class="en">Deadline for Participating Unions to nominate their Primary and Secondary Union Partners</span><span class="ja">主要・副次協会パートナー指名期限</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Operations">
+        <div class="card-head"><span class="badge">2027</span><span class="date">30 April</span></div>
+        <h2><span class="en">Additional site visits deadline</span><span class="ja">追加サイトビジット期限</span></h2>
+        <div class="cat">Operations</div>
+        <p><span class="en">Deadline for additional site visits</span><span class="ja">追加サイトビジット期限</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Training Venues">
+        <div class="card-head"><span class="badge">2027</span><span class="date">30 April</span></div>
+        <h2><span class="en">Preliminary Training Venue requirements</span><span class="ja">チームが予備的なトレーニング会場予約要件を提供</span></h2>
+        <div class="cat">Training Venues</div>
+        <p><span class="en">Preliminary Training Venue booking requirements provided by Teams</span><span class="ja">チームが予備的なトレーニング会場予約要件を提供</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Tournament">
+        <div class="card-head"><span class="badge">2027</span><span class="date">May</span></div>
+        <h2><span class="en">Match Officials confirmed</span><span class="ja">RWCマッチオフィシャル選出・確認</span></h2>
+        <div class="cat">Tournament</div>
+        <p><span class="en">RWC Match Officials selected and confirmed</span><span class="ja">RWCマッチオフィシャル選出・確認</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Freight">
+        <div class="card-head"><span class="badge">2027</span><span class="date">1 June</span></div>
+        <h2><span class="en">Freight schedules circulated</span><span class="ja">チーム貨物スケジュールが各チームへ配布</span></h2>
+        <div class="cat">Freight</div>
+        <p><span class="en">Team freight schedules circulated to Teams</span><span class="ja">チーム貨物スケジュールが各チームへ配布</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Squad / Admin">
+        <div class="card-head"><span class="badge">2027</span><span class="date">25 June</span></div>
+        <h2><span class="en">Preliminary Training Squad</span><span class="ja">予備トレーニングスコッドを提出し、個人情報、チームメンバー写真、パスポート情報を提供</span></h2>
+        <div class="cat">Squad / Admin</div>
+        <p><span class="en">Preliminary Training Squad submitted and the following provided: a) Personal information b) Team Member photos c) Passport information</span><span class="ja">予備トレーニングスコッドを提出し、個人情報、チームメンバー写真、パスポート情報を提供</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Media / Admin">
+        <div class="card-head"><span class="badge">2027</span><span class="date">25 June</span></div>
+        <h2><span class="en">Bios and phonetic guides</span><span class="ja">チームメンバーの略歴と発音ガイドを提出</span></h2>
+        <div class="cat">Media / Admin</div>
+        <p><span class="en">Submission of Team Members bio and phonetic guides</span><span class="ja">チームメンバーの略歴と発音ガイドを提出</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Media">
+        <div class="card-head"><span class="badge">2027</span><span class="date">25 June</span></div>
+        <h2><span class="en">Second Team Media Manager notification</span><span class="ja">2人目のチームメディアマネージャーを任命する場合、WREDへ通知</span></h2>
+        <div class="cat">Media</div>
+        <p><span class="en">Teams to notify WRED if appointing a second Team Media Manager as part of Team Management via teammedia@rugbyworldcup.com</span><span class="ja">2人目のチームメディアマネージャーを任命する場合、WREDへ通知</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Media">
+        <div class="card-head"><span class="badge">2027</span><span class="date">25 June</span></div>
+        <h2><span class="en">Official photographer/videographer notification</span><span class="ja">公式チームフォトグラファー／ビデオグラファーを任命する場合、WREDへ通知</span></h2>
+        <div class="cat">Media</div>
+        <p><span class="en">Teams to notify WRED if appointing an official Team photographer and/or an official Team videographer as part of Team Management</span><span class="ja">公式チームフォトグラファー／ビデオグラファーを任命する場合、WREDへ通知</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Media / Digital">
+        <div class="card-head"><span class="badge">2027</span><span class="date">25 June</span></div>
+        <h2><span class="en">Key digital personnel confirmed</span><span class="ja">参加協会が主要デジタル担当者をメールで確認</span></h2>
+        <div class="cat">Media / Digital</div>
+        <p><span class="en">Participating Unions must confirm their key digital personnel or persons via email teammedia@rugbyworldcup.com</span><span class="ja">参加協会が主要デジタル担当者をメールで確認</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Finance">
+        <div class="card-head"><span class="badge">2027</span><span class="date">30 June</span></div>
+        <h2><span class="en">Second Tournament Subsidy Payment</span><span class="ja">第2回大会補助金支払い</span></h2>
+        <div class="cat">Finance</div>
+        <p><span class="en">Second Tournament Subsidy Payment</span><span class="ja">第2回大会補助金支払い</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Administration">
+        <div class="card-head"><span class="badge">2027</span><span class="date">2 July</span></div>
+        <h2><span class="en">Insurance certificates</span><span class="ja">保険証明書を提出</span></h2>
+        <div class="cat">Administration</div>
+        <p><span class="en">Submit insurance certificates</span><span class="ja">保険証明書を提出</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Ticketing">
+        <div class="card-head"><span class="badge">2027</span><span class="date">6 – 20 July</span></div>
+        <h2><span class="en">Team Member ticket requests</span><span class="ja">参加協会がプール戦のチームメンバーチケットリクエストをチケットポータルへ提出する最終期限</span></h2>
+        <div class="cat">Ticketing</div>
+        <p><span class="en">Final deadline for Participating Unions to submit Team Member ticket requests (price categories subject to availability) for pool Matches onto the Ticket Portal</span><span class="ja">参加協会がプール戦のチームメンバーチケットリクエストをチケットポータルへ提出する最終期限</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Compliance">
+        <div class="card-head"><span class="badge">2027</span><span class="date">16 July</span></div>
+        <h2><span class="en">Team Member Forms / education confirmation</span><span class="ja">Team Member Forms / education confirmation</span></h2>
+        <div class="cat">Compliance</div>
+        <p><span class="en">Team Member Forms submitted: ‘Formal Acceptance by Team Member’ forms, signed by Participating Unions and Team Members; Confirmation that all Team Members have completed online Anti-Doping and Anti-Corruption Education Programmes</span><span class="ja">チームメンバーフォーム提出：Formal Acceptance by Team Member、アンチドーピング・腐敗防止教育完了確認</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Training Venues">
+        <div class="card-head"><span class="badge">2027</span><span class="date">16 July</span></div>
+        <h2><span class="en">Final Training Venue requirements</span><span class="ja">チームが最終トレーニング会場予約要件を提供</span></h2>
+        <div class="cat">Training Venues</div>
+        <p><span class="en">Final Training Venue booking requirements provided by Teams</span><span class="ja">チームが最終トレーニング会場予約要件を提供</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Travel / Logistics">
+        <div class="card-head"><span class="badge">2027</span><span class="date">30 July</span></div>
+        <h2><span class="en">Homeward Journey deviations</span><span class="ja">帰国行程の変更リクエストをRWCAへ確認</span></h2>
+        <div class="cat">Travel / Logistics</div>
+        <p><span class="en">Confirm any Homeward Journey deviation requests to RWCA</span><span class="ja">帰国行程の変更リクエストをRWCAへ確認</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Match Operations">
+        <div class="card-head"><span class="badge">2027</span><span class="date">31 July</span></div>
+        <h2><span class="en">Match Day run sheets</span><span class="ja">試合日ランシートをチームへ配布</span></h2>
+        <div class="cat">Match Operations</div>
+        <p><span class="en">Match Day run sheets to be circulated to Teams</span><span class="ja">試合日ランシートをチームへ配布</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Media / Digital">
+        <div class="card-head"><span class="badge">2027</span><span class="date">1 August</span></div>
+        <h2><span class="en">Tournament footage/content sharing process</span><span class="ja">公式プラットフォームで使用する大会映像・コンテンツ共有プロセスをWREDが確認</span></h2>
+        <div class="cat">Media / Digital</div>
+        <p><span class="en">WRED to confirm process for sharing Tournament footage and content with Teams to use on their official platforms</span><span class="ja">公式プラットフォームで使用する大会映像・コンテンツ共有プロセスをWREDが確認</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Media">
+        <div class="card-head"><span class="badge">2027</span><span class="date">1 August</span></div>
+        <h2><span class="en">Photographer/videographer venue access</span><span class="ja">チームフォトグラファー／ビデオグラファーの試合会場アクセス詳細を提供</span></h2>
+        <div class="cat">Media</div>
+        <p><span class="en">Details of Match Venue access provided for Team photographer/videographer</span><span class="ja">チームフォトグラファー／ビデオグラファーの試合会場アクセス詳細を提供</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Medical / Compliance">
+        <div class="card-head"><span class="badge">2027</span><span class="date">9 August</span></div>
+        <h2><span class="en">TUE applications</span><span class="ja">治療使用特例（TUE）申請期限</span></h2>
+        <div class="cat">Medical / Compliance</div>
+        <p><span class="en">Therapeutic Use Exemptions (TUE) applications deadline</span><span class="ja">治療使用特例（TUE）申請期限</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Kit">
+        <div class="card-head"><span class="badge">2027</span><span class="date">17 August</span></div>
+        <h2><span class="en">Team Kit post-production samples</span><span class="ja">全チームキットの量産後サンプル提出期限</span></h2>
+        <div class="cat">Kit</div>
+        <p><span class="en">All Team Kit post-production samples must be submitted</span><span class="ja">全チームキットの量産後サンプル提出期限</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Media / Digital">
+        <div class="card-head"><span class="badge">2027</span><span class="date">31 August</span></div>
+        <h2><span class="en">Team social media guidelines</span><span class="ja">チームSNSガイドライン提出</span></h2>
+        <div class="cat">Media / Digital</div>
+        <p><span class="en">Submission of Team social media guidelines</span><span class="ja">チームSNSガイドライン提出</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Media">
+        <div class="card-head"><span class="badge">2027</span><span class="date">1 September</span></div>
+        <h2><span class="en">Pool Phase Team Media Schedule</span><span class="ja">プールフェーズのチームメディアスケジュール提出</span></h2>
+        <div class="cat">Media</div>
+        <p><span class="en">Submission of Team Media Schedule for the Pool Phase</span><span class="ja">プールフェーズのチームメディアスケジュール提出</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Compliance">
+        <div class="card-head"><span class="badge">2027</span><span class="date">1 September</span></div>
+        <h2><span class="en">NADO results reporting</span><span class="ja">NADO結果報告への準拠期限</span></h2>
+        <div class="cat">Compliance</div>
+        <p><span class="en">Deadline to comply with NADO results reporting</span><span class="ja">NADO結果報告への準拠期限</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Media">
+        <div class="card-head"><span class="badge">2027</span><span class="date">1 September</span></div>
+        <h2><span class="en">Provisional Team Media Schedule</span><span class="ja">プール戦の暫定チームメディアスケジュール提出</span></h2>
+        <div class="cat">Media</div>
+        <p><span class="en">Submission of provisional Team Media Schedule for pool Matches</span><span class="ja">プール戦の暫定チームメディアスケジュール提出</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Compliance">
+        <div class="card-head"><span class="badge">2027</span><span class="date">6 September</span></div>
+        <h2><span class="en">Anti-Doping Event Period begins</span><span class="ja">アンチドーピング規則上のイベント期間開始</span></h2>
+        <div class="cat">Compliance</div>
+        <p><span class="en">The beginning of the Event Period for the purposes of the Anti-Doping Rules</span><span class="ja">アンチドーピング規則上のイベント期間開始</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Media / Squad">
+        <div class="card-head"><span class="badge">2027</span><span class="date">6 September</span></div>
+        <h2><span class="en">Tournament Team announcement plans</span><span class="ja">大会チーム発表計画を確認</span></h2>
+        <div class="cat">Media / Squad</div>
+        <p><span class="en">Teams to confirm their Tournament Team announcement plans</span><span class="ja">大会チーム発表計画を確認</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Medical">
+        <div class="card-head"><span class="badge">2027</span><span class="date">7 September</span></div>
+        <h2><span class="en">Medical staff ICIR completion</span><span class="ja">Medical staff ICIR completion</span></h2>
+        <div class="cat">Medical</div>
+        <p><span class="en">Deadline to complete and confirm completion of Level 2 ICIR course or equivalent by all medical staff entering the Field of Play (FOP)</span><span class="ja">フィールドオブプレーに入る全医療スタッフのLevel 2 ICIRまたは同等コース完了確認期限</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Squad">
+        <div class="card-head"><span class="badge">2027</span><span class="date">13 September</span></div>
+        <h2><span class="en">Tournament Team submission</span><span class="ja">大会チーム提出</span></h2>
+        <div class="cat">Squad</div>
+        <p><span class="en">Submission of Tournament Team</span><span class="ja">大会チーム提出</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Rugby">
+        <div class="card-head"><span class="badge">2027</span><span class="date">19 September</span></div>
+        <h2><span class="en">Pre-Tournament international match deadline</span><span class="ja">大会前国際試合の実施期限</span></h2>
+        <div class="cat">Rugby</div>
+        <p><span class="en">Deadline for playing pre-Tournament international Matches</span><span class="ja">大会前国際試合の実施期限</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Media">
+        <div class="card-head"><span class="badge">2027</span><span class="date">20 September</span></div>
+        <h2><span class="en">Team Media Guide</span><span class="ja">チームメディアガイド電子提出</span></h2>
+        <div class="cat">Media</div>
+        <p><span class="en">Electronic submission of Team Media Guide</span><span class="ja">チームメディアガイド電子提出</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Media / Squad">
+        <div class="card-head"><span class="badge">2027</span><span class="date">20 September</span></div>
+        <h2><span class="en">Public Tournament Team announcement</span><span class="ja">WREDと協議の上、大会チーム発表を公表する期限</span></h2>
+        <div class="cat">Media / Squad</div>
+        <p><span class="en">Deadline for Teams to make their Tournament Team announcement public in consultation with WRED</span><span class="ja">WREDと協議の上、大会チーム発表を公表する期限</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Kit">
+        <div class="card-head"><span class="badge">2027</span><span class="date">23 September</span></div>
+        <h2><span class="en">Team Kit Specifications period</span><span class="ja">大会後の帰国行程完了までチームキット仕様が適用</span></h2>
+        <div class="cat">Kit</div>
+        <p><span class="en">Team Kit Specifications in place until completion of Team’s Homeward Journey following the Tournament</span><span class="ja">大会後の帰国行程完了までチームキット仕様が適用</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Compliance">
+        <div class="card-head"><span class="badge">2027</span><span class="date">24 September</span></div>
+        <h2><span class="en">Player disciplinary records</span><span class="ja">選手懲戒記録をWREDへ確認</span></h2>
+        <div class="cat">Compliance</div>
+        <p><span class="en">Confirm Player disciplinary records to WRED</span><span class="ja">選手懲戒記録をWREDへ確認</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Meetings">
+        <div class="card-head"><span class="badge">2027</span><span class="date">By end of September</span></div>
+        <h2><span class="en">Operations / Media / Doctors / Coaches briefings</span><span class="ja">チームマネージャー運営説明会、メディアマネージャー会議、チームドクター会議、コーチ説明会</span></h2>
+        <div class="cat">Meetings</div>
+        <p><span class="en">Team Managers Operations Briefing, Team Media Managers Meeting, Team Doctors Meeting, Coaches’ Briefing</span><span class="ja">チームマネージャー運営説明会、メディアマネージャー会議、チームドクター会議、コーチ説明会</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Commercial / Kit">
+        <div class="card-head"><span class="badge">2027</span><span class="date">By end of September</span></div>
+        <h2><span class="en">10 signed jerseys to WRED</span><span class="ja">RWC 2027署名入りジャージ10枚をWREDへ提供</span></h2>
+        <div class="cat">Commercial / Kit</div>
+        <p><span class="en">Provide WRED with 10 RWC 2027 signed jerseys</span><span class="ja">RWC 2027署名入りジャージ10枚をWREDへ提供</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Media">
+        <div class="card-head"><span class="badge">2027</span><span class="date">1 October</span></div>
+        <h2><span class="en">Official Team photo (optional)</span><span class="ja">公式チーム写真提出（任意）</span></h2>
+        <div class="cat">Media</div>
+        <p><span class="en">Submission of official Team photo (Optional)</span><span class="ja">公式チーム写真提出（任意）</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Tournament">
+        <div class="card-head"><span class="badge">2027</span><span class="date">1 – 17 October</span></div>
+        <h2><span class="en">Pool Phase</span><span class="ja">プールフェーズ</span></h2>
+        <div class="cat">Tournament</div>
+        <p><span class="en">Pool Phase</span><span class="ja">プールフェーズ</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Tournament">
+        <div class="card-head"><span class="badge">2027</span><span class="date">1 October</span></div>
+        <h2><span class="en">Opening Ceremony / Opening Match</span><span class="ja">開会式・開幕戦</span></h2>
+        <div class="cat">Tournament</div>
+        <p><span class="en">Opening Ceremony and Opening Match</span><span class="ja">開会式・開幕戦</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Integrity">
+        <div class="card-head"><span class="badge">2027</span><span class="date">6 – 11 October</span></div>
+        <h2><span class="en">Keep Rugby Clean Promotions</span><span class="ja">Keep Rugby Cleanプロモーション</span></h2>
+        <div class="cat">Integrity</div>
+        <p><span class="en">Keep Rugby Clean Promotions</span><span class="ja">Keep Rugby Cleanプロモーション</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Match Operations">
+        <div class="card-head"><span class="badge">2027</span><span class="date">18 October</span></div>
+        <h2><span class="en">Round of 16 operational preferences</span><span class="ja">ラウンド16のスタジアムラン希望時間、到着時間、会場施設、キット選択を確認</span></h2>
+        <div class="cat">Match Operations</div>
+        <p><span class="en">Teams to confirm Stadium Run time slot preferences, arrival times, Match Venue facilities and kit choices for Round of 16 Matches</span><span class="ja">ラウンド16のスタジアムラン希望時間、到着時間、会場施設、キット選択を確認</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Tournament">
+        <div class="card-head"><span class="badge">2027</span><span class="date">23 – 24 October</span></div>
+        <h2><span class="en">Round of 16</span><span class="ja">ラウンド16</span></h2>
+        <div class="cat">Tournament</div>
+        <p><span class="en">Round of 16</span><span class="ja">ラウンド16</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Match Operations">
+        <div class="card-head"><span class="badge">2027</span><span class="date">25 October</span></div>
+        <h2><span class="en">Quarter-final operational preferences</span><span class="ja">準々決勝のスタジアムラン希望時間、到着時間、会場施設、キット選択を確認</span></h2>
+        <div class="cat">Match Operations</div>
+        <p><span class="en">Teams to confirm Stadium Run time slot preferences, arrival times, Match Venue facilities and kit choices for quarter-final Matches</span><span class="ja">準々決勝のスタジアムラン希望時間、到着時間、会場施設、キット選択を確認</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Tournament">
+        <div class="card-head"><span class="badge">2027</span><span class="date">30 – 31 October</span></div>
+        <h2><span class="en">Quarter-Finals</span><span class="ja">準々決勝</span></h2>
+        <div class="cat">Tournament</div>
+        <p><span class="en">Quarter-Finals</span><span class="ja">準々決勝</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Match Operations">
+        <div class="card-head"><span class="badge">2027</span><span class="date">1 November</span></div>
+        <h2><span class="en">Semi-final operational preferences</span><span class="ja">準決勝のスタジアムラン希望時間、到着時間、会場施設、キット選択を確認</span></h2>
+        <div class="cat">Match Operations</div>
+        <p><span class="en">Teams to confirm Stadium Run time slot preferences, arrival time, Match Venue facilities and kit choice for semi-final</span><span class="ja">準決勝のスタジアムラン希望時間、到着時間、会場施設、キット選択を確認</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Tournament">
+        <div class="card-head"><span class="badge">2027</span><span class="date">5 – 6 November</span></div>
+        <h2><span class="en">Semi finals</span><span class="ja">準決勝</span></h2>
+        <div class="cat">Tournament</div>
+        <p><span class="en">Semi finals</span><span class="ja">準決勝</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Match Operations">
+        <div class="card-head"><span class="badge">2027</span><span class="date">7 November</span></div>
+        <h2><span class="en">Final / Bronze Final operational preferences</span><span class="ja">決勝・3位決定戦のスタジアムラン希望時間、到着時間、会場施設、キット選択を確認</span></h2>
+        <div class="cat">Match Operations</div>
+        <p><span class="en">Teams to confirm Stadium Run time slot preferences, arrival time, Match Venue facilities and kit choice for Final and Bronze Final</span><span class="ja">決勝・3位決定戦のスタジアムラン希望時間、到着時間、会場施設、キット選択を確認</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Tournament">
+        <div class="card-head"><span class="badge">2027</span><span class="date">12 November</span></div>
+        <h2><span class="en">Bronze Final</span><span class="ja">3位決定戦</span></h2>
+        <div class="cat">Tournament</div>
+        <p><span class="en">Bronze Final</span><span class="ja">3位決定戦</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Tournament">
+        <div class="card-head"><span class="badge">2027</span><span class="date">13 November</span></div>
+        <h2><span class="en">Final and Closing Ceremony</span><span class="ja">決勝・閉会式</span></h2>
+        <div class="cat">Tournament</div>
+        <p><span class="en">Final and Closing Ceremony</span><span class="ja">決勝・閉会式</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Travel / Admin">
+        <div class="card-head"><span class="badge">2027</span><span class="date">13 December</span></div>
+        <h2><span class="en">Visa validity deadline</span><span class="ja">全チームメンバーのビザはこの日まで有効である必要</span></h2>
+        <div class="cat">Travel / Admin</div>
+        <p><span class="en">All Team Members’ visas must be valid until this date</span><span class="ja">全チームメンバーのビザはこの日まで有効である必要</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2027" data-cat="Administration">
+        <div class="card-head"><span class="badge">2027</span><span class="date">31 December</span></div>
+        <h2><span class="en">Post-Tournament reports</span><span class="ja">参加協会による大会後レポート提出</span></h2>
+        <div class="cat">Administration</div>
+        <p><span class="en">Participating Union submission of post-Tournament reports</span><span class="ja">参加協会による大会後レポート提出</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2028" data-cat="Media / Rights">
+        <div class="card-head"><span class="badge">2028</span><span class="date">1 January</span></div>
+        <h2><span class="en">Tournament footage documentary embargo</span><span class="ja">Tournament footage documentary embargo</span></h2>
+        <div class="cat">Media / Rights</div>
+        <p><span class="en">Any documentaries/programmes including Tournament footage must not be on sale or otherwise available for download or viewing prior to this date</span><span class="ja">大会映像を含むドキュメンタリー／番組はこの日より前に販売・ダウンロード・視聴可能にしてはならない</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2028" data-cat="Finance">
+        <div class="card-head"><span class="badge">2028</span><span class="date">31 January</span></div>
+        <h2><span class="en">Final Tournament Subsidy payment</span><span class="ja">最終大会補助金支払い</span></h2>
+        <div class="cat">Finance</div>
+        <p><span class="en">Final Tournament Subsidy payment</span><span class="ja">最終大会補助金支払い</span></p>
+      </article>
+    
+      <article class="date-card" data-year="2029" data-cat="Trophy / Admin">
+        <div class="card-head"><span class="badge">2029</span><span class="date">1 September</span></div>
+        <h2><span class="en">Webb Ellis Cup return</span><span class="ja">ウェブ・エリス・カップおよびケースをWREDへ返却</span></h2>
+        <div class="cat">Trophy / Admin</div>
+        <p><span class="en">The Webb Ellis Cup and any encasement must be returned to WRED</span><span class="ja">ウェブ・エリス・カップおよびケースをWREDへ返却</span></p>
+      </article>
+    
+  </section>
+</main>
+<footer><span class="en">Source: RWC2027 schecule (E)(1).pdf / RWC 2027 Terms of Participation, section 1.5 Timeline of Key Dates.</span><span class="ja">出典: RWC2027 schecule (E)(1).pdf / RWC 2027 Terms of Participation「1.5 Timeline of Key Dates」。</span></footer>
+
+
+<script>
+(function () {
+  var KEY = 'rwc_site_lang';
+
+  function langFromUrl() {
+    try {
+      var v = new URLSearchParams(window.location.search).get('lang');
+      return (v === 'ja' || v === 'en') ? v : null;
+    } catch (e) { return null; }
+  }
+
+  function storedLang() {
+    try {
+      var v = localStorage.getItem(KEY);
+      return (v === 'ja' || v === 'en') ? v : null;
+    } catch (e) { return null; }
+  }
+
+  function saveLang(lang) {
+    try { localStorage.setItem(KEY, lang); } catch (e) {}
+  }
+
+  function currentLang() {
+    var ja = document.getElementById('lang-ja');
+    return (ja && ja.checked) ? 'ja' : 'en';
+  }
+
+  function setLang(lang) {
+    var ja = document.getElementById('lang-ja');
+    var en = document.getElementById('lang-en');
+    if (ja && en) {
+      ja.checked = (lang === 'ja');
+      en.checked = (lang !== 'ja');
+    }
+    document.documentElement.lang = (lang === 'ja') ? 'ja' : 'en';
+    saveLang(lang);
+    updateNavLinks(lang);
+  }
+
+  function updateNavLinks(lang) {
+    var links = document.querySelectorAll('.page-nav a[href]');
+    for (var i = 0; i < links.length; i++) {
+      var a = links[i];
+      var raw = a.getAttribute('href');
+      if (!raw || raw.indexOf('http') === 0 || raw.indexOf('#') === 0) continue;
+      var hash = "";
+      var href = raw;
+      var hashIndex = href.indexOf('#');
+      if (hashIndex >= 0) {
+        hash = href.substring(hashIndex);
+        href = href.substring(0, hashIndex);
+      }
+      var base = href.split('?')[0];
+      a.setAttribute('href', base + '?lang=' + encodeURIComponent(lang) + hash);
+    }
+  }
+
+  var initial = langFromUrl() || storedLang() || 'en';
+  setLang(initial);
+
+  var ja = document.getElementById('lang-ja');
+  var en = document.getElementById('lang-en');
+  if (ja) ja.addEventListener('change', function () { if (ja.checked) setLang('ja'); });
+  if (en) en.addEventListener('change', function () { if (en.checked) setLang('en'); });
+
+  document.addEventListener('pointerdown', function (ev) {
+    var a = ev.target.closest ? ev.target.closest('.page-nav a') : null;
+    if (a) updateNavLinks(currentLang());
+  }, true);
+})();
+</script>
+
+</body>
+</html>
