@@ -145,79 +145,213 @@ footer { max-width:1280px; margin:auto; padding:16px 12px calc(28px + env(safe-a
 }
 
 
-/* Unified header controls */
-.header-controls {
+
+
+
+
+/* === Centered Clean Navigation v2 === */
+.clean-nav {
+  width:100%;
+  max-width:920px;
+  margin:12px auto 0;
   display:flex;
   flex-direction:column;
-  gap:8px;
-  margin-top:8px;
+  align-items:stretch;
+  gap:10px;
 }
-.lang-controls,
-.page-nav {
-  display:grid !important;
-  grid-template-columns:repeat(2, minmax(0, 1fr));
-  gap:8px;
-  margin:0 !important;
-}
-.page-nav {
+
+.clean-pages {
+  width:100%;
+  display:grid;
   grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:8px;
+  padding:6px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:#f8fafc;
+  box-shadow:0 1px 4px rgba(16,24,40,.04);
 }
-.lang-controls label,
-.page-nav a,
-.pdf-button {
-  min-height:40px;
+
+.clean-actions {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:8px;
+}
+
+.clean-pages a,
+.clean-actions label,
+.clean-actions button {
+  min-height:44px;
   display:flex !important;
   align-items:center;
   justify-content:center;
   text-align:center;
-  border:1px solid var(--navy);
-  border-radius:10px;
-  padding:9px 8px;
-  font-weight:800;
-  font-size:14px;
-  line-height:1.1;
+  border-radius:14px;
+  padding:10px 14px;
   font-family:inherit;
+  font-size:14px;
+  font-weight:900;
+  line-height:1;
   text-decoration:none;
   white-space:nowrap;
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+  user-select:none;
 }
-.lang-controls label,
-.page-nav a {
-  background:#fff;
+
+.clean-pages a {
+  border:1px solid transparent;
+  background:transparent;
   color:var(--navy);
 }
-.page-nav a.active,
-#lang-en:checked ~ header label[for="lang-en"],
-#lang-ja:checked ~ header label[for="lang-ja"] {
+
+.clean-pages a.active {
   background:var(--navy);
   color:#fff;
+  border-color:var(--navy);
+  box-shadow:0 2px 6px rgba(8,38,83,.24);
 }
-#lang-en:checked ~ header label[for="lang-ja"],
-#lang-ja:checked ~ header label[for="lang-en"] {
+
+.clean-pages a:not(.active):hover,
+.clean-actions label:hover {
+  background:#eef4ff;
+}
+
+.clean-actions label,
+.clean-actions button {
+  min-width:76px;
+  border:1px solid var(--line);
   background:#fff;
   color:var(--navy);
+  box-shadow:0 1px 3px rgba(16,24,40,.05);
 }
-.pdf-button {
-  width:100%;
-  margin:0 !important;
+
+.clean-actions button {
   border-color:#0b4a7a;
   background:#0b4a7a;
   color:#fff;
-  cursor:pointer;
 }
-@media (max-width:420px) {
-  .header-controls { gap:7px; }
-  .lang-controls, .page-nav { gap:6px; }
-  .lang-controls label,
-  .page-nav a,
-  .pdf-button {
-    min-height:38px;
-    font-size:12px;
-    padding:8px 4px;
-    border-radius:9px;
+
+#lang-en:checked ~ header .clean-actions label[for="lang-en"],
+#lang-ja:checked ~ header .clean-actions label[for="lang-ja"] {
+  background:var(--navy);
+  color:#fff;
+  border-color:var(--navy);
+  box-shadow:0 2px 6px rgba(8,38,83,.22);
+}
+
+#lang-en:checked ~ header .clean-actions label[for="lang-ja"],
+#lang-ja:checked ~ header .clean-actions label[for="lang-en"] {
+  background:#fff;
+  color:var(--navy);
+  border-color:var(--line);
+}
+
+/* Make the year filter on Key Dates centered and easier to tap */
+.year-controls {
+  justify-content:center !important;
+  flex-wrap:wrap !important;
+  gap:8px !important;
+  margin-top:10px !important;
+}
+.year-controls label {
+  min-height:38px !important;
+  min-width:64px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  border-radius:999px !important;
+  font-weight:900 !important;
+}
+
+/* Hide any legacy nav blocks that accidentally remain */
+.header-controls,
+.lang-controls,
+.page-nav {
+  display:none !important;
+}
+
+/* Tablet */
+@media (max-width:900px) {
+  .clean-nav {
+    max-width:100%;
+    margin-top:10px;
   }
 }
+
+/* Phone */
+@media (max-width:560px) {
+  .clean-nav {
+    gap:8px;
+  }
+  .clean-pages {
+    gap:5px;
+    padding:5px;
+    border-radius:15px;
+  }
+  .clean-pages a,
+  .clean-actions label,
+  .clean-actions button {
+    min-height:40px;
+    border-radius:12px;
+    padding:9px 8px;
+    font-size:13px;
+  }
+  .clean-actions {
+    gap:6px;
+  }
+  .clean-actions label,
+  .clean-actions button {
+    min-width:64px;
+  }
+}
+
+/* Very narrow phones */
+@media (max-width:360px) {
+  .clean-pages a,
+  .clean-actions label,
+  .clean-actions button {
+    min-height:38px;
+    font-size:12px;
+    padding-left:5px;
+    padding-right:5px;
+  }
+  .clean-actions label,
+  .clean-actions button {
+    min-width:58px;
+  }
+}
+
+/* Landscape phones */
+@media (max-height:500px) and (orientation:landscape) {
+  .clean-nav {
+    max-width:980px;
+    flex-direction:row;
+    align-items:center;
+    gap:8px;
+  }
+  .clean-pages {
+    flex:1 1 auto;
+  }
+  .clean-actions {
+    flex:0 0 auto;
+  }
+  .clean-pages a,
+  .clean-actions label,
+  .clean-actions button {
+    min-height:34px;
+    padding:7px 10px;
+    font-size:12px;
+    border-radius:10px;
+  }
+}
+
+/* Print */
 @media print {
-  .header-controls { display:none !important; }
+  .clean-nav {
+    display:none !important;
+  }
 }
 
 </style>
@@ -229,18 +363,20 @@ footer { max-width:1280px; margin:auto; padding:16px 12px calc(28px + env(safe-a
   <div class="wrap">
     <h1><span class="en">JAPAN RUGBY - Road to RWC 2027 (V2)</span><span class="ja">JAPAN RUGBY - RWC 2027へのロードマップ（V2）</span></h1>
     <div class="sub"><span class="en">Roadmap table with frozen header row and first column. Switch pages with the buttons below.</span><span class="ja">Roadmap表は1行目と1列目を固定表示します。下のボタンでページを切り替えできます。</span></div>
-  <div class="header-controls">
-    <div class="lang-controls">
-      <label for="lang-ja">日本語</label>
-      <label for="lang-en">English</label>
+  <nav class="clean-nav" aria-label="Primary navigation">
+    <div class="clean-pages">
+      <a href="./index.html" aria-label="Tasks"><span class="en">Tasks</span><span class="ja">タスク</span></a>
+      <a class="active" href="./roadmap.html" aria-label="Roadmap"><span class="en">Roadmap</span><span class="ja">ロードマップ</span></a>
+      <a href="./schedule.html" aria-label="Dates"><span class="en">Dates</span><span class="ja">日程</span></a>
     </div>
-    <nav class="page-nav" aria-label="Page navigation">
-      <a href="./index.html"><span class="en">Task List</span><span class="ja">タスクリスト</span></a>
-      <a class="active" href="./roadmap.html"><span class="en">Roadmap</span><span class="ja">ロードマップ</span></a>
-      <a href="./schedule.html"><span class="en">Key Dates</span><span class="ja">主要日程</span></a>
-    </nav>
-    <button class="pdf-button" type="button" onclick="window.print()"><span class="en">Export PDF / Print</span><span class="ja">PDF出力 / 印刷</span></button>
-  </div>
+    <div class="clean-actions" aria-label="Language and export controls">
+      <label for="lang-en" role="button">EN</label>
+      <label for="lang-ja" role="button">日本語</label>
+      <button type="button" onclick="window.print()" aria-label="Export PDF or Print">PDF</button>
+    </div>
+  </nav>
+</div>
+</div>
 </div>
 </header>
 <main>
@@ -357,18 +493,21 @@ footer { max-width:1280px; margin:auto; padding:16px 12px calc(28px + env(safe-a
 <footer><span class="en">Source: Japan_Rugby_Roadmap_and_Meeting_Summary(2).xlsx / Sheet: Roadmap Schedule.</span><span class="ja">出典: Japan_Rugby_Roadmap_and_Meeting_Summary(2).xlsx / シート: Roadmap Schedule.</span></footer>
 
 
+
+
+
 <script>
 (function () {
   var KEY = 'rwc_site_lang';
 
-  function langFromUrl() {
+  function getUrlLang() {
     try {
       var v = new URLSearchParams(window.location.search).get('lang');
       return (v === 'ja' || v === 'en') ? v : null;
     } catch (e) { return null; }
   }
 
-  function storedLang() {
+  function getStoredLang() {
     try {
       var v = localStorage.getItem(KEY);
       return (v === 'ja' || v === 'en') ? v : null;
@@ -379,29 +518,66 @@ footer { max-width:1280px; margin:auto; padding:16px 12px calc(28px + env(safe-a
     try { localStorage.setItem(KEY, lang); } catch (e) {}
   }
 
-  function currentLang() {
+  function getCurrentLang() {
     var ja = document.getElementById('lang-ja');
     return (ja && ja.checked) ? 'ja' : 'en';
   }
 
-  function setLang(lang) {
-    var ja = document.getElementById('lang-ja');
-    var en = document.getElementById('lang-en');
-    if (ja && en) {
-      ja.checked = (lang === 'ja');
-      en.checked = (lang !== 'ja');
-    }
-    document.documentElement.lang = (lang === 'ja') ? 'ja' : 'en';
-    saveLang(lang);
-    updateNavLinks(lang);
+  function getHeaderOffset() {
+    var header = document.querySelector('header');
+    return header ? Math.ceil(header.getBoundingClientRect().height + 10) : 10;
   }
 
-  function updateNavLinks(lang) {
-    var links = document.querySelectorAll('.page-nav a[href]');
+  function findAnchorElement() {
+    var offset = getHeaderOffset();
+    var candidates = document.querySelectorAll(
+      '.owner, .road-card, .date-card, tbody tr, section, article'
+    );
+    var best = null;
+    var bestScore = Infinity;
+
+    for (var i = 0; i < candidates.length; i++) {
+      var el = candidates[i];
+      var style = window.getComputedStyle(el);
+      if (style.display === 'none' || style.visibility === 'hidden') continue;
+
+      var r = el.getBoundingClientRect();
+      if (r.height <= 0 || r.width <= 0) continue;
+
+      // Prefer an element around the readable top area, just below the sticky header.
+      var score = Math.abs(r.top - offset);
+      if (r.bottom < offset) score += 10000;
+      if (score < bestScore) {
+        best = el;
+        bestScore = score;
+      }
+    }
+
+    if (!best) return null;
+    return {
+      el: best,
+      delta: best.getBoundingClientRect().top - offset
+    };
+  }
+
+  function restoreAnchor(anchor) {
+    if (!anchor || !anchor.el) return;
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        var offset = getHeaderOffset();
+        var top = anchor.el.getBoundingClientRect().top + window.pageYOffset - offset - anchor.delta;
+        window.scrollTo({ top: Math.max(0, top), left: window.pageXOffset, behavior: 'auto' });
+      });
+    });
+  }
+
+  function updateLinks(lang) {
+    var links = document.querySelectorAll('.clean-pages a[href]');
     for (var i = 0; i < links.length; i++) {
       var a = links[i];
       var raw = a.getAttribute('href');
       if (!raw || raw.indexOf('http') === 0 || raw.indexOf('#') === 0) continue;
+
       var hash = "";
       var href = raw;
       var hashIndex = href.indexOf('#');
@@ -409,22 +585,50 @@ footer { max-width:1280px; margin:auto; padding:16px 12px calc(28px + env(safe-a
         hash = href.substring(hashIndex);
         href = href.substring(0, hashIndex);
       }
+
       var base = href.split('?')[0];
       a.setAttribute('href', base + '?lang=' + encodeURIComponent(lang) + hash);
     }
   }
 
-  var initial = langFromUrl() || storedLang() || 'en';
-  setLang(initial);
+  function setLang(lang, keepPosition) {
+    var anchor = keepPosition ? findAnchorElement() : null;
+
+    var ja = document.getElementById('lang-ja');
+    var en = document.getElementById('lang-en');
+    if (ja && en) {
+      ja.checked = (lang === 'ja');
+      en.checked = (lang !== 'ja');
+    }
+
+    document.documentElement.lang = (lang === 'ja') ? 'ja' : 'en';
+    saveLang(lang);
+    updateLinks(lang);
+
+    if (keepPosition) restoreAnchor(anchor);
+  }
+
+  var initial = getUrlLang() || getStoredLang() || 'en';
+  setLang(initial, false);
 
   var ja = document.getElementById('lang-ja');
   var en = document.getElementById('lang-en');
-  if (ja) ja.addEventListener('change', function () { if (ja.checked) setLang('ja'); });
-  if (en) en.addEventListener('change', function () { if (en.checked) setLang('en'); });
+
+  if (ja) {
+    ja.addEventListener('change', function () {
+      if (ja.checked) setLang('ja', true);
+    });
+  }
+
+  if (en) {
+    en.addEventListener('change', function () {
+      if (en.checked) setLang('en', true);
+    });
+  }
 
   document.addEventListener('pointerdown', function (ev) {
-    var a = ev.target.closest ? ev.target.closest('.page-nav a') : null;
-    if (a) updateNavLinks(currentLang());
+    var a = ev.target.closest ? ev.target.closest('.clean-pages a') : null;
+    if (a) updateLinks(getCurrentLang());
   }, true);
 })();
 </script>
