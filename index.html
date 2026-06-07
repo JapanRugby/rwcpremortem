@@ -379,88 +379,87 @@ footer {
   footer { max-width:none; }
 }
 
-/* Common simple page navigation */
-.page-nav {
-  display:grid;
-  grid-template-columns:1fr 1fr;
+.page-nav a { font-size:12px; padding:9px 4px; }
+}
+
+
+.page-nav a { font-size:12px; padding:9px 4px; }
+}
+
+
+/* Unified header controls */
+.header-controls {
+  display:flex;
+  flex-direction:column;
   gap:8px;
-  margin:8px 0;
+  margin-top:8px;
 }
-.page-nav a {
-  display:block;
-  text-align:center;
-  text-decoration:none;
-  border:1px solid var(--navy);
-  border-radius:12px;
-  padding:10px 8px;
-  font-weight:800;
-  font-size:15px;
-  color:var(--navy);
-  background:#fff;
-}
-.page-nav a.active {
-  background:var(--navy);
-  color:#fff;
-}
-
-
-/* Common simple page navigation */
+.lang-controls,
 .page-nav {
-  display:grid;
+  display:grid !important;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:8px;
+  margin:0 !important;
+}
+.page-nav {
   grid-template-columns:repeat(3, minmax(0, 1fr));
-  gap:8px;
-  margin:8px 0;
 }
-.page-nav a {
-  display:block;
+.lang-controls label,
+.page-nav a,
+.pdf-button {
+  min-height:40px;
+  display:flex !important;
+  align-items:center;
+  justify-content:center;
   text-align:center;
-  text-decoration:none;
   border:1px solid var(--navy);
-  border-radius:12px;
-  padding:10px 6px;
+  border-radius:10px;
+  padding:9px 8px;
   font-weight:800;
   font-size:14px;
-  color:var(--navy);
-  background:#fff;
-  white-space:nowrap;
-}
-.page-nav a.active {
-  background:var(--navy);
-  color:#fff;
-}
-@media (max-width:420px) {
-  .page-nav { gap:6px; }
-  .page-nav a { font-size:12px; padding:9px 4px; }
-}
-
-
-/* Common simple page navigation */
-.page-nav {
-  display:grid;
-  grid-template-columns:repeat(3, minmax(0, 1fr));
-  gap:8px;
-  margin:8px 0;
-}
-.page-nav a {
-  display:block;
-  text-align:center;
+  line-height:1.1;
+  font-family:inherit;
   text-decoration:none;
-  border:1px solid var(--navy);
-  border-radius:12px;
-  padding:10px 6px;
-  font-weight:800;
-  font-size:14px;
-  color:var(--navy);
-  background:#fff;
   white-space:nowrap;
 }
-.page-nav a.active {
+.lang-controls label,
+.page-nav a {
+  background:#fff;
+  color:var(--navy);
+}
+.page-nav a.active,
+#lang-en:checked ~ header label[for="lang-en"],
+#lang-ja:checked ~ header label[for="lang-ja"] {
   background:var(--navy);
   color:#fff;
 }
+#lang-en:checked ~ header label[for="lang-ja"],
+#lang-ja:checked ~ header label[for="lang-en"] {
+  background:#fff;
+  color:var(--navy);
+}
+.pdf-button {
+  width:100%;
+  margin:0 !important;
+  border-color:#0b4a7a;
+  background:#0b4a7a;
+  color:#fff;
+  cursor:pointer;
+}
 @media (max-width:420px) {
-  .page-nav { gap:6px; }
-  .page-nav a { font-size:12px; padding:9px 4px; }
+  .header-controls { gap:7px; }
+  .lang-controls, .page-nav { gap:6px; }
+  .lang-controls label,
+  .page-nav a,
+  .pdf-button {
+    min-height:38px;
+    font-size:12px;
+    padding:8px 4px;
+    border-radius:9px;
+  }
+}
+@media print {
+  .header-controls { display:none !important; }
 }
 
 </style>
@@ -494,18 +493,18 @@ footer {
   <div class="topbar">
     <h1><span class="en">RUGBY WORLD CUP — Task List</span><span class="ja">ラグビーワールドカップ — タスクリスト</span></h1>
     <div class="sub"><span class="en">Switch pages with the buttons below. English is the default view and your language choice is kept across pages.</span><span class="ja">下のボタンでページを切り替えできます。初期表示は英語で、選んだ言語はページ移動後も維持されます。</span></div>
+  <div class="header-controls">
     <div class="lang-controls">
       <label for="lang-ja">日本語</label>
       <label for="lang-en">English</label>
     </div>
-<nav class="page-nav" aria-label="Page navigation">
+    <nav class="page-nav" aria-label="Page navigation">
       <a class="active" href="./index.html"><span class="en">Task List</span><span class="ja">タスクリスト</span></a>
       <a href="./roadmap.html"><span class="en">Roadmap</span><span class="ja">ロードマップ</span></a>
       <a href="./schedule.html"><span class="en">Key Dates</span><span class="ja">主要日程</span></a>
     </nav>
-<button class="pdf-button" type="button" onclick="window.print()">
-      <span class="ja">PDF出力 / 印刷</span><span class="en">Export PDF / Print</span>
-    </button>
+    <button class="pdf-button" type="button" onclick="window.print()"><span class="en">Export PDF / Print</span><span class="ja">PDF出力 / 印刷</span></button>
+  </div>
 <div class="owner-controls" aria-label="Owner filter">
       <label for="owner-all"><span class="ja">全員</span><span class="en">All</span></label>
 <label for="owner-ej">EJ</label>

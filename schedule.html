@@ -57,33 +57,7 @@ h1 { font-size:clamp(20px,4.5vw,32px); margin:0 0 6px; color:#0b1d3f; line-heigh
 .year-controls { display:flex; gap:7px; overflow-x:auto; -webkit-overflow-scrolling:touch; padding:2px 0 5px; }
 .year-controls label { flex:0 0 auto; border-color:var(--line); color:#1f2a44; border-radius:999px; padding:9px 12px; white-space:nowrap; }
 
-/* Common simple page navigation */
-.page-nav {
-  display:grid;
-  grid-template-columns:repeat(3, minmax(0, 1fr));
-  gap:8px;
-  margin:8px 0;
-}
-.page-nav a {
-  display:block;
-  text-align:center;
-  text-decoration:none;
-  border:1px solid var(--navy);
-  border-radius:12px;
-  padding:10px 6px;
-  font-weight:800;
-  font-size:14px;
-  color:var(--navy);
-  background:#fff;
-  white-space:nowrap;
-}
-.page-nav a.active {
-  background:var(--navy);
-  color:#fff;
-}
-@media (max-width:420px) {
-  .page-nav { gap:6px; }
-  .page-nav a { font-size:12px; padding:9px 4px; }
+.page-nav a { font-size:12px; padding:9px 4px; }
 }
 
 main { max-width:1280px; margin:auto; padding:12px; }
@@ -133,33 +107,83 @@ footer { max-width:1280px; margin:auto; padding:16px 12px calc(28px + env(safe-a
   footer { max-width:none; padding:8px 0 0; }
 }
 
-/* Common simple page navigation */
-.page-nav {
-  display:grid;
-  grid-template-columns:repeat(3, minmax(0, 1fr));
-  gap:8px;
-  margin:8px 0;
+.page-nav a { font-size:12px; padding:9px 4px; }
 }
-.page-nav a {
-  display:block;
+
+
+/* Unified header controls */
+.header-controls {
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  margin-top:8px;
+}
+.lang-controls,
+.page-nav {
+  display:grid !important;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:8px;
+  margin:0 !important;
+}
+.page-nav {
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+}
+.lang-controls label,
+.page-nav a,
+.pdf-button {
+  min-height:40px;
+  display:flex !important;
+  align-items:center;
+  justify-content:center;
   text-align:center;
-  text-decoration:none;
   border:1px solid var(--navy);
-  border-radius:12px;
-  padding:10px 6px;
+  border-radius:10px;
+  padding:9px 8px;
   font-weight:800;
   font-size:14px;
-  color:var(--navy);
-  background:#fff;
+  line-height:1.1;
+  font-family:inherit;
+  text-decoration:none;
   white-space:nowrap;
 }
-.page-nav a.active {
+.lang-controls label,
+.page-nav a {
+  background:#fff;
+  color:var(--navy);
+}
+.page-nav a.active,
+#lang-en:checked ~ header label[for="lang-en"],
+#lang-ja:checked ~ header label[for="lang-ja"] {
   background:var(--navy);
   color:#fff;
 }
+#lang-en:checked ~ header label[for="lang-ja"],
+#lang-ja:checked ~ header label[for="lang-en"] {
+  background:#fff;
+  color:var(--navy);
+}
+.pdf-button {
+  width:100%;
+  margin:0 !important;
+  border-color:#0b4a7a;
+  background:#0b4a7a;
+  color:#fff;
+  cursor:pointer;
+}
 @media (max-width:420px) {
-  .page-nav { gap:6px; }
-  .page-nav a { font-size:12px; padding:9px 4px; }
+  .header-controls { gap:7px; }
+  .lang-controls, .page-nav { gap:6px; }
+  .lang-controls label,
+  .page-nav a,
+  .pdf-button {
+    min-height:38px;
+    font-size:12px;
+    padding:8px 4px;
+    border-radius:9px;
+  }
+}
+@media print {
+  .header-controls { display:none !important; }
 }
 
 </style>
@@ -172,17 +196,19 @@ footer { max-width:1280px; margin:auto; padding:16px 12px calc(28px + env(safe-a
   <div class="wrap">
     <h1><span class="en">RWC 2027 — Key Dates Timeline</span><span class="ja">RWC 2027 — 主要日程タイムライン</span></h1>
     <div class="sub"><span class="en">A clear bilingual table based on the uploaded RWC 2027 Terms of Participation key dates.</span><span class="ja">アップロードされたRWC 2027 Terms of Participationの主要日程を、英日対応の分かりやすい表にしました。</span></div>
+  <div class="header-controls">
     <div class="lang-controls">
-      <label for="lang-en">English</label>
       <label for="lang-ja">日本語</label>
+      <label for="lang-en">English</label>
     </div>
-<nav class="page-nav" aria-label="Page navigation">
+    <nav class="page-nav" aria-label="Page navigation">
       <a href="./index.html"><span class="en">Task List</span><span class="ja">タスクリスト</span></a>
       <a href="./roadmap.html"><span class="en">Roadmap</span><span class="ja">ロードマップ</span></a>
       <a class="active" href="./schedule.html"><span class="en">Key Dates</span><span class="ja">主要日程</span></a>
     </nav>
-<button class="pdf-button" type="button" onclick="window.print()"><span class="en">Export PDF / Print</span><span class="ja">PDF出力 / 印刷</span></button>
-    <div class="year-controls" aria-label="Year filter">
+    <button class="pdf-button" type="button" onclick="window.print()"><span class="en">Export PDF / Print</span><span class="ja">PDF出力 / 印刷</span></button>
+  </div>
+<div class="year-controls" aria-label="Year filter">
       <label for="year-all"><span class="en">All</span><span class="ja">全て</span></label><label for="year-2025">2025</label><label for="year-2026">2026</label><label for="year-2027">2027</label><label for="year-2028">2028</label><label for="year-2029">2029</label>
     </div>
   </div>
